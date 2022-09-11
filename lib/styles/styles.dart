@@ -55,7 +55,7 @@ class _Text {
   };
 
   TextStyle _getFontForLocale(Map<String, TextStyle> fonts) {
-    return fonts.entries.first.value;
+    return TextStyle(fontFamily: 'Tenor');
   }
 
   TextStyle get titleFont => _getFontForLocale(_titleFonts);
@@ -104,11 +104,13 @@ class _Text {
   late final TextStyle btn =
       copy(titleFont, sizePx: 12, weight: FontWeight.w600, heightPx: 13.2);
 
-  TextStyle copy(TextStyle style,
-      {required double sizePx,
-      double? heightPx,
-      double? spacingPc,
-      FontWeight? weight}) {
+  TextStyle copy(
+    TextStyle style, {
+    required double sizePx,
+    double? heightPx,
+    double? spacingPc,
+    FontWeight? weight,
+  }) {
     return style.copyWith(
         fontSize: sizePx,
         height: heightPx != null ? (heightPx / sizePx) : style.height,

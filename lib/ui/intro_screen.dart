@@ -16,22 +16,22 @@ class _IntroScreenState extends State<IntroScreen> {
 
   static List<_PageData> pageData = [
     _PageData(
-      "\$strings.introTitleJourney",
-      "\$strings.introDescriptionNavigate",
+      "aswar",
+      "test",
       Assets.icons.logo.path,
-      '1',
+      Assets.icons.logo.path,
     ),
     _PageData(
-      "\$strings.introTitleExplore",
-      "\$strings.introDescriptionUncover",
+      "aswar",
+      "test",
       Assets.icons.logo.path,
-      '2',
+      Assets.icons.logo.path,
     ),
     _PageData(
-      "\$strings.introTitleDiscover",
-      "\$strings.introDescriptionLearn",
+      "aswar",
+      "test",
       Assets.icons.logo.path,
-      '3',
+      Assets.icons.logo.path,
     ),
   ];
 
@@ -263,7 +263,7 @@ class _AswarLogo extends StatelessWidget {
         Gap($styles.insets.xs),
         StaticTextScale(
           child: Text(
-            "\$strings.introSemanticWonderous",
+            "Aswar",
             style: $styles.text.wonderTitle.copyWith(
               fontSize: 32,
               color: $styles.colors.offWhite,

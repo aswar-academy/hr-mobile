@@ -20,3 +20,4 @@ export 'package:flutter_animate/flutter_animate.dart';
 export 'package:gap/gap.dart';
 export 'package:provider/provider.dart';
 export 'package:aswar/router/app_router.gr.dart';
+export 'package:flutter_gen/gen_l10n/app_localizations.dart';

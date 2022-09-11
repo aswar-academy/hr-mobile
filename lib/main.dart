@@ -1,5 +1,5 @@
 import 'package:aswar/common_libs.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +19,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        final pageContent = Scaffold(
+          body: child,
+          resizeToAvoidBottomInset: false,
+        );
+
+        return pageContent;
+      },
       routerDelegate: _appRouter.delegate(),
       routeInformationProvider: _appRouter.routeInfoProvider(),
       routeInformationParser: _appRouter.defaultRouteParser(),
