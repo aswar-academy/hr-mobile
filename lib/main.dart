@@ -1,24 +1,30 @@
-import 'package:aswar/ui/home_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:aswar/common_libs.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final _appRouter = AppRouter();
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      debugShowCheckedModeBanner: false,
+      routerDelegate: _appRouter.delegate(),
+      routeInformationProvider: _appRouter.routeInfoProvider(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
+      theme: ThemeData(fontFamily: $styles.text.body.fontFamily),
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const MyHomeScreen(title: 'Flutter Demo Home Page'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
     );
   }
 }

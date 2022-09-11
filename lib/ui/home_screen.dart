@@ -14,7 +14,7 @@ class MyHomeScreen extends StatefulWidget {
 class _MyHomeScreenState extends State<MyHomeScreen> {
   int _counter = 0;
 
-  ResultState<List<UserData>> usersState = const ResultState.idle();
+  ResultState<PaginatedUser> usersState = const ResultState.idle();
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                 return ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    final item = data[index];
+                    final item = data.results[index];
                     return Text(item.email);
                   },
                 );

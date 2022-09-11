@@ -19,3 +19,4 @@ export 'package:flutter/services.dart';
 export 'package:flutter_animate/flutter_animate.dart';
 export 'package:gap/gap.dart';
 export 'package:provider/provider.dart';
+export 'package:aswar/router/app_router.gr.dart';

@@ -6,22 +6,32 @@ part of 'openapi.swagger.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CreateUserDto _$CreateUserDtoFromJson(Map<String, dynamic> json) =>
-    CreateUserDto(
-      email: json['email'] as String,
-      password: json['password'] as String,
-      salary: (json['salary'] as num?)?.toDouble(),
-      departmentId: (json['departmentId'] as num?)?.toDouble(),
-      name: json['name'] as String,
-      role: json['role'] as Object,
-      jobTitle: json['jobTitle'] as String?,
+Attendance _$AttendanceFromJson(Map<String, dynamic> json) => Attendance(
+      id: (json['id'] as num).toDouble(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      departureTime: DateTime.parse(json['departureTime'] as String),
+      userId: (json['userId'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$CreateUserDtoToJson(CreateUserDto instance) {
-  final val = <String, dynamic>{
-    'email': instance.email,
-    'password': instance.password,
-  };
+Map<String, dynamic> _$AttendanceToJson(Attendance instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'departureTime': instance.departureTime.toIso8601String(),
+      'userId': instance.userId,
+    };
+
+Task _$TaskFromJson(Map<String, dynamic> json) => Task(
+      state: taskStateFromJson(json['state']),
+      title: json['title'] as String,
+      description: json['description'] as String,
+      userId: (json['userId'] as num).toDouble(),
+      id: (json['id'] as num).toDouble(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+    );
+
+Map<String, dynamic> _$TaskToJson(Task instance) {
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -29,28 +39,39 @@ Map<String, dynamic> _$CreateUserDtoToJson(CreateUserDto instance) {
     }
   }
 
-  writeNotNull('salary', instance.salary);
-  writeNotNull('departmentId', instance.departmentId);
-  val['name'] = instance.name;
-  val['role'] = instance.role;
-  writeNotNull('jobTitle', instance.jobTitle);
+  writeNotNull('state', taskStateToJson(instance.state));
+  val['title'] = instance.title;
+  val['description'] = instance.description;
+  val['userId'] = instance.userId;
+  val['id'] = instance.id;
+  val['createdAt'] = instance.createdAt.toIso8601String();
   return val;
 }
 
-UserDto _$UserDtoFromJson(Map<String, dynamic> json) => UserDto(
+UserDetail _$UserDetailFromJson(Map<String, dynamic> json) => UserDetail(
       email: json['email'] as String,
-      salary: (json['salary'] as num?)?.toDouble(),
-      departmentId: (json['departmentId'] as num?)?.toDouble(),
+      name: json['name'] as String,
+      role: userDetailRoleFromJson(json['role']),
+      jobTitle: json['jobTitle'] as String,
+      salary: (json['salary'] as num).toDouble(),
+      departmentId: (json['departmentId'] as num).toDouble(),
+      department: json['department'] as Object,
+      attendance: (json['attendance'] as List<dynamic>?)
+              ?.map((e) => Attendance.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      tasks: (json['tasks'] as List<dynamic>?)
+              ?.map((e) => Task.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       id: (json['id'] as num).toDouble(),
       createdAt: DateTime.parse(json['createdAt'] as String),
-      name: json['name'] as String,
-      role: json['role'] as Object,
-      jobTitle: json['jobTitle'] as String?,
     );
 
-Map<String, dynamic> _$UserDtoToJson(UserDto instance) {
+Map<String, dynamic> _$UserDetailToJson(UserDetail instance) {
   final val = <String, dynamic>{
     'email': instance.email,
+    'name': instance.name,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -59,13 +80,15 @@ Map<String, dynamic> _$UserDtoToJson(UserDto instance) {
     }
   }
 
-  writeNotNull('salary', instance.salary);
-  writeNotNull('departmentId', instance.departmentId);
+  writeNotNull('role', userDetailRoleToJson(instance.role));
+  val['jobTitle'] = instance.jobTitle;
+  val['salary'] = instance.salary;
+  val['departmentId'] = instance.departmentId;
+  val['department'] = instance.department;
+  val['attendance'] = instance.attendance.map((e) => e.toJson()).toList();
+  val['tasks'] = instance.tasks.map((e) => e.toJson()).toList();
   val['id'] = instance.id;
   val['createdAt'] = instance.createdAt.toIso8601String();
-  val['name'] = instance.name;
-  val['role'] = instance.role;
-  writeNotNull('jobTitle', instance.jobTitle);
   return val;
 }
 
@@ -79,76 +102,33 @@ Map<String, dynamic> _$LoginDtoToJson(LoginDto instance) => <String, dynamic>{
       'password': instance.password,
     };
 
-TaskDto _$TaskDtoFromJson(Map<String, dynamic> json) => TaskDto(
-      id: (json['id'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      state: json['state'] as Object,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      authorId: (json['authorId'] as num).toDouble(),
+RegistrationDto _$RegistrationDtoFromJson(Map<String, dynamic> json) =>
+    RegistrationDto(
+      token: json['token'] as String,
+      user: UserDetail.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$TaskDtoToJson(TaskDto instance) => <String, dynamic>{
-      'id': instance.id,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'state': instance.state,
-      'title': instance.title,
-      'description': instance.description,
-      'authorId': instance.authorId,
-    };
-
-DepartmentDto _$DepartmentDtoFromJson(Map<String, dynamic> json) =>
-    DepartmentDto(
-      id: (json['id'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      name: json['name'] as String,
-    );
-
-Map<String, dynamic> _$DepartmentDtoToJson(DepartmentDto instance) =>
+Map<String, dynamic> _$RegistrationDtoToJson(RegistrationDto instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'name': instance.name,
+      'token': instance.token,
+      'user': instance.user.toJson(),
     };
 
-AttendanceDto _$AttendanceDtoFromJson(Map<String, dynamic> json) =>
-    AttendanceDto(
-      id: (json['id'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      userId: (json['userId'] as num).toDouble(),
-    );
-
-Map<String, dynamic> _$AttendanceDtoToJson(AttendanceDto instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'userId': instance.userId,
-    };
-
-UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
+CreateUser _$CreateUserFromJson(Map<String, dynamic> json) => CreateUser(
       email: json['email'] as String,
-      salary: (json['salary'] as num?)?.toDouble(),
-      departmentId: (json['departmentId'] as num?)?.toDouble(),
-      id: (json['id'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      password: json['password'] as String,
       name: json['name'] as String,
-      role: json['role'] as Object,
-      jobTitle: json['jobTitle'] as String?,
-      tasks: (json['tasks'] as List<dynamic>?)
-              ?.map((e) => TaskDto.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
-      department:
-          DepartmentDto.fromJson(json['department'] as Map<String, dynamic>),
-      attendance: (json['attendance'] as List<dynamic>?)
-              ?.map((e) => AttendanceDto.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          [],
+      role: createUserRoleFromJson(json['role']),
+      jobTitle: json['jobTitle'] as String,
+      salary: (json['salary'] as num).toDouble(),
+      departmentId: (json['departmentId'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$UserDataToJson(UserData instance) {
+Map<String, dynamic> _$CreateUserToJson(CreateUser instance) {
   final val = <String, dynamic>{
     'email': instance.email,
+    'password': instance.password,
+    'name': instance.name,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -157,27 +137,201 @@ Map<String, dynamic> _$UserDataToJson(UserData instance) {
     }
   }
 
-  writeNotNull('salary', instance.salary);
-  writeNotNull('departmentId', instance.departmentId);
-  val['id'] = instance.id;
-  val['createdAt'] = instance.createdAt.toIso8601String();
-  val['name'] = instance.name;
-  val['role'] = instance.role;
-  writeNotNull('jobTitle', instance.jobTitle);
-  val['tasks'] = instance.tasks.map((e) => e.toJson()).toList();
-  val['department'] = instance.department.toJson();
-  val['attendance'] = instance.attendance.map((e) => e.toJson()).toList();
+  writeNotNull('role', createUserRoleToJson(instance.role));
+  val['jobTitle'] = instance.jobTitle;
+  val['salary'] = instance.salary;
+  val['departmentId'] = instance.departmentId;
   return val;
 }
 
-RegistrationDto _$RegistrationDtoFromJson(Map<String, dynamic> json) =>
-    RegistrationDto(
-      token: json['token'] as String,
-      user: UserData.fromJson(json['user'] as Map<String, dynamic>),
+User _$UserFromJson(Map<String, dynamic> json) => User(
+      email: json['email'] as String,
+      name: json['name'] as String,
+      role: userRoleFromJson(json['role']),
+      jobTitle: json['jobTitle'] as String,
+      salary: (json['salary'] as num).toDouble(),
+      departmentId: (json['departmentId'] as num).toDouble(),
+      id: (json['id'] as num).toDouble(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
-Map<String, dynamic> _$RegistrationDtoToJson(RegistrationDto instance) =>
+Map<String, dynamic> _$UserToJson(User instance) {
+  final val = <String, dynamic>{
+    'email': instance.email,
+    'name': instance.name,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('role', userRoleToJson(instance.role));
+  val['jobTitle'] = instance.jobTitle;
+  val['salary'] = instance.salary;
+  val['departmentId'] = instance.departmentId;
+  val['id'] = instance.id;
+  val['createdAt'] = instance.createdAt.toIso8601String();
+  return val;
+}
+
+PaginatedUser _$PaginatedUserFromJson(Map<String, dynamic> json) =>
+    PaginatedUser(
+      total: (json['total'] as num).toDouble(),
+      results: (json['results'] as List<dynamic>?)
+              ?.map((e) => User.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$PaginatedUserToJson(PaginatedUser instance) =>
     <String, dynamic>{
-      'token': instance.token,
-      'user': instance.user.toJson(),
+      'total': instance.total,
+      'results': instance.results.map((e) => e.toJson()).toList(),
     };
+
+PaginatedTask _$PaginatedTaskFromJson(Map<String, dynamic> json) =>
+    PaginatedTask(
+      total: (json['total'] as num).toDouble(),
+      results: (json['results'] as List<dynamic>?)
+              ?.map((e) => Task.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$PaginatedTaskToJson(PaginatedTask instance) =>
+    <String, dynamic>{
+      'total': instance.total,
+      'results': instance.results.map((e) => e.toJson()).toList(),
+    };
+
+CreateTask _$CreateTaskFromJson(Map<String, dynamic> json) => CreateTask(
+      state: createTaskStateFromJson(json['state']),
+      title: json['title'] as String,
+      description: json['description'] as String,
+      userId: (json['userId'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$CreateTaskToJson(CreateTask instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('state', createTaskStateToJson(instance.state));
+  val['title'] = instance.title;
+  val['description'] = instance.description;
+  val['userId'] = instance.userId;
+  return val;
+}
+
+CreateDepartment _$CreateDepartmentFromJson(Map<String, dynamic> json) =>
+    CreateDepartment(
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$CreateDepartmentToJson(CreateDepartment instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+    };
+
+Department _$DepartmentFromJson(Map<String, dynamic> json) => Department(
+      name: json['name'] as String,
+      id: (json['id'] as num).toDouble(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+    );
+
+Map<String, dynamic> _$DepartmentToJson(Department instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'id': instance.id,
+      'createdAt': instance.createdAt.toIso8601String(),
+    };
+
+PaginatedDepartment _$PaginatedDepartmentFromJson(Map<String, dynamic> json) =>
+    PaginatedDepartment(
+      total: (json['total'] as num).toDouble(),
+      results: (json['results'] as List<dynamic>?)
+              ?.map((e) => Department.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$PaginatedDepartmentToJson(
+        PaginatedDepartment instance) =>
+    <String, dynamic>{
+      'total': instance.total,
+      'results': instance.results.map((e) => e.toJson()).toList(),
+    };
+
+UpdateDepartment _$UpdateDepartmentFromJson(Map<String, dynamic> json) =>
+    UpdateDepartment(
+      name: json['name'] as String?,
+    );
+
+Map<String, dynamic> _$UpdateDepartmentToJson(UpdateDepartment instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('name', instance.name);
+  return val;
+}
+
+CreateAttendance _$CreateAttendanceFromJson(Map<String, dynamic> json) =>
+    CreateAttendance(
+      departureTime: DateTime.parse(json['departureTime'] as String),
+      userId: (json['userId'] as num).toDouble(),
+    );
+
+Map<String, dynamic> _$CreateAttendanceToJson(CreateAttendance instance) =>
+    <String, dynamic>{
+      'departureTime': instance.departureTime.toIso8601String(),
+      'userId': instance.userId,
+    };
+
+PaginatedAttendance _$PaginatedAttendanceFromJson(Map<String, dynamic> json) =>
+    PaginatedAttendance(
+      total: (json['total'] as num).toDouble(),
+      results: (json['results'] as List<dynamic>?)
+              ?.map((e) => Attendance.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+
+Map<String, dynamic> _$PaginatedAttendanceToJson(
+        PaginatedAttendance instance) =>
+    <String, dynamic>{
+      'total': instance.total,
+      'results': instance.results.map((e) => e.toJson()).toList(),
+    };
+
+UpdateAttendance _$UpdateAttendanceFromJson(Map<String, dynamic> json) =>
+    UpdateAttendance(
+      departureTime: json['departureTime'] == null
+          ? null
+          : DateTime.parse(json['departureTime'] as String),
+      userId: (json['userId'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$UpdateAttendanceToJson(UpdateAttendance instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('departureTime', instance.departureTime?.toIso8601String());
+  writeNotNull('userId', instance.userId);
+  return val;
+}

@@ -1,4 +1,5 @@
 import 'package:aswar/common_libs.dart';
+import 'package:aswar/gen/assets.gen.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({Key? key}) : super(key: key);
@@ -13,13 +14,25 @@ class _IntroScreenState extends State<IntroScreen> {
   static const double _textHeight = 155;
   static const double _pageIndicatorHeight = 55;
 
-  static const List<_PageData> pageData = [
-    _PageData("\$strings.introTitleJourney",
-        "\$strings.introDescriptionNavigate", 'camel', '1'),
-    _PageData("\$strings.introTitleExplore",
-        "\$strings.introDescriptionUncover", 'petra', '2'),
-    _PageData("\$strings.introTitleDiscover", "\$strings.introDescriptionLearn",
-        'statue', '3'),
+  static List<_PageData> pageData = [
+    _PageData(
+      "\$strings.introTitleJourney",
+      "\$strings.introDescriptionNavigate",
+      Assets.icons.logo.path,
+      '1',
+    ),
+    _PageData(
+      "\$strings.introTitleExplore",
+      "\$strings.introDescriptionUncover",
+      Assets.icons.logo.path,
+      '2',
+    ),
+    _PageData(
+      "\$strings.introTitleDiscover",
+      "\$strings.introDescriptionLearn",
+      Assets.icons.logo.path,
+      '3',
+    ),
   ];
 
   late final PageController _pageController = PageController()
@@ -189,11 +202,11 @@ class _IntroScreenState extends State<IntroScreen> {
 
 @immutable
 class _PageData {
-  const _PageData(this.title, this.desc, this.img, this.mask);
+  const _PageData(this.title, this.description, this.image, this.mask);
 
   final String title;
-  final String desc;
-  final String img;
+  final String description;
+  final String image;
   final String mask;
 }
 
@@ -216,11 +229,16 @@ class _Page extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(data.title,
-                    style: $styles.text.wonderTitle.copyWith(fontSize: 24)),
+                Text(
+                  data.title,
+                  style: $styles.text.wonderTitle.copyWith(fontSize: 24),
+                ),
                 Gap($styles.insets.sm),
-                Text(data.desc,
-                    style: $styles.text.body, textAlign: TextAlign.center),
+                Text(
+                  data.description,
+                  style: $styles.text.body,
+                  textAlign: TextAlign.center,
+                ),
               ],
             ),
           ),
@@ -246,8 +264,10 @@ class _AswarLogo extends StatelessWidget {
         StaticTextScale(
           child: Text(
             "\$strings.introSemanticWonderous",
-            style: $styles.text.wonderTitle
-                .copyWith(fontSize: 32, color: $styles.colors.offWhite),
+            style: $styles.text.wonderTitle.copyWith(
+              fontSize: 32,
+              color: $styles.colors.offWhite,
+            ),
           ),
         )
       ],
@@ -266,14 +286,14 @@ class _PageImage extends StatelessWidget {
       children: [
         SizedBox.expand(
           child: Image.asset(
-            'ImagePaths.common}/intro-${data.img}.jpg',
+            data.image,
             fit: BoxFit.cover,
             alignment: Alignment.centerRight,
           ),
         ),
         Positioned.fill(
             child: Image.asset(
-          'ImagePaths.common}/intro-mask-${data.mask}.png',
+          data.mask,
           fit: BoxFit.fill,
         )),
       ],
