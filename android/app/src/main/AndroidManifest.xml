@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.aswar_hr_mobile">
+    package="com.example.aswar">
    <application
-        android:label="aswar_hr_mobile"
+        android:label="aswar"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

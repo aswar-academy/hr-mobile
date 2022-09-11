@@ -1,17 +1,17 @@
-import 'package:aswar_hr_mobile/swagger_generated_code/openapi.swagger.dart';
+import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
 import 'package:error_handler/error_handler.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyHomeScreen extends StatefulWidget {
+  const MyHomeScreen({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomeScreen> createState() => _MyHomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomeScreenState extends State<MyHomeScreen> {
   int _counter = 0;
 
   ResultState<List<UserData>> usersState = const ResultState.idle();
@@ -21,16 +21,11 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     final client = Openapi.create(
-      baseUrl: "https://shrouded-fortress-33438.herokuapp.com/",
+      baseUrl: "https://shrouded-fortress-33438.herokuapp.com",
     );
 
-    final value = client.usersGet(role: UsersGetRole.admin);
-    print(value);
-
-    safeApiCall(
-      client.usersGet(role: UsersGetRole.user).transform,
-      logger: stateLogger,
-    ).listen((event) => setState(() => usersState = event));
+    safeApiCall(client.usersGet(role: UsersGetRole.user).transform)
+        .listen((event) => setState(() => usersState = event));
   }
 
   void _incrementCounter() {
@@ -51,7 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             usersState.maybeWhen(
               data: (data, response) {
-                return const Text("hello");
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final item = data[index];
+                    return Text(item.email);
+                  },
+                );
               },
               error: (error) {
                 return const Text("error");

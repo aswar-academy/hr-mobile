@@ -1,6 +1,6 @@
+import 'package:aswar/ui/home_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'home_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      home: const MyHomeScreen(title: 'Flutter Demo Home Page'),
     );
   }
 }

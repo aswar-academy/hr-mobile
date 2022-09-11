@@ -1,6 +1,6 @@
 {
-    "name": "aswar_hr_mobile",
-    "short_name": "aswar_hr_mobile",
+    "name": "aswar",
+    "short_name": "aswar",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

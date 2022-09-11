@@ -208,30 +208,30 @@ class CreateUserDto {
   CreateUserDto({
     required this.email,
     required this.password,
+    required this.salary,
+    required this.departmentId,
     required this.name,
     required this.role,
     required this.jobTitle,
-    required this.salary,
-    required this.departmentId,
   });
 
   factory CreateUserDto.fromJson(Map<String, dynamic> json) =>
       _$CreateUserDtoFromJson(json);
 
-  @JsonKey(name: 'email', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'email', includeIfNull: false)
   final String email;
-  @JsonKey(name: 'password', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'password', includeIfNull: false)
   final String password;
-  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'salary', includeIfNull: false)
+  final double? salary;
+  @JsonKey(name: 'departmentId', includeIfNull: false)
+  final double? departmentId;
+  @JsonKey(name: 'name', includeIfNull: false)
   final String name;
   @JsonKey(name: 'role', includeIfNull: false)
   final Object role;
-  @JsonKey(name: 'jobTitle', includeIfNull: false, defaultValue: '')
-  final String jobTitle;
-  @JsonKey(name: 'salary', includeIfNull: false)
-  final double salary;
-  @JsonKey(name: 'departmentId', includeIfNull: false)
-  final double departmentId;
+  @JsonKey(name: 'jobTitle', includeIfNull: false)
+  final String? jobTitle;
   static const fromJsonFactory = _$CreateUserDtoFromJson;
   static const toJsonFactory = _$CreateUserDtoToJson;
   Map<String, dynamic> toJson() => _$CreateUserDtoToJson(this);
@@ -245,18 +245,18 @@ class CreateUserDto {
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
+            (identical(other.salary, salary) ||
+                const DeepCollectionEquality().equals(other.salary, salary)) &&
+            (identical(other.departmentId, departmentId) ||
+                const DeepCollectionEquality()
+                    .equals(other.departmentId, departmentId)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.role, role) ||
                 const DeepCollectionEquality().equals(other.role, role)) &&
             (identical(other.jobTitle, jobTitle) ||
                 const DeepCollectionEquality()
-                    .equals(other.jobTitle, jobTitle)) &&
-            (identical(other.salary, salary) ||
-                const DeepCollectionEquality().equals(other.salary, salary)) &&
-            (identical(other.departmentId, departmentId) ||
-                const DeepCollectionEquality()
-                    .equals(other.departmentId, departmentId)));
+                    .equals(other.jobTitle, jobTitle)));
   }
 
   @override
@@ -266,11 +266,11 @@ class CreateUserDto {
   int get hashCode =>
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(salary) ^
+      const DeepCollectionEquality().hash(departmentId) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(jobTitle) ^
-      const DeepCollectionEquality().hash(salary) ^
-      const DeepCollectionEquality().hash(departmentId) ^
       runtimeType.hashCode;
 }
 
@@ -278,38 +278,38 @@ extension $CreateUserDtoExtension on CreateUserDto {
   CreateUserDto copyWith(
       {String? email,
       String? password,
+      double? salary,
+      double? departmentId,
       String? name,
       Object? role,
-      String? jobTitle,
-      double? salary,
-      double? departmentId}) {
+      String? jobTitle}) {
     return CreateUserDto(
         email: email ?? this.email,
         password: password ?? this.password,
+        salary: salary ?? this.salary,
+        departmentId: departmentId ?? this.departmentId,
         name: name ?? this.name,
         role: role ?? this.role,
-        jobTitle: jobTitle ?? this.jobTitle,
-        salary: salary ?? this.salary,
-        departmentId: departmentId ?? this.departmentId);
+        jobTitle: jobTitle ?? this.jobTitle);
   }
 
   CreateUserDto copyWithWrapped(
       {Wrapped<String>? email,
       Wrapped<String>? password,
+      Wrapped<double?>? salary,
+      Wrapped<double?>? departmentId,
       Wrapped<String>? name,
       Wrapped<Object>? role,
-      Wrapped<String>? jobTitle,
-      Wrapped<double>? salary,
-      Wrapped<double>? departmentId}) {
+      Wrapped<String?>? jobTitle}) {
     return CreateUserDto(
         email: (email != null ? email.value : this.email),
         password: (password != null ? password.value : this.password),
-        name: (name != null ? name.value : this.name),
-        role: (role != null ? role.value : this.role),
-        jobTitle: (jobTitle != null ? jobTitle.value : this.jobTitle),
         salary: (salary != null ? salary.value : this.salary),
         departmentId:
-            (departmentId != null ? departmentId.value : this.departmentId));
+            (departmentId != null ? departmentId.value : this.departmentId),
+        name: (name != null ? name.value : this.name),
+        role: (role != null ? role.value : this.role),
+        jobTitle: (jobTitle != null ? jobTitle.value : this.jobTitle));
   }
 }
 
@@ -317,34 +317,34 @@ extension $CreateUserDtoExtension on CreateUserDto {
 class UserDto {
   UserDto({
     required this.email,
-    required this.name,
-    required this.role,
-    required this.jobTitle,
     required this.salary,
     required this.departmentId,
     required this.id,
     required this.createdAt,
+    required this.name,
+    required this.role,
+    required this.jobTitle,
   });
 
   factory UserDto.fromJson(Map<String, dynamic> json) =>
       _$UserDtoFromJson(json);
 
-  @JsonKey(name: 'email', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'email', includeIfNull: false)
   final String email;
-  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
-  final String name;
-  @JsonKey(name: 'role', includeIfNull: false)
-  final Object role;
-  @JsonKey(name: 'jobTitle', includeIfNull: false, defaultValue: '')
-  final String jobTitle;
   @JsonKey(name: 'salary', includeIfNull: false)
-  final double salary;
+  final double? salary;
   @JsonKey(name: 'departmentId', includeIfNull: false)
-  final double departmentId;
+  final double? departmentId;
   @JsonKey(name: 'id', includeIfNull: false)
   final double id;
   @JsonKey(name: 'createdAt', includeIfNull: false)
   final DateTime createdAt;
+  @JsonKey(name: 'name', includeIfNull: false)
+  final String name;
+  @JsonKey(name: 'role', includeIfNull: false)
+  final Object role;
+  @JsonKey(name: 'jobTitle', includeIfNull: false)
+  final String? jobTitle;
   static const fromJsonFactory = _$UserDtoFromJson;
   static const toJsonFactory = _$UserDtoToJson;
   Map<String, dynamic> toJson() => _$UserDtoToJson(this);
@@ -355,13 +355,6 @@ class UserDto {
         (other is UserDto &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.role, role) ||
-                const DeepCollectionEquality().equals(other.role, role)) &&
-            (identical(other.jobTitle, jobTitle) ||
-                const DeepCollectionEquality()
-                    .equals(other.jobTitle, jobTitle)) &&
             (identical(other.salary, salary) ||
                 const DeepCollectionEquality().equals(other.salary, salary)) &&
             (identical(other.departmentId, departmentId) ||
@@ -371,7 +364,14 @@ class UserDto {
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.role, role) ||
+                const DeepCollectionEquality().equals(other.role, role)) &&
+            (identical(other.jobTitle, jobTitle) ||
+                const DeepCollectionEquality()
+                    .equals(other.jobTitle, jobTitle)));
   }
 
   @override
@@ -380,56 +380,56 @@ class UserDto {
   @override
   int get hashCode =>
       const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(role) ^
-      const DeepCollectionEquality().hash(jobTitle) ^
       const DeepCollectionEquality().hash(salary) ^
       const DeepCollectionEquality().hash(departmentId) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(role) ^
+      const DeepCollectionEquality().hash(jobTitle) ^
       runtimeType.hashCode;
 }
 
 extension $UserDtoExtension on UserDto {
   UserDto copyWith(
       {String? email,
-      String? name,
-      Object? role,
-      String? jobTitle,
       double? salary,
       double? departmentId,
       double? id,
-      DateTime? createdAt}) {
+      DateTime? createdAt,
+      String? name,
+      Object? role,
+      String? jobTitle}) {
     return UserDto(
         email: email ?? this.email,
-        name: name ?? this.name,
-        role: role ?? this.role,
-        jobTitle: jobTitle ?? this.jobTitle,
         salary: salary ?? this.salary,
         departmentId: departmentId ?? this.departmentId,
         id: id ?? this.id,
-        createdAt: createdAt ?? this.createdAt);
+        createdAt: createdAt ?? this.createdAt,
+        name: name ?? this.name,
+        role: role ?? this.role,
+        jobTitle: jobTitle ?? this.jobTitle);
   }
 
   UserDto copyWithWrapped(
       {Wrapped<String>? email,
+      Wrapped<double?>? salary,
+      Wrapped<double?>? departmentId,
+      Wrapped<double>? id,
+      Wrapped<DateTime>? createdAt,
       Wrapped<String>? name,
       Wrapped<Object>? role,
-      Wrapped<String>? jobTitle,
-      Wrapped<double>? salary,
-      Wrapped<double>? departmentId,
-      Wrapped<double>? id,
-      Wrapped<DateTime>? createdAt}) {
+      Wrapped<String?>? jobTitle}) {
     return UserDto(
         email: (email != null ? email.value : this.email),
-        name: (name != null ? name.value : this.name),
-        role: (role != null ? role.value : this.role),
-        jobTitle: (jobTitle != null ? jobTitle.value : this.jobTitle),
         salary: (salary != null ? salary.value : this.salary),
         departmentId:
             (departmentId != null ? departmentId.value : this.departmentId),
         id: (id != null ? id.value : this.id),
-        createdAt: (createdAt != null ? createdAt.value : this.createdAt));
+        createdAt: (createdAt != null ? createdAt.value : this.createdAt),
+        name: (name != null ? name.value : this.name),
+        role: (role != null ? role.value : this.role),
+        jobTitle: (jobTitle != null ? jobTitle.value : this.jobTitle));
   }
 }
 
@@ -443,9 +443,9 @@ class LoginDto {
   factory LoginDto.fromJson(Map<String, dynamic> json) =>
       _$LoginDtoFromJson(json);
 
-  @JsonKey(name: 'email', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'email', includeIfNull: false)
   final String email;
-  @JsonKey(name: 'password', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'password', includeIfNull: false)
   final String password;
   static const fromJsonFactory = _$LoginDtoFromJson;
   static const toJsonFactory = _$LoginDtoToJson;
@@ -487,6 +487,106 @@ extension $LoginDtoExtension on LoginDto {
 }
 
 @JsonSerializable(explicitToJson: true)
+class TaskDto {
+  TaskDto({
+    required this.id,
+    required this.createdAt,
+    required this.state,
+    required this.title,
+    required this.description,
+    required this.authorId,
+  });
+
+  factory TaskDto.fromJson(Map<String, dynamic> json) =>
+      _$TaskDtoFromJson(json);
+
+  @JsonKey(name: 'id', includeIfNull: false)
+  final double id;
+  @JsonKey(name: 'createdAt', includeIfNull: false)
+  final DateTime createdAt;
+  @JsonKey(name: 'state', includeIfNull: false)
+  final Object state;
+  @JsonKey(name: 'title', includeIfNull: false)
+  final String title;
+  @JsonKey(name: 'description', includeIfNull: false)
+  final String description;
+  @JsonKey(name: 'authorId', includeIfNull: false)
+  final double authorId;
+  static const fromJsonFactory = _$TaskDtoFromJson;
+  static const toJsonFactory = _$TaskDtoToJson;
+  Map<String, dynamic> toJson() => _$TaskDtoToJson(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is TaskDto &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.state, state) ||
+                const DeepCollectionEquality().equals(other.state, state)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.authorId, authorId) ||
+                const DeepCollectionEquality()
+                    .equals(other.authorId, authorId)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(state) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(authorId) ^
+      runtimeType.hashCode;
+}
+
+extension $TaskDtoExtension on TaskDto {
+  TaskDto copyWith(
+      {double? id,
+      DateTime? createdAt,
+      Object? state,
+      String? title,
+      String? description,
+      double? authorId}) {
+    return TaskDto(
+        id: id ?? this.id,
+        createdAt: createdAt ?? this.createdAt,
+        state: state ?? this.state,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        authorId: authorId ?? this.authorId);
+  }
+
+  TaskDto copyWithWrapped(
+      {Wrapped<double>? id,
+      Wrapped<DateTime>? createdAt,
+      Wrapped<Object>? state,
+      Wrapped<String>? title,
+      Wrapped<String>? description,
+      Wrapped<double>? authorId}) {
+    return TaskDto(
+        id: (id != null ? id.value : this.id),
+        createdAt: (createdAt != null ? createdAt.value : this.createdAt),
+        state: (state != null ? state.value : this.state),
+        title: (title != null ? title.value : this.title),
+        description:
+            (description != null ? description.value : this.description),
+        authorId: (authorId != null ? authorId.value : this.authorId));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class DepartmentDto {
   DepartmentDto({
     required this.id,
@@ -501,7 +601,7 @@ class DepartmentDto {
   final double id;
   @JsonKey(name: 'createdAt', includeIfNull: false)
   final DateTime createdAt;
-  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'name', includeIfNull: false)
   final String name;
   static const fromJsonFactory = _$DepartmentDtoFromJson;
   static const toJsonFactory = _$DepartmentDtoToJson;
@@ -617,14 +717,15 @@ extension $AttendanceDtoExtension on AttendanceDto {
 @JsonSerializable(explicitToJson: true)
 class UserData {
   UserData({
+    required this.email,
+    required this.salary,
+    required this.departmentId,
     required this.id,
     required this.createdAt,
-    required this.email,
     required this.name,
     required this.role,
     required this.jobTitle,
-    required this.salary,
-    required this.departmentId,
+    required this.tasks,
     required this.department,
     required this.attendance,
   });
@@ -632,22 +733,24 @@ class UserData {
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);
 
+  @JsonKey(name: 'email', includeIfNull: false)
+  final String email;
+  @JsonKey(name: 'salary', includeIfNull: false)
+  final double? salary;
+  @JsonKey(name: 'departmentId', includeIfNull: false)
+  final double? departmentId;
   @JsonKey(name: 'id', includeIfNull: false)
   final double id;
   @JsonKey(name: 'createdAt', includeIfNull: false)
   final DateTime createdAt;
-  @JsonKey(name: 'email', includeIfNull: false, defaultValue: '')
-  final String email;
-  @JsonKey(name: 'name', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'name', includeIfNull: false)
   final String name;
   @JsonKey(name: 'role', includeIfNull: false)
   final Object role;
-  @JsonKey(name: 'jobTitle', includeIfNull: false, defaultValue: '')
-  final String jobTitle;
-  @JsonKey(name: 'salary', includeIfNull: false)
-  final double salary;
-  @JsonKey(name: 'departmentId', includeIfNull: false)
-  final double departmentId;
+  @JsonKey(name: 'jobTitle', includeIfNull: false)
+  final String? jobTitle;
+  @JsonKey(name: 'tasks', includeIfNull: false, defaultValue: <TaskDto>[])
+  final List<TaskDto> tasks;
   @JsonKey(name: 'department', includeIfNull: false)
   final DepartmentDto department;
   @JsonKey(
@@ -661,13 +764,18 @@ class UserData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is UserData &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.salary, salary) ||
+                const DeepCollectionEquality().equals(other.salary, salary)) &&
+            (identical(other.departmentId, departmentId) ||
+                const DeepCollectionEquality()
+                    .equals(other.departmentId, departmentId)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.role, role) ||
@@ -675,11 +783,8 @@ class UserData {
             (identical(other.jobTitle, jobTitle) ||
                 const DeepCollectionEquality()
                     .equals(other.jobTitle, jobTitle)) &&
-            (identical(other.salary, salary) ||
-                const DeepCollectionEquality().equals(other.salary, salary)) &&
-            (identical(other.departmentId, departmentId) ||
-                const DeepCollectionEquality()
-                    .equals(other.departmentId, departmentId)) &&
+            (identical(other.tasks, tasks) ||
+                const DeepCollectionEquality().equals(other.tasks, tasks)) &&
             (identical(other.department, department) ||
                 const DeepCollectionEquality()
                     .equals(other.department, department)) &&
@@ -693,14 +798,15 @@ class UserData {
 
   @override
   int get hashCode =>
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(salary) ^
+      const DeepCollectionEquality().hash(departmentId) ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(role) ^
       const DeepCollectionEquality().hash(jobTitle) ^
-      const DeepCollectionEquality().hash(salary) ^
-      const DeepCollectionEquality().hash(departmentId) ^
+      const DeepCollectionEquality().hash(tasks) ^
       const DeepCollectionEquality().hash(department) ^
       const DeepCollectionEquality().hash(attendance) ^
       runtimeType.hashCode;
@@ -708,50 +814,54 @@ class UserData {
 
 extension $UserDataExtension on UserData {
   UserData copyWith(
-      {double? id,
+      {String? email,
+      double? salary,
+      double? departmentId,
+      double? id,
       DateTime? createdAt,
-      String? email,
       String? name,
       Object? role,
       String? jobTitle,
-      double? salary,
-      double? departmentId,
+      List<TaskDto>? tasks,
       DepartmentDto? department,
       List<AttendanceDto>? attendance}) {
     return UserData(
+        email: email ?? this.email,
+        salary: salary ?? this.salary,
+        departmentId: departmentId ?? this.departmentId,
         id: id ?? this.id,
         createdAt: createdAt ?? this.createdAt,
-        email: email ?? this.email,
         name: name ?? this.name,
         role: role ?? this.role,
         jobTitle: jobTitle ?? this.jobTitle,
-        salary: salary ?? this.salary,
-        departmentId: departmentId ?? this.departmentId,
+        tasks: tasks ?? this.tasks,
         department: department ?? this.department,
         attendance: attendance ?? this.attendance);
   }
 
   UserData copyWithWrapped(
-      {Wrapped<double>? id,
+      {Wrapped<String>? email,
+      Wrapped<double?>? salary,
+      Wrapped<double?>? departmentId,
+      Wrapped<double>? id,
       Wrapped<DateTime>? createdAt,
-      Wrapped<String>? email,
       Wrapped<String>? name,
       Wrapped<Object>? role,
-      Wrapped<String>? jobTitle,
-      Wrapped<double>? salary,
-      Wrapped<double>? departmentId,
+      Wrapped<String?>? jobTitle,
+      Wrapped<List<TaskDto>>? tasks,
       Wrapped<DepartmentDto>? department,
       Wrapped<List<AttendanceDto>>? attendance}) {
     return UserData(
-        id: (id != null ? id.value : this.id),
-        createdAt: (createdAt != null ? createdAt.value : this.createdAt),
         email: (email != null ? email.value : this.email),
-        name: (name != null ? name.value : this.name),
-        role: (role != null ? role.value : this.role),
-        jobTitle: (jobTitle != null ? jobTitle.value : this.jobTitle),
         salary: (salary != null ? salary.value : this.salary),
         departmentId:
             (departmentId != null ? departmentId.value : this.departmentId),
+        id: (id != null ? id.value : this.id),
+        createdAt: (createdAt != null ? createdAt.value : this.createdAt),
+        name: (name != null ? name.value : this.name),
+        role: (role != null ? role.value : this.role),
+        jobTitle: (jobTitle != null ? jobTitle.value : this.jobTitle),
+        tasks: (tasks != null ? tasks.value : this.tasks),
         department: (department != null ? department.value : this.department),
         attendance: (attendance != null ? attendance.value : this.attendance));
   }
@@ -767,7 +877,7 @@ class RegistrationDto {
   factory RegistrationDto.fromJson(Map<String, dynamic> json) =>
       _$RegistrationDtoFromJson(json);
 
-  @JsonKey(name: 'token', includeIfNull: false, defaultValue: '')
+  @JsonKey(name: 'token', includeIfNull: false)
   final String token;
   @JsonKey(name: 'user', includeIfNull: false)
   final UserData user;
