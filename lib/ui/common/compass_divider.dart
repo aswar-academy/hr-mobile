@@ -24,7 +24,7 @@ class CompassDivider extends StatelessWidget {
         child: Divider(
             height: 1,
             thickness: .5,
-            color: linesColor ?? $styles.colors.accent2),
+            color: linesColor ?? $styles.colors.accent),
         builder: (_, value, child) {
           return Transform.scale(
             scaleX: value,

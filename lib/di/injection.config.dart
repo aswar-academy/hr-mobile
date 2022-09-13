@@ -15,6 +15,6 @@ import '../ui/strings.dart' as _i3; // ignore_for_file: unnecessary_lambdas
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.factory<_i3.LocaleLogic>(() => _i3.LocaleLogic());
+  gh.singleton<_i3.LocaleLogic>(_i3.LocaleLogic());
   return get;
 }

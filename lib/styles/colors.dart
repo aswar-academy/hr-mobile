@@ -2,8 +2,8 @@ import 'package:aswar/common_libs.dart';
 
 class AppColors {
   /// Common
-  final Color accent1 = const Color(0xFFE4935D);
-  final Color accent2 = const Color(0xFFBEABA1);
+  final Color secondary = const Color(0xFFBEABA1);
+  final Color accent = const Color(0xFFFFD831);
   final Color offWhite = const Color(0xFFF8ECE5);
   final Color caption = const Color(0xFF7D7873);
   final Color body = const Color(0xFF514F4D);
@@ -11,6 +11,7 @@ class AppColors {
   final Color greyMedium = const Color(0xFF9D9995);
   final Color white = Colors.white;
   final Color black = const Color(0xFF1E1B18);
+  final Color surface = const Color(0xff1C212D);
 
   final bool isDark = false;
 
@@ -22,10 +23,10 @@ class AppColors {
     ColorScheme colorScheme = ColorScheme(
         // Decide how you want to apply your own custom them, to the MaterialApp
         brightness: isDark ? Brightness.dark : Brightness.light,
-        primary: accent1,
-        primaryContainer: accent1,
-        secondary: accent1,
-        secondaryContainer: accent1,
+        primary: accent,
+        primaryContainer: accent,
+        secondary: accent,
+        secondaryContainer: accent,
         background: offWhite,
         surface: offWhite,
         onBackground: txtColor,
@@ -39,8 +40,8 @@ class AppColors {
     /// Also add on some extra properties that ColorScheme seems to miss
     var t =
         ThemeData.from(textTheme: txtTheme, colorScheme: colorScheme).copyWith(
-      textSelectionTheme: TextSelectionThemeData(cursorColor: accent1),
-      highlightColor: accent1,
+      textSelectionTheme: TextSelectionThemeData(cursorColor: accent),
+      highlightColor: accent,
     );
 
     /// Return the themeData which MaterialApp can now use

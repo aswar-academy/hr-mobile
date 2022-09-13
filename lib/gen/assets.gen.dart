@@ -14,10 +14,18 @@ class $AssetsIconsGen {
   AssetGenImage get logo => const AssetGenImage('assets/icons/logo.png');
 }
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/intro.jpg
+  AssetGenImage get intro => const AssetGenImage('assets/images/intro.jpg');
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage extends AssetImage {

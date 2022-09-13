@@ -55,7 +55,7 @@ class _Text {
   };
 
   TextStyle _getFontForLocale(Map<String, TextStyle> fonts) {
-    return TextStyle(fontFamily: 'Tenor');
+    return const TextStyle(fontFamily: 'Tenor');
   }
 
   TextStyle get titleFont => _getFontForLocale(_titleFonts);

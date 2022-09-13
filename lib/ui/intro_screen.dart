@@ -14,10 +14,13 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
-  static TextStyle titleStyle = GoogleFonts.vazirmatn(
-    fontSize: 22,
+  static TextStyle titleStyle = GoogleFonts.raleway(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
   );
-  static TextStyle descriptionStyle = GoogleFonts.vazirmatn();
+  static TextStyle descriptionStyle = GoogleFonts.raleway(
+    fontSize: 18,
+  );
 
   static List<IntroPageData> pageData = [
     IntroPageData(
@@ -31,7 +34,7 @@ class _IntroScreenState extends State<IntroScreen> {
         style: descriptionStyle,
         textAlign: TextAlign.center,
       ),
-      image: IntroAssetsImage(path: Assets.icons.logo.path),
+      image: IntroAssetsImage(path: Assets.images.intro.path),
     ),
     IntroPageData(
       title: Text(
@@ -64,9 +67,16 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FlutterIntroScreen(
-        appLogo: AswarLogo(),
+        appLogo: const AswarLogo(),
         pageData: pageData,
-        centerWidget: Text($strings.swap),
+        colors: IntroColors(
+          background: $styles.colors.surface,
+          button: $styles.colors.accent,
+        ),
+        centerWidget: Text(
+          $strings.swap,
+          style: descriptionStyle,
+        ),
         onCompletePressed: () {
           AutoRouter.of(context).replace(const HomeRoute());
         },
@@ -76,23 +86,22 @@ class _IntroScreenState extends State<IntroScreen> {
 }
 
 class AswarLogo extends StatelessWidget {
+  const AswarLogo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // ExcludeSemantics(
-        //   child: SvgPicture.asset(SvgPaths.compassSimple,
-        //       color: $styles.colors.offWhite, height: 48),
-        // ),
+        const Icon(
+          Icons.people_rounded,
+          color: Colors.white,
+        ),
         Gap($styles.insets.xs),
         StaticTextScale(
           child: Text(
-            "Aswar",
-            style: $styles.text.wonderTitle.copyWith(
-              fontSize: 32,
-              color: $styles.colors.offWhite,
-            ),
+            $strings.appName,
+            style: GoogleFonts.raleway(fontSize: 40),
           ),
         )
       ],

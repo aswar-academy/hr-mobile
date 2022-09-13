@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl_standalone.dart';
 
-@injectable
+@singleton
 class LocaleLogic {
   AppLocalizations? _strings;
   AppLocalizations get strings => _strings!;

@@ -45,7 +45,7 @@ class SimpleHeader extends StatelessWidget {
                         textHeightBehavior: const TextHeightBehavior(
                             applyHeightToFirstAscent: false),
                         style: $styles.text.title1
-                            .copyWith(color: $styles.colors.accent1),
+                            .copyWith(color: $styles.colors.accent),
                       ),
                     if (!showBackBtn) Gap($styles.insets.md),
                   ],

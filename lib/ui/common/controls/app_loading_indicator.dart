@@ -12,7 +12,7 @@ class AppLoadingIndicator extends StatelessWidget {
       width: 40,
       height: 40,
       child: CircularProgressIndicator(
-        color: color ?? $styles.colors.accent1,
+        color: color ?? $styles.colors.accent,
         value: value,
         strokeWidth: 1.0,
       ),
