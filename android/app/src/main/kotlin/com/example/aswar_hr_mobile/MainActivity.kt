@@ -1,4 +1,4 @@
-package com.example.aswar
+package com.aswar.hr
 
 import io.flutter.embedding.android.FlutterActivity
 
