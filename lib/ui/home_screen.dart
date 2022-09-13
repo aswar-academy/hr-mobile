@@ -2,16 +2,14 @@ import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
 import 'package:error_handler/error_handler.dart';
 import 'package:flutter/material.dart';
 
-class MyHomeScreen extends StatefulWidget {
-  const MyHomeScreen({super.key, required this.title});
-
-  final String title;
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<MyHomeScreen> createState() => _MyHomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MyHomeScreenState extends State<MyHomeScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   int _counter = 0;
 
   ResultState<PaginatedUser> usersState = const ResultState.idle();
@@ -38,7 +36,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text("Home"),
       ),
       body: Center(
         child: Column(

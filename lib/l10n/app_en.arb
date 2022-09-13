@@ -2,5 +2,12 @@
     "helloWorld": "Hello World!",
     "@helloWorld": {
         "description": "The conventional newborn programmer greeting"
-    }
+    },
+    "swap": "Swap left to continue",
+    "intro1": "Payroll",
+    "introDescription1": "Keep track of your fingerprints, salary, entry and exit dates",
+    "intro2": "Swap left to continue",
+    "introDescription2": "Swap left to continue",
+    "intro3": "Swap left to continue",
+    "introDescription3": "Swap left to continue"
 }

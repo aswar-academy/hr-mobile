@@ -1,3 +1,4 @@
+import 'package:aswar/ui/home_screen.dart';
 import 'package:aswar/ui/intro_screen.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -6,18 +7,16 @@ import 'package:auto_route/auto_route.dart';
   routes: <AutoRoute>[
     AutoRoute(
       page: IntroScreen,
-      maintainState: false,
       initial: true,
+    ),
+    AutoRoute(
+      page: HomeScreen,
     ),
   ],
 )
 class $AppRouter {}
 
-const String websiteBaseUrl = "ibaity.com";
-
-const String deepLinkBaseUrl = "https://ibaity.com";
-
-const String termAndConditionUrl = "$deepLinkBaseUrl/terms-conditions";
+const String deepLinkBaseUrl = "https://aswar.iq";
 
 extension DeepLinkExtension on PageRouteInfo {
   String get deepLink {

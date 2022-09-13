@@ -1,38 +1,18 @@
+import 'package:aswar/app.dart';
 import 'package:aswar/common_libs.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:aswar/di/injection.dart';
+import 'package:aswar/ui/strings.dart';
+import 'package:get_it/get_it.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  await bootstrap();
+  runApp(const AswarApp());
+  configureInjection();
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
+Future<void> bootstrap() async {
+  await localeLogic.load();
 }
 
-class _MyAppState extends State<MyApp> {
-  final _appRouter = AppRouter();
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      builder: (context, child) {
-        final pageContent = Scaffold(
-          body: child,
-          resizeToAvoidBottomInset: false,
-        );
-
-        return pageContent;
-      },
-      routerDelegate: _appRouter.delegate(),
-      routeInformationProvider: _appRouter.routeInfoProvider(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      theme: ThemeData(fontFamily: $styles.text.body.fontFamily),
-      supportedLocales: AppLocalizations.supportedLocales,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-    );
-  }
-}
+LocaleLogic get localeLogic => GetIt.I.get<LocaleLogic>();
+AppLocalizations get $strings => LocaleLogic().strings;
