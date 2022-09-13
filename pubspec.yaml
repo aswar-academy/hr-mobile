@@ -32,7 +32,7 @@ dependencies:
   get_it: ^7.2.0
   intl: ^0.17.0
   flutter_launcher_icons: ^0.10.0
-  
+  flutter_native_splash: ^2.2.9
 
 dev_dependencies:
   build_runner: ^2.1.7
@@ -81,5 +81,5 @@ flutter:
     - family: B612Mono
       fonts:
         - asset: assets/fonts/B612Mono-Regular.ttf
-        
+
   uses-material-design: true
