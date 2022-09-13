@@ -6,9 +6,9 @@
     },
     "swap": "Swap left to continue",
     "intro1": "Payroll",
-    "introDescription1": "Keep track of your fingerprints, salary, entry and exit dates",
-    "intro2": "Swap left to continue",
-    "introDescription2": "Swap left to continue",
-    "intro3": "Swap left to continue",
-    "introDescription3": "Swap left to continue"
+    "introDescription1": "keep track of your fingerprints, salary, entry and exit dates",
+    "intro2": "Team Work",
+    "introDescription2": "task management and time tracking",
+    "intro3": "Employee record",
+    "introDescription3": "Job-Title, department and more"
 }

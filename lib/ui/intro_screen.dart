@@ -34,7 +34,7 @@ class _IntroScreenState extends State<IntroScreen> {
         style: descriptionStyle,
         textAlign: TextAlign.center,
       ),
-      image: IntroAssetsImage(path: Assets.images.intro.path),
+      image: IntroAssetsImage(path: Assets.images.intro1.path),
     ),
     IntroPageData(
       title: Text(
@@ -47,7 +47,7 @@ class _IntroScreenState extends State<IntroScreen> {
         style: descriptionStyle,
         textAlign: TextAlign.center,
       ),
-      image: IntroAssetsImage(path: Assets.icons.logo.path),
+      image: IntroAssetsImage(path: Assets.images.intro2.path),
     ),
     IntroPageData(
       title: Text(
@@ -60,14 +60,20 @@ class _IntroScreenState extends State<IntroScreen> {
         style: descriptionStyle,
         textAlign: TextAlign.center,
       ),
-      image: IntroAssetsImage(path: Assets.icons.logo.path),
+      image: IntroAssetsImage(path: Assets.images.intro3.path),
     ),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: FlutterIntroScreen(
-        appLogo: const AswarLogo(),
+        appLogo: AswarLogo(
+          firstColorStyle: GoogleFonts.raleway(
+            fontSize: 40,
+            color: $styles.colors.accent,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         pageData: pageData,
         colors: IntroColors(
           background: $styles.colors.surface,
@@ -75,7 +81,9 @@ class _IntroScreenState extends State<IntroScreen> {
         ),
         centerWidget: Text(
           $strings.swap,
-          style: descriptionStyle,
+          style: GoogleFonts.raleway(
+            fontSize: 14,
+          ),
         ),
         onCompletePressed: () {
           AutoRouter.of(context).replace(const HomeRoute());
@@ -86,22 +94,38 @@ class _IntroScreenState extends State<IntroScreen> {
 }
 
 class AswarLogo extends StatelessWidget {
-  const AswarLogo({super.key});
+  final bool showIcon;
+  final TextStyle? firstColorStyle;
+
+  const AswarLogo({
+    super.key,
+    this.showIcon = true,
+    this.firstColorStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = GoogleFonts.raleway(fontSize: 40);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(
-          Icons.people_rounded,
-          color: Colors.white,
-        ),
-        Gap($styles.insets.xs),
+        if (showIcon) const Icon(Icons.people_rounded, color: Colors.white),
+        if (showIcon) Gap($styles.insets.xs),
         StaticTextScale(
-          child: Text(
-            $strings.appName,
-            style: GoogleFonts.raleway(fontSize: 40),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: $strings.appName[0],
+                  style: firstColorStyle ?? textStyle,
+                ),
+                TextSpan(
+                  text: $strings.appName.substring(1),
+                  style: textStyle,
+                ),
+              ],
+            ),
           ),
         )
       ],

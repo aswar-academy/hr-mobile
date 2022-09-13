@@ -17,8 +17,14 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/intro.jpg
-  AssetGenImage get intro => const AssetGenImage('assets/images/intro.jpg');
+  /// File path: assets/images/intro1.jpg
+  AssetGenImage get intro1 => const AssetGenImage('assets/images/intro1.jpg');
+
+  /// File path: assets/images/intro2.jpg
+  AssetGenImage get intro2 => const AssetGenImage('assets/images/intro2.jpg');
+
+  /// File path: assets/images/intro3.jpg
+  AssetGenImage get intro3 => const AssetGenImage('assets/images/intro3.jpg');
 }
 
 class Assets {
