@@ -12,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  ResultState<RegistrationDto> _state = const ResultState.idle();
   final _emailController = TextEditingController(text: "masreplay@gmail.com");
   final _passwordController = TextEditingController(text: "12345678");
 
@@ -60,9 +61,19 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextButton.styleFrom(
                 backgroundColor: $styles.colors.accent,
               ),
-              child: Text(
-                $strings.login,
-                style: TextStyle(color: $styles.colors.black),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    $strings.login,
+                    style: TextStyle(color: $styles.colors.black),
+                  ),
+                  if (_state.isLoading) const Gap(12),
+                  if (_state.isLoading)
+                    const CircularProgressIndicator(
+                      color: Colors.white,
+                    )
+                ],
               ),
             ),
           )
@@ -71,17 +82,32 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void onLoginPressed() {
+  Future<void> onLoginPressed() async {
     final loginData = LoginDto(
       email: _emailController.text,
       password: _passwordController.text,
     );
-    $client.authLoginPost(body: loginData);
     safeApiCall($client.authLoginPost(body: loginData).transform).listen(
       (event) {
+        setState(() {
+          _state = event;
+        });
         event.whenOrNull(
           data: (data, response) {
-            print(data);
+            switch (data.user.role) {
+              case UserDetailRole.user:
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("success")),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(data.user.toString())),
+                );
+                break;
+              default:
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("error")),
+                );
+            }
           },
         );
       },

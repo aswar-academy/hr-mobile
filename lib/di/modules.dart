@@ -16,6 +16,7 @@ abstract class ClientModule {
   Openapi provideClient() {
     return Openapi.create(
       baseUrl: "https://shrouded-fortress-33438.herokuapp.com",
+      // baseUrl: "http://127.0.0.1:3000",
       interceptors: [
         HttpLoggingInterceptor(),
       ],
