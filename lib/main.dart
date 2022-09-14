@@ -4,6 +4,7 @@ import 'package:aswar/di/injection.dart';
 import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
 import 'package:aswar/ui/strings.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
@@ -11,7 +12,7 @@ Future<void> main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   configureInjection();
-  runApp(const AswarApp());
+  runApp(const ProviderScope(child: AswarApp()));
   await bootstrap();
 
   FlutterNativeSplash.remove();

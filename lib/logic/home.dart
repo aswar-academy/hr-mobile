@@ -5,9 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 typedef HomeState = ResultState<User>;
 
-final homeProvider =
-    StateNotifierProvider<HomeNotifier, HomeState>((ref) => HomeNotifier());
-
+final homeProvider = StateNotifierProvider<HomeNotifier, HomeState>(
+  (ref) => HomeNotifier(),
+);
 
 class HomeNotifier extends StateNotifier<ResultState<User>> {
   HomeNotifier() : super(const HomeState.idle());
