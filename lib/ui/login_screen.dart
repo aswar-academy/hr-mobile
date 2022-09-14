@@ -12,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  ResultState<RegistrationDto> _state = const ResultState.idle();
+  ResultState<Registration> _state = const ResultState.idle();
   final _emailController = TextEditingController(text: "masreplay@gmail.com");
   final _passwordController = TextEditingController(text: "12345678");
 
@@ -83,10 +83,11 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> onLoginPressed() async {
-    final loginData = LoginDto(
+    final loginData = Login(
       email: _emailController.text,
       password: _passwordController.text,
     );
+
     safeApiCall($client.authLoginPost(body: loginData).transform).listen(
       (event) {
         setState(() {

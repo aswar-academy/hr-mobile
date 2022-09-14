@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'openapi.swagger.dart';
+part of 'openapi.models.swagger.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -92,23 +92,22 @@ Map<String, dynamic> _$UserDetailToJson(UserDetail instance) {
   return val;
 }
 
-LoginDto _$LoginDtoFromJson(Map<String, dynamic> json) => LoginDto(
+Login _$LoginFromJson(Map<String, dynamic> json) => Login(
       email: json['email'] as String,
       password: json['password'] as String,
     );
 
-Map<String, dynamic> _$LoginDtoToJson(LoginDto instance) => <String, dynamic>{
+Map<String, dynamic> _$LoginToJson(Login instance) => <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
     };
 
-RegistrationDto _$RegistrationDtoFromJson(Map<String, dynamic> json) =>
-    RegistrationDto(
+Registration _$RegistrationFromJson(Map<String, dynamic> json) => Registration(
       token: json['token'] as String,
       user: UserDetail.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$RegistrationDtoToJson(RegistrationDto instance) =>
+Map<String, dynamic> _$RegistrationToJson(Registration instance) =>
     <String, dynamic>{
       'token': instance.token,
       'user': instance.user.toJson(),

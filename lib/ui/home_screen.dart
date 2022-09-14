@@ -1,44 +1,23 @@
-import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
-import 'package:error_handler/error_handler.dart';
+import 'package:aswar/logic/home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final data = ref.watch(homeProvider);
 
-class _HomeScreenState extends State<HomeScreen> {
-
-  ResultState<PaginatedUser> usersState = const ResultState.idle();
-
-  @override
-  void initState() {
-    super.initState();
-
-    final client = Openapi.create(
-      baseUrl: "https://shrouded-fortress-33438.herokuapp.com",
-    );
-
-    safeApiCall(client.usersGet(role: UsersGetRole.user).transform)
-        .listen((event) => setState(() => usersState = event));
-  }
-
-  void _incrementCounter() {
-    setState(() {
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
       ),
       body: Container(),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          print(data);
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

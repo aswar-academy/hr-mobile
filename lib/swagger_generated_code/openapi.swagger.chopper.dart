@@ -28,8 +28,8 @@ class _$Openapi extends Openapi {
   }
 
   @override
-  Future<Response<RegistrationDto>> _authLoginPost(
-      {String? cacheControl, required LoginDto? body}) {
+  Future<Response<Registration>> _authLoginPost(
+      {String? cacheControl, required Login? body}) {
     final $url = '/auth/login';
     final $headers = {
       if (cacheControl != null) 'Cache-Control': cacheControl,
@@ -38,7 +38,7 @@ class _$Openapi extends Openapi {
     final $body = body;
     final $request =
         Request('POST', $url, client.baseUrl, body: $body, headers: $headers);
-    return client.send<RegistrationDto, RegistrationDto>($request);
+    return client.send<Registration, Registration>($request);
   }
 
   @override

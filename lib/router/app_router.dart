@@ -11,10 +11,10 @@ import 'package:auto_route/auto_route.dart';
     ),
     AutoRoute(
       page: HomeScreen,
+      initial: true,
     ),
     AutoRoute(
       page: LoginScreen,
-      initial: true,
     ),
   ],
 )
