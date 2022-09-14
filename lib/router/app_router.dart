@@ -1,5 +1,6 @@
 import 'package:aswar/ui/home_screen.dart';
 import 'package:aswar/ui/intro_screen.dart';
+import 'package:aswar/ui/login_screen.dart';
 import 'package:auto_route/auto_route.dart';
 
 @MaterialAutoRouter(
@@ -7,10 +8,13 @@ import 'package:auto_route/auto_route.dart';
   routes: <AutoRoute>[
     AutoRoute(
       page: IntroScreen,
-      initial: true,
     ),
     AutoRoute(
       page: HomeScreen,
+    ),
+    AutoRoute(
+      page: LoginScreen,
+      initial: true,
     ),
   ],
 )

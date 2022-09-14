@@ -10,7 +10,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _counter = 0;
 
   ResultState<PaginatedUser> usersState = const ResultState.idle();
 
@@ -28,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
     });
   }
 
@@ -38,35 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Home"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            usersState.maybeWhen(
-              data: (data, response) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final item = data.results[index];
-                    return Text(item.email);
-                  },
-                );
-              },
-              error: (error) {
-                return const Text("error");
-              },
-              orElse: SizedBox.shrink,
-            ),
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
+      body: Container(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

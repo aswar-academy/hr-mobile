@@ -5,6 +5,7 @@
         "description": "The conventional newborn programmer greeting"
     },
     "swap": "Swap left to continue",
+    "login": "Login",
     "intro1": "Payroll",
     "introDescription1": "keep track of your fingerprints, salary, entry and exit dates",
     "intro2": "Team Work",

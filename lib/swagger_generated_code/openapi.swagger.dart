@@ -559,7 +559,7 @@ class UserDetail {
     required this.name,
     required this.role,
     required this.jobTitle,
-    required this.salary,
+    this.salary,
     required this.departmentId,
     required this.department,
     required this.attendance,
@@ -585,7 +585,7 @@ class UserDetail {
   @JsonKey(name: 'jobTitle', includeIfNull: false)
   final String jobTitle;
   @JsonKey(name: 'salary', includeIfNull: false)
-  final double salary;
+  final double? salary;
   @JsonKey(name: 'departmentId', includeIfNull: false)
   final double departmentId;
   @JsonKey(name: 'department', includeIfNull: false)
@@ -687,7 +687,7 @@ extension $UserDetailExtension on UserDetail {
       Wrapped<String>? name,
       Wrapped<enums.UserDetailRole>? role,
       Wrapped<String>? jobTitle,
-      Wrapped<double>? salary,
+      Wrapped<double?>? salary,
       Wrapped<double>? departmentId,
       Wrapped<Object>? department,
       Wrapped<List<Attendance>>? attendance,
@@ -822,7 +822,7 @@ class CreateUser {
     required this.name,
     required this.role,
     required this.jobTitle,
-    required this.salary,
+    this.salary,
     required this.departmentId,
   });
 
@@ -845,7 +845,7 @@ class CreateUser {
   @JsonKey(name: 'jobTitle', includeIfNull: false)
   final String jobTitle;
   @JsonKey(name: 'salary', includeIfNull: false)
-  final double salary;
+  final double? salary;
   @JsonKey(name: 'departmentId', includeIfNull: false)
   final double departmentId;
   static const fromJsonFactory = _$CreateUserFromJson;
@@ -915,7 +915,7 @@ extension $CreateUserExtension on CreateUser {
       Wrapped<String>? name,
       Wrapped<enums.CreateUserRole>? role,
       Wrapped<String>? jobTitle,
-      Wrapped<double>? salary,
+      Wrapped<double?>? salary,
       Wrapped<double>? departmentId}) {
     return CreateUser(
         email: (email != null ? email.value : this.email),
@@ -936,7 +936,7 @@ class User {
     required this.name,
     required this.role,
     required this.jobTitle,
-    required this.salary,
+    this.salary,
     required this.departmentId,
     required this.id,
     required this.createdAt,
@@ -958,7 +958,7 @@ class User {
   @JsonKey(name: 'jobTitle', includeIfNull: false)
   final String jobTitle;
   @JsonKey(name: 'salary', includeIfNull: false)
-  final double salary;
+  final double? salary;
   @JsonKey(name: 'departmentId', includeIfNull: false)
   final double departmentId;
   @JsonKey(name: 'id', includeIfNull: false)
@@ -1036,7 +1036,7 @@ extension $UserExtension on User {
       Wrapped<String>? name,
       Wrapped<enums.UserRole>? role,
       Wrapped<String>? jobTitle,
-      Wrapped<double>? salary,
+      Wrapped<double?>? salary,
       Wrapped<double>? departmentId,
       Wrapped<double>? id,
       Wrapped<DateTime>? createdAt}) {

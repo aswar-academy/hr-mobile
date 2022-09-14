@@ -1,9 +1,9 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/gen/assets.gen.dart';
 import 'package:aswar/main.dart';
+import 'package:aswar/ui/logo.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter_intro_screen/image.dart';
-import 'package:flutter_intro_screen/screen.dart';
+import 'package:flutter_intro_screen/flutter_intro_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -67,13 +67,7 @@ class _IntroScreenState extends State<IntroScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FlutterIntroScreen(
-        appLogo: AswarLogo(
-          firstColorStyle: GoogleFonts.raleway(
-            fontSize: 40,
-            color: $styles.colors.accent,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        appLogo: const AswarLogo(),
         pageData: pageData,
         colors: IntroColors(
           background: $styles.colors.surface,
@@ -86,49 +80,9 @@ class _IntroScreenState extends State<IntroScreen> {
           ),
         ),
         onCompletePressed: () {
-          AutoRouter.of(context).replace(const HomeRoute());
+          AutoRouter.of(context).replace(const LoginRoute());
         },
       ),
-    );
-  }
-}
-
-class AswarLogo extends StatelessWidget {
-  final bool showIcon;
-  final TextStyle? firstColorStyle;
-
-  const AswarLogo({
-    super.key,
-    this.showIcon = true,
-    this.firstColorStyle,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final textStyle = GoogleFonts.raleway(fontSize: 40);
-
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        if (showIcon) const Icon(Icons.people_rounded, color: Colors.white),
-        if (showIcon) Gap($styles.insets.xs),
-        StaticTextScale(
-          child: RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: $strings.appName[0],
-                  style: firstColorStyle ?? textStyle,
-                ),
-                TextSpan(
-                  text: $strings.appName.substring(1),
-                  style: textStyle,
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
     );
   }
 }

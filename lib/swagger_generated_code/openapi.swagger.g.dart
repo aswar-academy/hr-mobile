@@ -53,7 +53,7 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) => UserDetail(
       name: json['name'] as String,
       role: userDetailRoleFromJson(json['role']),
       jobTitle: json['jobTitle'] as String,
-      salary: (json['salary'] as num).toDouble(),
+      salary: (json['salary'] as num?)?.toDouble(),
       departmentId: (json['departmentId'] as num).toDouble(),
       department: json['department'] as Object,
       attendance: (json['attendance'] as List<dynamic>?)
@@ -82,7 +82,7 @@ Map<String, dynamic> _$UserDetailToJson(UserDetail instance) {
 
   writeNotNull('role', userDetailRoleToJson(instance.role));
   val['jobTitle'] = instance.jobTitle;
-  val['salary'] = instance.salary;
+  writeNotNull('salary', instance.salary);
   val['departmentId'] = instance.departmentId;
   val['department'] = instance.department;
   val['attendance'] = instance.attendance.map((e) => e.toJson()).toList();
@@ -120,7 +120,7 @@ CreateUser _$CreateUserFromJson(Map<String, dynamic> json) => CreateUser(
       name: json['name'] as String,
       role: createUserRoleFromJson(json['role']),
       jobTitle: json['jobTitle'] as String,
-      salary: (json['salary'] as num).toDouble(),
+      salary: (json['salary'] as num?)?.toDouble(),
       departmentId: (json['departmentId'] as num).toDouble(),
     );
 
@@ -139,7 +139,7 @@ Map<String, dynamic> _$CreateUserToJson(CreateUser instance) {
 
   writeNotNull('role', createUserRoleToJson(instance.role));
   val['jobTitle'] = instance.jobTitle;
-  val['salary'] = instance.salary;
+  writeNotNull('salary', instance.salary);
   val['departmentId'] = instance.departmentId;
   return val;
 }
@@ -149,7 +149,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       name: json['name'] as String,
       role: userRoleFromJson(json['role']),
       jobTitle: json['jobTitle'] as String,
-      salary: (json['salary'] as num).toDouble(),
+      salary: (json['salary'] as num?)?.toDouble(),
       departmentId: (json['departmentId'] as num).toDouble(),
       id: (json['id'] as num).toDouble(),
       createdAt: DateTime.parse(json['createdAt'] as String),
@@ -169,7 +169,7 @@ Map<String, dynamic> _$UserToJson(User instance) {
 
   writeNotNull('role', userRoleToJson(instance.role));
   val['jobTitle'] = instance.jobTitle;
-  val['salary'] = instance.salary;
+  writeNotNull('salary', instance.salary);
   val['departmentId'] = instance.departmentId;
   val['id'] = instance.id;
   val['createdAt'] = instance.createdAt.toIso8601String();

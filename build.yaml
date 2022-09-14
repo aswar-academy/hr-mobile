@@ -15,8 +15,10 @@ targets:
         options:
           input_folder: "input_folder/"
           output_folder: "lib/swagger_generated_code/"
+          # input_urls:
+          #   - "https://shrouded-fortress-33438.herokuapp.com/openapi.json"
           input_urls:
-            - "https://shrouded-fortress-33438.herokuapp.com/openapi.json"
+            - "http://localhost:3000/openapi.json"
           with_base_url: true
           with_converter: true
           use_path_for_request_names: true
