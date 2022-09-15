@@ -2,6 +2,7 @@ import 'package:aswar/common_libs.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
 import 'package:aswar/ui/logo.dart';
+import 'package:chopper/chopper.dart';
 import 'package:error_handler/error_handler.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -88,12 +89,20 @@ class _LoginScreenState extends State<LoginScreen> {
       password: _passwordController.text,
     );
 
-    safeApiCall($client.authLoginPost(body: loginData).transform).listen(
+    final response = await $client.authLoginPost(body: loginData);
+    print("test ${response.base.request?.url}");
+    safeApiCall(
+      $client.authLoginPost(body: loginData).transform,
+      // logger: stateLogger,
+    ).listen(
       (event) {
         setState(() {
           _state = event;
         });
         event.whenOrNull(
+          error: (error) {
+            print(error);
+          },
           data: (data, response) {
             switch (data.user.role) {
               case UserDetailRole.user:

@@ -25,11 +25,11 @@ abstract class Openapi extends ChopperService {
     }
 
     final newClient = ChopperClient(
-      services: [_$Openapi()],
-      converter: $JsonSerializableConverter(),
-      interceptors: interceptors ?? [],
-      authenticator: authenticator, /*baseUrl: YOUR_BASE_URL*/
-    );
+        services: [_$Openapi()],
+        converter: $JsonSerializableConverter(),
+        interceptors: interceptors ?? [],
+        authenticator: authenticator,
+        baseUrl: baseUrl ?? 'http://');
     return _$Openapi(newClient);
   }
 
