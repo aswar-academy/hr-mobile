@@ -224,7 +224,7 @@ packages:
       path: "../perfect_error_handler"
       relative: true
     source: path
-    version: "1.0.5"
+    version: "1.0.6"
   extra_alignments:
     dependency: "direct main"
     description:
@@ -336,8 +336,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed:
+    dependency: "direct main"
+    description:
+      name: freezed
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0+1"
   freezed_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: freezed_annotation
       url: "https://pub.dartlang.org"

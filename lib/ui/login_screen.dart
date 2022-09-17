@@ -54,6 +54,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
             ),
           ),
+          state.maybeWhen(
+            data: (registration, response) {
+              return Text("${registration.user.name}");
+            },
+            orElse: SizedBox.new,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
@@ -86,6 +92,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       password: _passwordController.text,
     );
 
-    ref.read(loginProvider.notifier).login(loginData);
+    final read = ref.read(loginProvider.notifier);
+
+    await read.login(loginData);
+
+    read.state.whenOrNull(
+      loading: () {
+        print("loading");
+      },
+    );
   }
 }

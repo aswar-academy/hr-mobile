@@ -54,7 +54,7 @@ class AppBtn extends StatelessWidget {
       Text? txt = text == null
           ? null
           : Text(text.toUpperCase(),
-              style: $styles.text.btn,
+              style: $styles.text.button,
               textHeightBehavior:
                   const TextHeightBehavior(applyHeightToFirstAscent: false));
       Widget? icn = icon == null
