@@ -1,0 +1,8 @@
+bricks:
+  repository: 
+    path: bricks/repository
+  cubit:
+    path: bricks/cubit
+  repositories_list:
+    path: bricks/repositories_list
+  

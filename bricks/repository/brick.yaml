@@ -1,0 +1,9 @@
+name: repository
+description: Create a repository structure
+version: 0.1.0+1
+vars:
+  name:
+    type: string
+    description: The Repository name
+    default: Repository
+    prompt: Please enter the repository name.

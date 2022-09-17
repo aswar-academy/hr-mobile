@@ -1,0 +1,30 @@
+name: cubit
+description: Create a new Bloc Cubit
+version: 0.0.1+1
+vars:
+  name:
+    type: string
+    description: The Cubit name
+    default: Cubit
+    prompt: Please enter the Cubit name.
+  repositories:
+    type: array
+    description: repositories names
+    prompt: Please enter Repositories names.
+    values:
+      - order
+      - hpa
+      - category
+      - auth
+      - notification
+      - user
+  state_type:
+    type: string
+    description: The Data type
+    default: dynamic
+    prompt: Please enter the Data type.
+  template:
+    type: boolean
+    description: create template function
+    default: false
+    prompt: create template function.

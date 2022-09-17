@@ -1,0 +1,4 @@
+name: repositories_list
+description: print repositories names
+version: 0.1.0+1
+vars:
