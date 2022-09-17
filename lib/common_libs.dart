@@ -14,5 +14,4 @@ export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter_animate/flutter_animate.dart';
 export 'package:flutter_gen/gen_l10n/app_localizations.dart';
-export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:gap/gap.dart';

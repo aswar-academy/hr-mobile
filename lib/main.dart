@@ -11,7 +11,7 @@ Future<void> main() async {
 
   configureInjection();
 
-  runApp(const ProviderScope(child: AswarApp()));
+  runApp(const AswarApp());
   await bootstrap();
 
   FlutterNativeSplash.remove();
@@ -20,7 +20,6 @@ Future<void> main() async {
 Future<void> bootstrap() async {
   await getIt.get<LocaleLogic>().load();
 }
-
 
 // TODO(masreplay): use riverpod
 AppLocalizations get $strings => getIt.get<LocaleLogic>().strings;

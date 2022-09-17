@@ -1,8 +1,10 @@
 bricks:
   repository: 
     path: bricks/repository
-  cubit:
-    path: bricks/cubit
+  tester: 
+    path: bricks/tester
+  feature:
+    path: bricks/feature
   repositories_list:
     path: bricks/repositories_list
   

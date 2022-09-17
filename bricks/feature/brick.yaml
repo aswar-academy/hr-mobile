@@ -1,30 +1,33 @@
-name: cubit
-description: Create a new Bloc Cubit
+name: feature
+description: create new feature with cubit as sm
 version: 0.0.1+1
 vars:
   name:
     type: string
     description: The Cubit name
     default: Cubit
-    prompt: Please enter the Cubit name.
+    prompt: Cubit name.
   repositories:
     type: array
     description: repositories names
-    prompt: Please enter Repositories names.
+    prompt: Repositories names.
     values:
-      - order
-      - hpa
-      - category
-      - auth
-      - notification
-      - user
+      - test
+      
   state_type:
     type: string
     description: The Data type
     default: dynamic
-    prompt: Please enter the Data type.
+    prompt: Data type.
+
   template:
     type: boolean
     description: create template function
     default: false
     prompt: create template function.
+  
+  add_route:
+    type: boolean
+    description: add to app_router
+    default: false
+    prompt: add to auto_route routes
