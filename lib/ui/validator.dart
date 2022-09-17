@@ -33,8 +33,6 @@ class Validator {
   static final RegExp _nonDigitsExp = RegExp(r'[^\d]');
   static final RegExp _englishLetter = RegExp(r'[A-Za-z]');
   static final RegExp _phoneRegExp = RegExp(r'^\d{7,15}$');
-  static final RegExp _rcUsername = RegExp(r'^[a-z0-9]{3,20}_[a-z]{2}$');
-  static final RegExp usernameRegex = RegExp(r'/[A-Za-z][A-Za-z0-9]*$');
   static final RegExp _youtubeRegExp = RegExp(
     r'^(http(s)??\:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([a-zA-Z0-9\-_])+',
   );

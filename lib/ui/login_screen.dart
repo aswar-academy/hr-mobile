@@ -1,11 +1,13 @@
+import 'package:aswar/common.dart';
 import 'package:aswar/common_libs.dart';
+import 'package:aswar/data/local/registration.dart';
 import 'package:aswar/logic/login/login_filter.dart';
 import 'package:aswar/logic/login/login_provider.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/ui/logo.dart';
 import 'package:aswar/ui/utils.dart';
 import 'package:aswar/ui/validator.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -78,9 +80,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                 await ref.read(loginProvider.notifier).login(loginData);
 
+                print("pts ${state.runtimeType}");
+
                 state.whenOrNull(
-                  loading: () {
-                    AutoRouter.of(context).push(const HomeRoute());
+                  data: (registration, response) async {
+                    final registrationPreference = RegistrationPreference(
+                      await SharedPreferences.getInstance(),
+                    );
+
+                    await registrationPreference.setData(registration);
+                    final data = registrationPreference.getData();
+                    print("pts $data");
                   },
                   error: (exception) {
                     exception.equalDo(adminRoleNotAllowed, ifEqual: (error) {

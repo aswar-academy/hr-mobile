@@ -163,7 +163,7 @@ class _Text {
 
   late final TextStyle button = copy(
     titleFont,
-    sizePx: 12,
+    sizePx: 16,
     weight: FontWeight.w600,
     heightPx: 13.2,
   );

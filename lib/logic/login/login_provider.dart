@@ -4,17 +4,25 @@ import 'package:aswar/main.dart';
 
 typedef LoginState = ResultState<Registration>;
 
+
+
 final loginProvider = StateNotifierProvider<LoginNotifier, LoginState>(
-  (ref) => LoginNotifier(),
+  (ref) => LoginNotifier(ref),
 );
 
 class LoginNotifier extends StateNotifier<LoginState> {
-  LoginNotifier() : super(const LoginState.idle());
+  final Ref ref;
+
+  // ignore: prefer_const_constructors
+  LoginNotifier(this.ref) : super(LoginState.idle());
 
   Future<void> login(Login loginData) async {
-    errorHandler.stream(
+    await errorHandler.stream(
       $client.authLoginPost(body: loginData).transform,
       dataFilters: [AdminRoleDataFilter()],
-    ).listen((event) => state = event);
+    ).listen((event) {
+      state = event;
+      print("pts state $event");
+    }).asFuture();
   }
 }
