@@ -1,4 +1,5 @@
 import 'package:aswar/logic/home.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,7 +17,9 @@ class HomeScreen extends ConsumerWidget {
       body: Container(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print(data);
+          if (kDebugMode) {
+            print(data);
+          }
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

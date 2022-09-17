@@ -16,8 +16,10 @@ dependencies:
   auto_route: ^5.0.1
   chopper: ^4.0.1
   cupertino_icons: ^1.0.2
-  error_handler:
-    git: https://github.com/masreplay/perfect_error_handler.git
+  error_handler: # ^1.0.5
+    path: ../perfect_error_handler
+    # git: https://github.com/masreplay/perfect_error_handler.git
+
   extra_alignments: ^1.0.0+1
   flextras: ^0.0.2
   flutter_animate: ^1.0.0

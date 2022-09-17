@@ -9,8 +9,8 @@ final homeProvider = StateNotifierProvider<HomeNotifier, HomeState>(
   (ref) => HomeNotifier(),
 );
 
-class HomeNotifier extends StateNotifier<ResultState<User>> {
+class HomeNotifier extends StateNotifier<HomeState> {
   HomeNotifier() : super(const HomeState.idle());
 
-  void get() => $client.authProfileGet();
+  void login() => $client.authProfileGet();
 }

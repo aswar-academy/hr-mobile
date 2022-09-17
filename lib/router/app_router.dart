@@ -8,13 +8,13 @@ import 'package:auto_route/auto_route.dart';
   routes: <AutoRoute>[
     AutoRoute(
       page: IntroScreen,
-      initial: true,
     ),
     AutoRoute(
       page: HomeScreen,
     ),
     AutoRoute(
       page: LoginScreen,
+      initial: true,
     ),
   ],
 )

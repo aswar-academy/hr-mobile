@@ -221,12 +221,10 @@ packages:
   error_handler:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "6c4f8e24342ba4a3774596fcf7891881c63fb088"
-      url: "https://github.com/masreplay/perfect_error_handler.git"
-    source: git
-    version: "1.0.2-dev"
+      path: "../perfect_error_handler"
+      relative: true
+    source: path
+    version: "1.0.5"
   extra_alignments:
     dependency: "direct main"
     description:

@@ -40,16 +40,16 @@ class AppRouter extends _i4.RootStackRouter {
 
   @override
   List<_i4.RouteConfig> get routes => [
-        _i4.RouteConfig(IntroRoute.name, path: '/'),
+        _i4.RouteConfig(IntroRoute.name, path: '/intro-screen'),
         _i4.RouteConfig(HomeRoute.name, path: '/home-screen'),
-        _i4.RouteConfig(LoginRoute.name, path: '/login-screen')
+        _i4.RouteConfig(LoginRoute.name, path: '/')
       ];
 }
 
 /// generated route for
 /// [_i1.IntroScreen]
 class IntroRoute extends _i4.PageRouteInfo<void> {
-  const IntroRoute() : super(IntroRoute.name, path: '/');
+  const IntroRoute() : super(IntroRoute.name, path: '/intro-screen');
 
   static const String name = 'IntroRoute';
 }
@@ -65,7 +65,7 @@ class HomeRoute extends _i4.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.LoginScreen]
 class LoginRoute extends _i4.PageRouteInfo<void> {
-  const LoginRoute() : super(LoginRoute.name, path: '/login-screen');
+  const LoginRoute() : super(LoginRoute.name, path: '/');
 
   static const String name = 'LoginRoute';
 }

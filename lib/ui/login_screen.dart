@@ -1,24 +1,23 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/main.dart';
-import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
+import 'package:aswar/ui/login.dart';
 import 'package:aswar/ui/logo.dart';
-import 'package:chopper/chopper.dart';
-import 'package:error_handler/error_handler.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  ResultState<Registration> _state = const ResultState.idle();
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _emailController = TextEditingController(text: "masreplay@gmail.com");
   final _passwordController = TextEditingController(text: "12345678");
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(loginProvider);
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -69,11 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     $strings.login,
                     style: TextStyle(color: $styles.colors.black),
                   ),
-                  if (_state.isLoading) const Gap(12),
-                  if (_state.isLoading)
-                    const CircularProgressIndicator(
-                      color: Colors.white,
-                    )
+                  if (state.isLoading) const Gap(12),
+                  if (state.isLoading)
+                    const CircularProgressIndicator(color: Colors.white)
                 ],
               ),
             ),
@@ -89,38 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
       password: _passwordController.text,
     );
 
-    final response = await $client.authLoginPost(body: loginData);
-    print("test ${response.base.request?.url}");
-    safeApiCall(
-      $client.authLoginPost(body: loginData).transform,
-      // logger: stateLogger,
-    ).listen(
-      (event) {
-        setState(() {
-          _state = event;
-        });
-        event.whenOrNull(
-          error: (error) {
-            print(error);
-          },
-          data: (data, response) {
-            switch (data.user.role) {
-              case UserDetailRole.user:
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("success")),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(data.user.toString())),
-                );
-                break;
-              default:
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("error")),
-                );
-            }
-          },
-        );
-      },
-    );
+    ref.read(loginProvider.notifier).login(loginData);
   }
 }
