@@ -1,12 +1,13 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/registration.dart';
+import 'package:aswar/di/injection.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/src/login/login_filter.dart';
 import 'package:aswar/ui/logo.dart';
 import 'package:aswar/ui/utils.dart';
 import 'package:aswar/ui/validator.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'login_cubit.dart';
 import 'login_state.dart';
@@ -76,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
               builder: (context, state) => Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextButton(
-                  onPressed: () => onLoginPressed(state),
+                  onPressed: _onLoginPressed,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -86,7 +87,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       if (state.isLoading) const Gap(12),
                       if (state.isLoading)
-                        const CircularProgressIndicator(color: Colors.white)
+                        const SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircularProgressIndicator(color: Colors.white),
+                        )
                     ],
                   ),
                 ),
@@ -98,23 +103,23 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Future<void> onLoginPressed(LoginState state) async {
+  Future<void> _onLoginPressed() async {
     final loginData = Login(
       email: _emailController.text,
       password: _passwordController.text,
     );
 
-    await context.read<LoginCubit>().login(loginData);
+    final read = context.read<LoginCubit>();
+    await read.login(loginData);
 
-    state.whenOrNull(
+    read.state.whenOrNull(
       data: (registration, response) async {
-        final registrationPreference = RegistrationPreference(
-          await SharedPreferences.getInstance(),
-        );
+        final preference = getIt.get<RegistrationPreference>();
+        await preference.setData(registration);
 
-        await registrationPreference.setData(registration);
-        final data = registrationPreference.getData();
-        print("pts $data");
+        context.showSnackBar("Login successfully");
+
+        context.router.replace(const HomeRoute());
       },
       error: (exception) {
         exception.equalDo(adminRoleNotAllowed, ifEqual: (error) {

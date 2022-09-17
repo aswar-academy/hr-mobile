@@ -34,6 +34,7 @@ class _AswarAppState extends State<AswarApp> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular($styles.corners.md),
               ),
+              backgroundColor: $styles.colors.accent,
               padding: EdgeInsets.all($styles.insets.sm),
             ),
           ),

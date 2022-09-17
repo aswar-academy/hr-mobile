@@ -21,7 +21,6 @@ Future<void> bootstrap() async {
   await getIt.get<LocaleLogic>().load();
 }
 
-// TODO(masreplay): use riverpod
 AppLocalizations get $strings => getIt.get<LocaleLogic>().strings;
 Openapi get $client => getIt.get<Openapi>();
 SharedPreferences get $shared => getIt.get<SharedPreferences>();
