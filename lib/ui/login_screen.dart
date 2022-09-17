@@ -1,7 +1,11 @@
 import 'package:aswar/common_libs.dart';
+import 'package:aswar/logic/login/login_filter.dart';
+import 'package:aswar/logic/login/login_provider.dart';
 import 'package:aswar/main.dart';
-import 'package:aswar/ui/login.dart';
 import 'package:aswar/ui/logo.dart';
+import 'package:aswar/ui/utils.dart';
+import 'package:aswar/ui/validator.dart';
+import 'package:auto_route/auto_route.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -36,10 +40,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               controller: _emailController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "example@gmail.com",
-                label: Text("email"),
+              validator: Validator.of(context).email().build(),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: $strings.emailHintText,
+                label: Text($strings.email),
               ),
             ),
           ),
@@ -47,23 +52,43 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               controller: _passwordController,
+              validator:
+                  Validator.of(context).minLength(8).maxLength(16).build(),
               obscureText: true,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                label: Text("password"),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                label: Text($strings.password),
               ),
             ),
           ),
           state.maybeWhen(
             data: (registration, response) {
-              return Text("${registration.user.name}");
+              return Text(registration.user.name);
             },
             orElse: SizedBox.new,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextButton(
-              onPressed: onLoginPressed,
+              onPressed: () async {
+                final loginData = Login(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+
+                await ref.read(loginProvider.notifier).login(loginData);
+
+                state.whenOrNull(
+                  loading: () {
+                    AutoRouter.of(context).push(const HomeRoute());
+                  },
+                  error: (exception) {
+                    exception.equalDo(adminRoleNotAllowed, ifEqual: (error) {
+                      context.showSnackBar("Admin can't access the mobile app");
+                    });
+                  },
+                );
+              },
               style: TextButton.styleFrom(
                 backgroundColor: $styles.colors.accent,
               ),
@@ -83,23 +108,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           )
         ],
       ),
-    );
-  }
-
-  Future<void> onLoginPressed() async {
-    final loginData = Login(
-      email: _emailController.text,
-      password: _passwordController.text,
-    );
-
-    final read = ref.read(loginProvider.notifier);
-
-    await read.login(loginData);
-
-    read.state.whenOrNull(
-      loading: () {
-        print("loading");
-      },
     );
   }
 }

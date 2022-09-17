@@ -11,5 +11,18 @@
     "intro2": "Team Work",
     "introDescription2": "task management and time tracking",
     "intro3": "Employee record",
-    "introDescription3": "Job-Title, department and more"
+    "introDescription3": "Job-Title, department and more",
+    "email": "Email",
+    "emailHintText": "example@gmail.com",
+    "password": "Password",
+    "validationRequired": "Value required",
+    "validationEqualValueName": "Should be equal value name",
+    "validationPasswordNull": "Should be password null",
+    "validationMinMinLength": "Should be min min length",
+    "validationMaxMaxLength": "Should be max max length",
+    "validationLessThanMax": "Should be less than max",
+    "validationEmail": "Should be email",
+    "validationPhoneNumber": "Should be phone number",
+    "validationUrl": "Should be url",
+    "validationYoutubeUrl": "Should be youtube url"
 }

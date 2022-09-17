@@ -1,7 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 
-import 'dart:ui';
-
 import 'package:aswar/common_libs.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -148,17 +146,21 @@ class _Text {
     heightPx: 40,
     weight: FontWeight.w400,
   );
-  late final TextStyle caption =
-      copy(contentFont, sizePx: 12, heightPx: 18, weight: FontWeight.w500)
-          .copyWith(
-    fontStyle: FontStyle.italic,
-  );
+
+  late final TextStyle caption = copy(
+    contentFont,
+    sizePx: 12,
+    heightPx: 18,
+    weight: FontWeight.w500,
+  ).copyWith(fontStyle: FontStyle.italic);
+
   late final TextStyle callout = copy(
     contentFont,
     sizePx: 16,
     heightPx: 26,
     weight: FontWeight.w600,
   ).copyWith(fontStyle: FontStyle.italic);
+
   late final TextStyle button = copy(
     titleFont,
     sizePx: 12,
@@ -222,14 +224,16 @@ class _Insets {
 class _Shadows {
   final text = [
     Shadow(
-        color: Colors.black.withOpacity(.6),
-        offset: const Offset(0, 2),
-        blurRadius: 2),
+      color: Colors.black.withOpacity(.6),
+      offset: const Offset(0, 2),
+      blurRadius: 2,
+    ),
   ];
   final textStrong = [
     Shadow(
-        color: Colors.black.withOpacity(.6),
-        offset: const Offset(0, 4),
-        blurRadius: 6),
+      color: Colors.black.withOpacity(.6),
+      offset: const Offset(0, 4),
+      blurRadius: 6,
+    ),
   ];
 }
