@@ -1,4 +1,6 @@
 import 'package:aswar/common_libs.dart';
+import 'package:aswar/data/local/intro_screen_preference.dart';
+import 'package:aswar/di/injection.dart';
 import 'package:aswar/gen/assets.gen.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/ui/logo.dart';
@@ -79,7 +81,8 @@ class _IntroScreenState extends State<IntroScreen> {
             fontSize: 14,
           ),
         ),
-        onCompletePressed: () {
+        onCompletePressed: () async {
+          await getIt.get<IntroScreenPreference>().setData(true);
           AutoRouter.of(context).replace(const LoginRoute());
         },
       ),

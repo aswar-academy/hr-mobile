@@ -1,5 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/di/injection.dart';
+import 'package:aswar/router/auth_guard.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +13,12 @@ class AswarApp extends StatefulWidget {
 }
 
 class _AswarAppState extends State<AswarApp> {
-  final _appRouter = AppRouter();
+  final _appRouter = AppRouter(
+    introScreenGuard: getIt.get<IntroScreenGuard>(),
+    authenticatedGuard: getIt.get<AuthenticatedGuard>(),
+    notAuthenticatedGuard: getIt.get<NotAuthenticatedGuard>(),
+  );
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

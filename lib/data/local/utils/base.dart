@@ -21,6 +21,20 @@ abstract class ObjectSharedPreference<T> {
   }
 }
 
+class BoolPreference extends ObjectSharedPreference<bool> {
+  const BoolPreference(super.sharedPreference, {required super.key});
+
+  @override
+  bool? getData() {
+    return sharedPreference.getBool(key);
+  }
+
+  @override
+  Future<void> setData(bool value) async {
+    await sharedPreference.setBool(key, value);
+  }
+}
+
 class StringPreference extends ObjectSharedPreference<String> {
   const StringPreference(super.sharedPreference, {required super.key});
 
