@@ -2,8 +2,8 @@ import 'package:aswar/common_libs.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/src/home/task_list_tile.dart';
 import 'package:aswar/src/login/login_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'home_cubit.dart';
 import 'home_state.dart';
@@ -25,47 +25,33 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           return Stack(
             children: [
-              Positioned(
+              const Positioned(
                 left: 0,
                 right: 0,
                 child: Header(
-                  child: state.maybeWhen(
-                    data: (homeData, _) {
-                      return SafeArea(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Gap($styles.insets.sm),
-                            Text(
-                              $strings.greeting(homeData.user.name),
-                              style: $styles.text.h3.copyWith(
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              homeData.user.jobTitle,
-                              style: $styles.text.title1.copyWith(
-                                color: $styles.colors.accent,
-                              ),
-                            ),
-                            Gap($styles.insets.lg),
-                          ],
-                        ),
-                      );
-                    },
-                    orElse: SizedBox.new,
-                  ),
+                  minHeight: 350,
                 ),
               ),
-              _buildAddTaskButton(),
-              _buildNavigation(),
+              Positioned.fill(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    state.maybeWhen(
+                      data: _buildHeaderContent,
+                      orElse: SizedBox.new,
+                    ),
+                    _buildNavigation(),
+                    const Spacer(),
+                    _buildAddTaskButton(),
+                  ],
+                ),
+              ),
             ],
           );
         },
@@ -74,61 +60,57 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildNavigation() {
-    return Center(
-      child: GridView.count(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.all(20),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: [
-          TasksListTile(
-            icon: Icons.person_rounded,
-            iconColor: Colors.teal,
-            title: $strings.profile,
-            description: $strings.profileSubtitle,
-            onPressed: () {
-              // context.router.push(ProfileRoute());
-            },
-          ),
-          TasksListTile(
-            icon: Icons.person_rounded,
-            iconColor: Colors.purple,
-            title: $strings.tasks,
-            description: $strings.tasksSubtitle(1),
-            onPressed: () {
-              // context.router.push(TasksRoute());
-            },
-          ),
-          TasksListTile(
-            icon: Icons.person_rounded,
-            iconColor: Colors.blue,
-            title: $strings.department,
-            description: $strings.departmentSubtitle,
-            onPressed: () {
-              // context.router.push(DepartmentRoute());
-            },
-          ),
-          TasksListTile(
-            icon: Icons.person_rounded,
-            iconColor: Colors.amber,
-            title: $strings.payroll,
-            description: "time ago package",
-            onPressed: () {
-              // context.router.push(PayrollRoute());
-            },
-          ),
-        ],
-      ),
+    return GridView.count(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.all(20),
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+      crossAxisCount: 2,
+      children: [
+        TasksListTile(
+          icon: Icons.person_rounded,
+          iconColor: Colors.teal,
+          title: $strings.profile,
+          description: $strings.profileSubtitle,
+          onPressed: () {
+            // context.router.push(ProfileRoute());
+          },
+        ),
+        TasksListTile(
+          icon: Icons.person_rounded,
+          iconColor: Colors.purple,
+          title: $strings.tasks,
+          description: $strings.tasksSubtitle(1),
+          onPressed: () {
+            // context.router.push(TasksRoute());
+          },
+        ),
+        TasksListTile(
+          icon: Icons.person_rounded,
+          iconColor: Colors.blue,
+          title: $strings.department,
+          description: $strings.departmentSubtitle,
+          onPressed: () {
+            // context.router.push(DepartmentRoute());
+          },
+        ),
+        TasksListTile(
+          icon: Icons.person_rounded,
+          iconColor: Colors.amber,
+          title: $strings.payroll,
+          description: "time ago package",
+          onPressed: () {
+            // context.router.push(PayrollRoute());
+          },
+        ),
+      ],
     );
   }
 
   Widget _buildAddTaskButton() {
-    return Positioned(
-      left: 0,
-      right: 0,
-      bottom: 0,
+    return Padding(
+      padding: EdgeInsets.all($styles.insets.sm),
       child: TextButton(
         onPressed: () {
           // context.router.push(0Route());
@@ -136,6 +118,91 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Text(
           $strings.addNewTask,
           style: TextStyle(color: $styles.colors.black),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderContent(HomeData homeData, _) {
+    const divider = SizedBox(
+      height: 40,
+      child: VerticalDivider(
+        color: Colors.white,
+      ),
+    );
+
+    return SafeArea(
+      child: Padding(
+        padding: EdgeInsets.all($styles.insets.sm),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              $strings.greeting(homeData.user.name),
+              style: $styles.text.h3.copyWith(
+                color: Colors.white,
+              ),
+            ),
+            Gap($styles.insets.xs),
+            Text(
+              homeData.user.jobTitle,
+              style: $styles.text.title1.copyWith(
+                color: $styles.colors.accent,
+              ),
+            ),
+            Gap($styles.insets.sm),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                TaskState(
+                  count: 2,
+                  title: "مهام معلقة",
+                ),
+                divider,
+                TaskState(
+                  count: 3,
+                  title: "مهام قيد التقدم",
+                ),
+                divider,
+                TaskState(
+                  count: 10,
+                  title: "مهام منجزة",
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TaskState extends StatelessWidget {
+  final String title;
+  final int count;
+
+  const TaskState({super.key, required this.title, required this.count});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: TopCenter(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              "$count",
+              style: GoogleFonts.jetBrainsMono(
+                color: Colors.white,
+                fontSize: 60,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              title,
+              style: $styles.text.h3.copyWith(color: Colors.white),
+            ),
+          ],
         ),
       ),
     );

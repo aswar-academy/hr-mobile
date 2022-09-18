@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             BlocBuilder<LoginCubit, LoginState>(
               builder: (context, state) => Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all($styles.insets.sm),
                 child: TextButton(
                   onPressed: _onLoginPressed,
                   child: Row(
@@ -125,13 +125,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
 class Header extends StatelessWidget {
   final Widget child;
+  final double minHeight;
 
-  const Header({super.key, required this.child});
+  const Header({
+    super.key,
+    this.child = const SizedBox.shrink(),
+    this.minHeight = 300,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(minHeight: 300),
+      constraints: BoxConstraints(minHeight: minHeight),
       child: Container(
         decoration: BoxDecoration(
           color: $styles.colors.surface,

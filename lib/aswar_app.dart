@@ -38,11 +38,11 @@ class _AswarAppState extends State<AswarApp> {
             style: TextButton.styleFrom(
               textStyle: $styles.text.button.copyWith(color: Colors.black),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular($styles.corners.md),
+                borderRadius: BorderRadius.circular(16.0),
               ),
               surfaceTintColor: Colors.black,
               backgroundColor: $styles.colors.accent,
-              padding: EdgeInsets.all($styles.insets.sm),
+              padding: EdgeInsets.all($styles.insets.md),
             ),
           ),
         ),
