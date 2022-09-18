@@ -7,11 +7,12 @@ import 'package:auto_route/auto_route.dart';
   replaceInRouteName: 'Screen,Route',
   routes: <AutoRoute>[
     AutoRoute(
-      page: IntroScreen,
-      initial: true,
+      page: HomeScreen,
+      path: "home",
     ),
     AutoRoute(
-      page: HomeScreen,
+      page: IntroScreen,
+      initial: true,
     ),
     AutoRoute(
       page: LoginScreen,

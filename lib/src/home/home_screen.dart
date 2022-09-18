@@ -6,7 +6,7 @@ import 'home_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-  
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -15,9 +15,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeCubit>();
+    final read = context.read<HomeCubit>();
+    read.getHomeData();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

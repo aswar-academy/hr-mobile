@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
     await read.login(loginData);
 
     read.state.whenOrNull(
-      data: (registration, response) async {
+      data: (registration, _) async {
         final preference = getIt.get<RegistrationPreference>();
         await preference.setData(registration);
 

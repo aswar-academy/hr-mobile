@@ -15,7 +15,7 @@ Future<void> run(HookContext context) async {
     final route = """
     AutoRoute(
       page: {{name.pascalCase()}}Screen,
-      path: {{name.snakeCase()}},
+      path: "{{name.snakeCase()}}",
     ),""";
 
     content = content.replaceFirst(x, "$x\n$route");
