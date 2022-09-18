@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-{{> state.import }}
+import '{{name.snakeCase()}}_state.dart';
 
 @injectable
 class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {

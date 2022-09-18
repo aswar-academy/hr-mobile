@@ -21,6 +21,11 @@ Future<void> addCubit() async {
 
   content = content.replaceFirst(finder, "$finder\n$route");
 
+  final importStatement =
+      "import '../src/{{name.snakeCase()}}/{{name.snakeCase()}}.dart';";
+
+  content = "${importStatement}\n${content}";
+
   file.writeAsString(content);
 }
 
