@@ -152,22 +152,21 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Gap($styles.insets.sm),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 TaskState(
-                  count: 2,
-                  title: "مهام معلقة",
+                  count: homeData.tasksCount.todo,
+                  title: $strings.todoTask,
                 ),
                 divider,
                 TaskState(
-                  count: 3,
-                  title: "مهام قيد التقدم",
+                  count: homeData.tasksCount.doing,
+                  title: $strings.doingTask,
                 ),
                 divider,
                 TaskState(
-                  count: 10,
-                  title: "مهام منجزة",
-                )
+                  count: homeData.tasksCount.done,
+                  title: $strings.doneTask,
+                ),
               ],
             ),
           ],

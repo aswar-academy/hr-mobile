@@ -43,5 +43,8 @@
   "validationPhoneNumber": "Should be phone number",
   "validationRequired": "Value required",
   "validationUrl": "Should be url",
-  "validationYoutubeUrl": "Should be youtube url"
+  "validationYoutubeUrl": "Should be youtube url",
+  "todoTask": "TODO",
+  "doingTask": "DOING",
+  "doneTask": "DONE"
 }
