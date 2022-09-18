@@ -17,7 +17,7 @@ Future<void> addCubit() async {
   final finder = "providers: <BlocProvider>[";
 
   final route = """
-    BlocProvider<${name}Cubit>(create: (_) => getIt<${name}Cubit>()),""";
+        BlocProvider<{{name.pascalCase()}}Cubit>(create: (_) => getIt<{{name.pascalCase()}}Cubit>()),""";
 
   content = content.replaceFirst(finder, "$finder\n$route");
 

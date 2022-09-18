@@ -1,0 +1,1 @@
+import '{{name.snakeCase()}}_state.dart';

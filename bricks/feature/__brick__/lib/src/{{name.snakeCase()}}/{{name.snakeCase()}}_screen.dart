@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '{{name.snakeCase()}}_state.dart';
-import '{{name.snakeCase()}}_cubit.dart';
+{{> state.import }}
+{{> cubit.import }}
 
 class {{name.pascalCase()}}Screen extends StatefulWidget {
   const {{name.pascalCase()}}Screen({super.key});
