@@ -1,7 +1,6 @@
 import 'package:aswar/aswar_app.dart';
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/di/injection.dart';
-import 'package:aswar/swagger_generated_code/client_index.dart';
 import 'package:aswar/ui/strings.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';

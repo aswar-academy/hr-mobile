@@ -2,23 +2,15 @@ import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/intro_screen_preference.dart';
 import 'package:aswar/data/local/registration.dart';
 import 'package:aswar/di/injection.dart';
-import 'package:aswar/ui/intro_screen.dart';
 import 'package:auto_route/auto_route.dart';
 
-// TODO(masreplay): mason it
 class IntroScreenGuard extends AutoRouteGuard {
-  final IntroScreenPreference _introScreenPreference;
-
-  IntroScreenGuard(this._introScreenPreference);
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final firstTime = _introScreenPreference.getData() ?? true;
+    final firstTime = getIt<IntroScreenPreference>().getData() ?? true;
+    print(firstTime);
     if (firstTime) {
-      router.pushNativeRoute(
-        MaterialPageRoute(
-          builder: (_) => const IntroScreen(),
-        ),
-      );
+      router.push(const IntroRoute());
     } else {
       resolver.next(true);
     }
@@ -28,11 +20,16 @@ class IntroScreenGuard extends AutoRouteGuard {
 class AuthenticatedGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final registration = getIt.get<RegistrationPreference>().getData();
-    if (registration == null) {
-      router.push(const LoginRoute());
+    final registration = getIt<RegistrationPreference>().getData();
+    final isLoggedIn = registration != null;
+
+    print("isLoggedIn: $registration");
+    print("isLoggedIn: $isLoggedIn");
+
+    if (isLoggedIn) {
+      resolver.next(true);
     } else {
-      resolver.next();
+      router.push(const LoginRoute());
     }
   }
 }
@@ -40,11 +37,16 @@ class AuthenticatedGuard extends AutoRouteGuard {
 class NotAuthenticatedGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final registration = getIt.get<RegistrationPreference>().getData();
-    if (registration == null) {
-      router.push(const LoginRoute());
+    final registration = getIt<RegistrationPreference>().getData();
+    final isLoggedIn = registration == null;
+
+    print("isNotLoggedIn: $registration");
+    print("isNotLoggedIn: $isLoggedIn");
+
+    if (isLoggedIn) {
+      resolver.next(true);
     } else {
-      resolver.next();
+      router.push(const LoginRoute());
     }
   }
 }

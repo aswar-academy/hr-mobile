@@ -2,6 +2,7 @@ import 'package:aswar/router/auth_guard.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_screen.dart';
 import 'package:aswar/src/profile/profile.dart';
+import 'package:aswar/ui/intro_screen.dart';
 import 'package:auto_route/auto_route.dart';
 
 @MaterialAutoRouter(
@@ -20,6 +21,10 @@ import 'package:auto_route/auto_route.dart';
     AutoRoute(
       page: LoginScreen,
       guards: [NotAuthenticatedGuard],
+    ),
+    AutoRoute(
+      page: IntroScreen,
+      guards: [],
     ),
   ],
 )

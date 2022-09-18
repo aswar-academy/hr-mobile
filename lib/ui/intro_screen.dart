@@ -82,7 +82,7 @@ class _IntroScreenState extends State<IntroScreen> {
           ),
         ),
         onCompletePressed: () async {
-          await getIt.get<IntroScreenPreference>().setData(true);
+          await getIt<IntroScreenPreference>().setData(false);
           AutoRouter.of(context).replace(const LoginRoute());
         },
       ),

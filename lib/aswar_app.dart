@@ -14,17 +14,17 @@ class AswarApp extends StatefulWidget {
 
 class _AswarAppState extends State<AswarApp> {
   final _appRouter = AppRouter(
-    introScreenGuard: getIt.get<IntroScreenGuard>(),
-    authenticatedGuard: getIt.get<AuthenticatedGuard>(),
-    notAuthenticatedGuard: getIt.get<NotAuthenticatedGuard>(),
+    introScreenGuard: IntroScreenGuard(),
+    authenticatedGuard: AuthenticatedGuard(),
+    notAuthenticatedGuard: NotAuthenticatedGuard(),
   );
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<LoginCubit>(create: (_) => getIt.get<LoginCubit>()),
-        BlocProvider<HomeCubit>(create: (_) => getIt.get<HomeCubit>()),
+        BlocProvider<LoginCubit>(create: (_) => getIt<LoginCubit>()),
+        BlocProvider<HomeCubit>(create: (_) => getIt<HomeCubit>()),
       ],
       child: MaterialApp.router(
         title: 'Flutter Demo',
