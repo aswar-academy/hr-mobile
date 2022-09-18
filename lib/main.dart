@@ -1,4 +1,4 @@
-import 'package:aswar/aswar_app.dart';
+import 'package:aswar/app.dart';
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/di/injection.dart';
 import 'package:aswar/ui/strings.dart';

@@ -2,6 +2,29 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 Future<void> run(HookContext context) async {
+  await addRoute();
+  await addCubit();
+}
+
+Future<void> addCubit() async {
+  final name = "{{name}}";
+  print(name);
+
+  final path = "lib/app.dart";
+  final file = File(path);
+  var content = await file.readAsString();
+
+  final finder = "providers: <BlocProvider>[";
+
+  final route = """
+    BlocProvider<${name}Cubit>(create: (_) => getIt<${name}Cubit>()),""";
+
+  content = content.replaceFirst(finder, "$finder\n$route");
+
+  file.writeAsString(content);
+}
+
+Future<void> addRoute() async {
   final addRoute = "{{add_route}}" == "true" ? true : false;
   print(addRoute);
 
@@ -10,7 +33,7 @@ Future<void> run(HookContext context) async {
     final file = File(path);
     var content = await file.readAsString();
 
-    final x = "routes: <AutoRoute>[";
+    final finder = "routes: <AutoRoute>[";
 
     final route = """
     AutoRoute(
@@ -18,7 +41,7 @@ Future<void> run(HookContext context) async {
       path: "{{name.snakeCase()}}",
     ),""";
 
-    content = content.replaceFirst(x, "$x\n$route");
+    content = content.replaceFirst(finder, "$finder\n$route");
 
     file.writeAsString(content);
   }

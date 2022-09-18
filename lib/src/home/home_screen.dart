@@ -1,5 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/main.dart';
+import 'package:aswar/router/router.dart';
 import 'package:aswar/src/home/task_list_tile.dart';
 import 'package:aswar/src/login/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: $strings.profile,
           description: $strings.profileSubtitle,
           onPressed: () {
-            // context.router.push(ProfileRoute());
+            context.router.push(const ProfileRoute());
           },
         ),
         TasksListTile(

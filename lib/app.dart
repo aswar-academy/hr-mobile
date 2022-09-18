@@ -22,7 +22,7 @@ class _AswarAppState extends State<AswarApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
+      providers: <BlocProvider>[
         BlocProvider<LoginCubit>(create: (_) => getIt<LoginCubit>()),
         BlocProvider<HomeCubit>(create: (_) => getIt<HomeCubit>()),
       ],
