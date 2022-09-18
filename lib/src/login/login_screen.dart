@@ -38,16 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 300,
-              decoration: BoxDecoration(
-                color: $styles.colors.surface,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(100),
-                ),
-              ),
-              child: const Center(child: AswarLogo()),
-            ),
+            const Header(child: AswarLogo()),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
@@ -128,6 +119,28 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         });
       },
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  final Widget child;
+
+  const Header({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 300),
+      child: Container(
+        decoration: BoxDecoration(
+          color: $styles.colors.surface,
+          borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(100),
+          ),
+        ),
+        child: child,
+      ),
     );
   }
 }

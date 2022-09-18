@@ -1,6 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/di/injection.dart';
-import 'package:aswar/router/auth_guard.dart';
+import 'package:aswar/router/guards/guards.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,10 +36,11 @@ class _AswarAppState extends State<AswarApp> {
           fontFamily: $styles.text.body.fontFamily,
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              textStyle: $styles.text.button,
+              textStyle: $styles.text.button.copyWith(color: Colors.black),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular($styles.corners.md),
               ),
+              surfaceTintColor: Colors.black,
               backgroundColor: $styles.colors.accent,
               padding: EdgeInsets.all($styles.insets.sm),
             ),

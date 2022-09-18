@@ -16,7 +16,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 }
 
-Stream<ResultState> getHome(UserDetail user) async* {
+Stream<HomeState> getHome(UserDetail user) async* {
   final homeData = HomeData(
     user: user,
     tasksCount: const TasksCount(doing: 1, todo: 2, done: 2),

@@ -1,0 +1,13 @@
+{
+  "placeholders": {
+    "scope": "arb",
+    "prefix": "placeholders",
+    "body": [
+      "\"@greeting\": {",
+      "  \"placeholders\": {",
+      "      \"name\": {}",
+      "  }",
+      "},"
+    ]
+  }
+}

@@ -1,6 +1,8 @@
 import 'package:aswar/common_libs.dart';
 
 class AppColors {
+  const AppColors();
+
   /// Common
   final Color secondary = const Color(0xFFBEABA1);
   final Color accent = const Color(0xFFFFD831);

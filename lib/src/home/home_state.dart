@@ -1,7 +1,7 @@
 import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
 import 'package:error_handler/error_handler.dart';
 
-typedef HomeState = UiState<dynamic>;
+typedef HomeState = UiState<HomeData>;
 
 class HomeData {
   final UserDetail user;

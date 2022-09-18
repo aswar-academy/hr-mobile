@@ -18,7 +18,7 @@ import '../src/home/home.dart' as _i2;
 import '../src/login/login_screen.dart' as _i3;
 import '../src/profile/profile.dart' as _i1;
 import '../ui/intro_screen.dart' as _i4;
-import 'auth_guard.dart' as _i7;
+import 'router.dart' as _i7;
 
 class AppRouter extends _i5.RootStackRouter {
   AppRouter(

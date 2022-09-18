@@ -9,8 +9,10 @@ final $styles = AppStyle();
 
 @immutable
 class AppStyle {
+  AppStyle();
+
   /// The current theme colors for the app
-  final AppColors colors = AppColors();
+  final colors = const AppColors();
 
   /// Rounded edge corner radii
   late final _Corners corners = _Corners();
