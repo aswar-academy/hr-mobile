@@ -34,13 +34,13 @@ class TasksListTile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               BorderedIcon(color: iconColor, icon: icon),
               Gap($styles.insets.md),
               Text(
                 title,
-                style: $styles.text.title1.copyWith(
+                style: $styles.text.h5.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
               ),

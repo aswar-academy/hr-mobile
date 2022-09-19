@@ -89,6 +89,20 @@ class _Text {
   );
   late final TextStyle h4 = copy(
     contentFont,
+    sizePx: 22,
+    heightPx: 23,
+    spacingPc: 5,
+    weight: FontWeight.w600,
+  );
+  late final TextStyle h5 = copy(
+    contentFont,
+    sizePx: 18,
+    heightPx: 23,
+    spacingPc: 5,
+    weight: FontWeight.w600,
+  );
+  late final TextStyle h6 = copy(
+    contentFont,
     sizePx: 14,
     heightPx: 23,
     spacingPc: 5,

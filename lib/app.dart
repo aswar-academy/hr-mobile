@@ -3,6 +3,7 @@ import 'package:aswar/di/injection.dart';
 import 'package:aswar/router/guards/guards.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
+import 'package:aswar/src/profile/profile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AswarApp extends StatefulWidget {
@@ -23,6 +24,7 @@ class _AswarAppState extends State<AswarApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: <BlocProvider>[
+        BlocProvider<ProfileCubit>(create: (_) => getIt<ProfileCubit>()),
         BlocProvider<LoginCubit>(create: (_) => getIt<LoginCubit>()),
         BlocProvider<HomeCubit>(create: (_) => getIt<HomeCubit>()),
       ],
