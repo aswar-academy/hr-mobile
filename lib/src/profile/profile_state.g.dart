@@ -7,9 +7,9 @@ part of 'profile_state.dart';
 // **************************************************************************
 
 abstract class _$ProfileStateCWProxy {
-  ProfileState logoutState(ResultState<dynamic> logoutState);
+  ProfileState logout(ResultState<dynamic> logout);
 
-  ProfileState userState(ResultState<UserDetail> userState);
+  ProfileState user(ResultState<UserDetail> user);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ProfileState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -18,8 +18,8 @@ abstract class _$ProfileStateCWProxy {
   /// ProfileState(...).copyWith(id: 12, name: "My name")
   /// ````
   ProfileState call({
-    ResultState<dynamic>? logoutState,
-    ResultState<UserDetail>? userState,
+    ResultState<dynamic>? logout,
+    ResultState<UserDetail>? user,
   });
 }
 
@@ -30,12 +30,10 @@ class _$ProfileStateCWProxyImpl implements _$ProfileStateCWProxy {
   const _$ProfileStateCWProxyImpl(this._value);
 
   @override
-  ProfileState logoutState(ResultState<dynamic> logoutState) =>
-      this(logoutState: logoutState);
+  ProfileState logout(ResultState<dynamic> logout) => this(logout: logout);
 
   @override
-  ProfileState userState(ResultState<UserDetail> userState) =>
-      this(userState: userState);
+  ProfileState user(ResultState<UserDetail> user) => this(user: user);
 
   @override
 
@@ -46,19 +44,18 @@ class _$ProfileStateCWProxyImpl implements _$ProfileStateCWProxy {
   /// ProfileState(...).copyWith(id: 12, name: "My name")
   /// ````
   ProfileState call({
-    Object? logoutState = const $CopyWithPlaceholder(),
-    Object? userState = const $CopyWithPlaceholder(),
+    Object? logout = const $CopyWithPlaceholder(),
+    Object? user = const $CopyWithPlaceholder(),
   }) {
     return ProfileState(
-      logoutState:
-          logoutState == const $CopyWithPlaceholder() || logoutState == null
-              ? _value.logoutState
-              // ignore: cast_nullable_to_non_nullable
-              : logoutState as ResultState<dynamic>,
-      userState: userState == const $CopyWithPlaceholder() || userState == null
-          ? _value.userState
+      logout: logout == const $CopyWithPlaceholder() || logout == null
+          ? _value.logout
           // ignore: cast_nullable_to_non_nullable
-          : userState as ResultState<UserDetail>,
+          : logout as ResultState<dynamic>,
+      user: user == const $CopyWithPlaceholder() || user == null
+          ? _value.user
+          // ignore: cast_nullable_to_non_nullable
+          : user as ResultState<UserDetail>,
     );
   }
 }

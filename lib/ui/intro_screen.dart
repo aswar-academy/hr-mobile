@@ -81,7 +81,9 @@ class _IntroScreenState extends State<IntroScreen> {
         ),
         onCompletePressed: () async {
           await getIt<IntroScreenPreference>().setData(false);
-          AutoRouter.of(context).replace(const LoginRoute());
+
+          // https://github.com/dart-lang/linter/issues/3700
+          context.router.replace(const LoginRoute());
         },
       ),
     );

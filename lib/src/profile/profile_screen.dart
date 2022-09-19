@@ -47,7 +47,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildLogoutButton(_, ProfileState state) {
-    final userState = state.userState;
     return Padding(
       padding: EdgeInsets.all($styles.insets.sm),
       child: TextButton(
@@ -58,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               $strings.logout,
               style: TextStyle(color: $styles.colors.black),
             ),
-            if (userState.isLoading) const CircularProgressIndicator()
+            if (state.logout.isLoading) const CircularProgressIndicator()
           ],
         ),
       ),
