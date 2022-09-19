@@ -39,8 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Header(child: AswarLogo()),
+            const Spacer(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all($styles.insets.sm),
               child: TextFormField(
                 controller: _emailController,
                 validator: Validator.of(context).email().build(),
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all($styles.insets.sm),
               child: TextFormField(
                 controller: _passwordController,
                 validator:
@@ -64,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+            const Spacer(),
             BlocBuilder<LoginCubit, LoginState>(
               builder: (_, state) => AppButton(
                 onPressed: _onLoginPressed,

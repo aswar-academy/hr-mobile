@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
       mainAxisSpacing: 10,
       crossAxisCount: 2,
       children: [
-        TasksListTile(
+        NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.teal,
           title: $strings.profile,
@@ -79,16 +79,16 @@ class _HomeScreenState extends State<HomeScreen> {
             context.router.push(const ProfileRoute());
           },
         ),
-        TasksListTile(
+        NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.purple,
           title: $strings.tasks,
           description: $strings.tasksSubtitle(1),
           onPressed: () {
-            // context.router.push(TasksRoute());
+            context.router.push(const MyTasksRoute());
           },
         ),
-        TasksListTile(
+        NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.blue,
           title: $strings.department,
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // context.router.push(DepartmentRoute());
           },
         ),
-        TasksListTile(
+        NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.amber,
           title: $strings.payroll,

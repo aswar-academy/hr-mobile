@@ -1,3 +1,5 @@
+import '../src/payroll/payroll.dart';
+import '../src/my_tasks/my_tasks.dart';
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
@@ -22,6 +24,8 @@ class _AswarAppState extends State<AswarApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: <BlocProvider>[
+        BlocProvider<PayrollCubit>(create: (_) => getIt<PayrollCubit>()),
+        BlocProvider<MyTasksCubit>(create: (_) => getIt<MyTasksCubit>()),
         BlocProvider<ProfileCubit>(create: (_) => getIt<ProfileCubit>()),
         BlocProvider<LoginCubit>(create: (_) => getIt<LoginCubit>()),
         BlocProvider<HomeCubit>(create: (_) => getIt<HomeCubit>()),

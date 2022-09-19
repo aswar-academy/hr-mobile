@@ -2,8 +2,8 @@ import 'package:aswar/common_libs.dart';
 
 const double _iconSize = 40.0;
 
-class TasksListTile extends StatelessWidget {
-  const TasksListTile({
+class NavigationListTile extends StatelessWidget {
+  const NavigationListTile({
     Key? key,
     required this.title,
     required this.description,
