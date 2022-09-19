@@ -47,5 +47,7 @@
     "placeholders": {
       "name": {}
     }
-  }
+  },
+  "loginSuccessfully": "Login successfully",
+  "adminAccessError": "Admin can't access the mobile app"
 }

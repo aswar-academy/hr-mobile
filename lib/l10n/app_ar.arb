@@ -37,5 +37,7 @@
   "validationPhoneNumber": "يجب ان يكون رقم هاتف",
   "validationRequired": "القيمة مطلوبة",
   "validationUrl": "يجب ان يكون رابط",
-  "validationYoutubeUrl": "يجب ان يكون رابط يوتيوب"
+  "validationYoutubeUrl": "يجب ان يكون رابط يوتيوب",
+  "loginSuccessfully": "تم تسجيل الدخول بنجاح",
+  "adminAccessError": "لا يمكن للمسؤول التسجيل في تطبيق الموبايل"
 }

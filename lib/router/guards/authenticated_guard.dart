@@ -1,10 +1,10 @@
 import 'package:aswar/common_libs.dart';
-import 'package:aswar/main.dart';
+import 'package:aswar/data/local/registration.dart';
 
 class AuthenticatedGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final registration = $registrationPreference.getData();
+    final registration = getIt.get<RegistrationPreference>().getData();
     final isLoggedIn = registration != null;
 
     if (isLoggedIn) {

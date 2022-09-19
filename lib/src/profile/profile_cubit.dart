@@ -1,4 +1,5 @@
 import 'package:aswar/common_libs.dart';
+import 'package:aswar/data/local/registration.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/ui/cubit_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,10 +16,8 @@ class ProfileCubit extends Cubit<ProfileState> {
       .listen((event) => emit(state.copyWith(user: event)))
       .asFuture();
 
-  Future<void> logout() async {
-    await getDynamicState(
-      $registrationPreference.clearData,
-      (value) => state.copyWith(logout: value),
-    );
-  }
+  Future<void> logout() => getDynamicState(
+        getIt.get<RegistrationPreference>().clearData,
+        (value) => state.copyWith(logout: value),
+      );
 }

@@ -1,6 +1,5 @@
 import 'package:aswar/app.dart';
 import 'package:aswar/common_libs.dart';
-import 'package:aswar/data/local/registration.dart';
 import 'package:aswar/ui/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -26,10 +25,6 @@ Future<void> bootstrap() async {
 Openapi get $client => getIt.get<Openapi>();
 AppLocalizations get $strings => getIt.get<LocaleLogic>().strings;
 SharedPreferences get $shared => getIt.get<SharedPreferences>();
-
-
-RegistrationPreference get $registrationPreference => getIt<RegistrationPreference>();
-
 
 void _setupLogging() {
   Logger.root.level = Level.ALL;

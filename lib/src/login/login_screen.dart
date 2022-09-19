@@ -1,6 +1,7 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/registration.dart';
 import 'package:aswar/main.dart';
+import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/login/login_filter.dart';
 import 'package:aswar/ui/logo.dart';
@@ -64,27 +65,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             BlocBuilder<LoginCubit, LoginState>(
-              builder: (context, state) => Padding(
-                padding: EdgeInsets.all($styles.insets.sm),
-                child: TextButton(
-                  onPressed: _onLoginPressed,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        $strings.login,
-                        style: TextStyle(color: $styles.colors.black),
-                      ),
-                      if (state.isLoading) const Gap(12),
-                      if (state.isLoading)
-                        const SizedBox(
-                          width: 16,
-                          height: 16,
-                          child: CircularProgressIndicator(color: Colors.white),
-                        )
-                    ],
-                  ),
-                ),
+              builder: (_, state) => AppButton(
+                onPressed: _onLoginPressed,
+                title: $strings.login,
+                isLoading: state.isLoading,
               ),
             )
           ],
@@ -107,18 +91,15 @@ class _LoginScreenState extends State<LoginScreen> {
         final preference = getIt.get<RegistrationPreference>();
         await preference.setData(registration);
 
-        context.showSnackBar("Login successfully");
+        context.showSnackBar($strings.loginSuccessfully);
 
         context.router.replace(const HomeRoute());
       },
       error: (exception) {
         exception.equalDo(adminRoleNotAllowed, ifEqual: (error) {
-          context.showSnackBar(
-            "Admin can't access the mobile app",
-          );
+          context.showSnackBar($strings.adminAccessError);
         });
       },
     );
   }
 }
-

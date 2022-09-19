@@ -1,6 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/main.dart';
-import 'package:aswar/router/router.dart';
+import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/home/task_list_tile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,7 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     _buildNavigation(),
                     const Spacer(),
-                    _buildAddTaskButton(),
+                    AppButton(
+                      onPressed: _onAddTaskPressed,
+                      title: $strings.addNewTask,
+                    ),
                   ],
                 ),
               ),
@@ -107,21 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildAddTaskButton() {
-    return Padding(
-      padding: EdgeInsets.all($styles.insets.sm),
-      child: TextButton(
-        onPressed: () {
-          // context.router.push(0Route());
-        },
-        child: Text(
-          $strings.addNewTask,
-          style: TextStyle(color: $styles.colors.black),
-        ),
-      ),
-    );
-  }
-
   Widget _buildHeaderContent(HomeData homeData, _) {
     const divider = SizedBox(
       height: 40,
@@ -173,6 +161,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  void _onAddTaskPressed() {}
 }
 
 class TaskState extends StatelessWidget {

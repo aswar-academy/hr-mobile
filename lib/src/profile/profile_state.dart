@@ -8,7 +8,7 @@ typedef UserState = UiState<UserDetail>;
 typedef LogoutState = UiState<dynamic>;
 
 @CopyWith()
-class ProfileState {
+class ProfileState extends MultipleState {
   final UserState user;
   final LogoutState logout;
 
@@ -16,4 +16,18 @@ class ProfileState {
     this.user = const UserState.idle(),
     this.logout = const LogoutState.idle(),
   });
+
+  @override
+  List<UiState> get states => [user, logout];
+}
+
+abstract class MultipleState {
+  const MultipleState();
+
+  List<UiState<dynamic>> get states;
+
+  bool get isAllLoading {
+    if (states.isEmpty) throw UnsupportedError("add all state to the list");
+    return states.any((element) => element.isLoading);
+  }
 }

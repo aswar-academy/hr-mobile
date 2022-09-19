@@ -31,14 +31,14 @@ typedef FutureResponse<T> = Future<Response<T>>;
 typedef StateChanged<T> = void Function(T value);
 
 
-extension FutureCallCubit on Cubit {
+extension FutureCallCubit<T> on Cubit<T> {
   getDynamicState(
     Future<void> Function() call,
     void Function(ResultState<dynamic> value) onStateChanged,
   ) async {
-    emit(dynamicLoadingState);
+    onStateChanged(dynamicLoadingState);
     await call();
-    emit(dynamicDataState);
+    onStateChanged(dynamicDataState);
   }
 }
 
