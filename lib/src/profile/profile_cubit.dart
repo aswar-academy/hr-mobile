@@ -11,14 +11,10 @@ import 'profile_state.dart';
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(const ProfileState());
 
-  Future<void> getProfile() async {
-    final user = await $client.authProfileGet();
-    print(user.body);
-    return errorHandler
-        .stream($client.authProfileGet().transform)
-        .listen((event) {})
-        .asFuture();
-  }
+  Future<void> getProfile() => errorHandler
+      .stream($client.authProfileGet().transform)
+      .listen((event) => emit(state.copyWith(user: event)))
+      .asFuture();
 
   Future<void> logout() => getDynamicState(
         getIt.get<RegistrationPreference>().clearData,
