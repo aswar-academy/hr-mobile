@@ -1,8 +1,8 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/router/router.dart';
+import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/home/task_list_tile.dart';
-import 'package:aswar/src/login/login_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,9 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const Positioned(
                 left: 0,
                 right: 0,
-                child: Header(
-                  minHeight: 350,
-                ),
+                child: Header(minHeight: 350),
               ),
               Positioned.fill(
                 child: Column(

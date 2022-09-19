@@ -1,15 +1,8 @@
+import 'dart:async';
+
 import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
 import 'package:chopper/chopper.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-@module
-abstract class LocalModule {
-  @preResolve
-  Future<SharedPreferences> provideSharedPreferences() {
-    return SharedPreferences.getInstance();
-  }
-}
 
 @module
 abstract class ClientModule {
@@ -17,9 +10,19 @@ abstract class ClientModule {
     return Openapi.create(
       baseUrl: "https://shrouded-fortress-33438.herokuapp.com",
       // baseUrl: "http://127.0.0.1:3000",
-      interceptors: [
-        HttpLoggingInterceptor(),
-      ],
+      // authenticator: TokenAuthenticator(),
+      // interceptors: [
+      //   HttpLoggingInterceptor(),
+      // ],
     );
+  }
+}
+
+class AuthInterceptor extends RequestInterceptor {
+  @override
+  FutureOr<Request> onRequest(Request request) {
+    request.headers.addAll({});
+
+    return request;
   }
 }

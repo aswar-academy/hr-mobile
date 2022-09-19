@@ -1,7 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/registration.dart';
-import 'package:aswar/di/injection.dart';
-import 'package:auto_route/auto_route.dart';
+
 
 class AuthenticatedGuard extends AutoRouteGuard {
   @override

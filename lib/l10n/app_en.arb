@@ -6,6 +6,8 @@
   "appName": "Aswar",
   "department": "Department",
   "departmentSubtitle": "My Record",
+  "doingTask": "DOING",
+  "doneTask": "DONE",
   "email": "Email",
   "emailHintText": "example@gmail.com",
   "greeting": "Hello {name}",
@@ -17,16 +19,7 @@
   "introDescription2": "task management and time tracking",
   "introDescription3": "your job-Title, department and more",
   "login": "Login",
-  "@tasksSubtitle": {
-    "placeholders": {
-      "count": {}
-    }
-  },
-  "@greeting": {
-    "placeholders": {
-      "name": {}
-    }
-  },
+  "logout": "Logout",
   "password": "Password",
   "payroll": "Payroll",
   "profile": "My Profile",
@@ -34,6 +27,7 @@
   "swap": "Swap left to continue",
   "tasks": "My Tasks",
   "tasksSubtitle": "New tasks {count}",
+  "todoTask": "TODO",
   "validationEmail": "Should be email",
   "validationEqualValueName": "Should be equal value name",
   "validationLessThanMax": "Should be less than max",
@@ -44,7 +38,14 @@
   "validationRequired": "Value required",
   "validationUrl": "Should be url",
   "validationYoutubeUrl": "Should be youtube url",
-  "todoTask": "TODO",
-  "doingTask": "DOING",
-  "doneTask": "DONE"
+  "@tasksSubtitle": {
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "@greeting": {
+    "placeholders": {
+      "name": {}
+    }
+  }
 }

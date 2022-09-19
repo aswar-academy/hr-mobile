@@ -16,7 +16,9 @@ import '../src/login/login_cubit.dart' as _i4;
 import '../src/profile/profile_cubit.dart' as _i6;
 import '../swagger_generated_code/openapi.swagger.dart' as _i5;
 import '../ui/strings.dart' as _i3;
-import 'modules.dart' as _i11; // ignore_for_file: unnecessary_lambdas
+import 'modules/client_module.dart' as _i11;
+import 'modules/local_module.dart'
+    as _i12; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -43,4 +45,4 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
 
 class _$ClientModule extends _i11.ClientModule {}
 
-class _$LocalModule extends _i11.LocalModule {}
+class _$LocalModule extends _i12.LocalModule {}

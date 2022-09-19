@@ -1,0 +1,12 @@
+{
+  "cubitStateHandler": {
+    "scope": "dart",
+    "prefix": "cubitStateHandler",
+    "body": [
+      "Future<void> $1($2) => errorHandler",
+      "  .stream($client.$3.transform)",
+      "  .listen(emit)",
+      "  .asFuture();"
+    ]
+  }
+}

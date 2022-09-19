@@ -6,6 +6,8 @@
   "appName": "اسوار",
   "department": "قسمك",
   "departmentSubtitle": "معلومات القسم",
+  "doingTask": "مهام قيد التقدم",
+  "donTask": "مهام منجزة",
   "email": "ايميل",
   "emailHintText": "example@gmail.com",
   "greeting": "اهلا {name}",
@@ -17,6 +19,7 @@
   "introDescription2": "تتبع المهام والوقت المحدد لها",
   "introDescription3": "عنوانك الوظيفي وقسمك والمزيد",
   "login": "تسجيل الدخول",
+  "logout": "تسجيل الخروج",
   "password": "كلمة السر",
   "payroll": "تسجل الحظور",
   "profile": "ملفي الشخصي",
@@ -24,6 +27,7 @@
   "swap": "اسحب لليمين للتقدم",
   "tasks": "مهامي",
   "tasksSubtitle": "{count} مهمة جديد",
+  "todoTask": "مهام معلقة",
   "validationEmail": "يجب ان يكون بريد الكتروني",
   "validationEqualValueName": "يجب ان تساوي الاسم",
   "validationLessThanMax": "يجب انت تكون اقل من",
@@ -33,8 +37,5 @@
   "validationPhoneNumber": "يجب ان يكون رقم هاتف",
   "validationRequired": "القيمة مطلوبة",
   "validationUrl": "يجب ان يكون رابط",
-  "validationYoutubeUrl": "يجب ان يكون رابط يوتيوب",
-  "todoTask": "مهام معلقة",
-  "doingTask": "مهام قيد التقدم",
-  "donTask": "مهام منجزة"
+  "validationYoutubeUrl": "يجب ان يكون رابط يوتيوب"
 }

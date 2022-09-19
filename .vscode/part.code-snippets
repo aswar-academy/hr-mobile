@@ -1,0 +1,7 @@
+{
+  "partg": {
+    "scope": "dart",
+    "prefix": "part",
+    "body": ["part \"${1:$TM_FILENAME_BASE}.g.dart\";"]
+  }
+}

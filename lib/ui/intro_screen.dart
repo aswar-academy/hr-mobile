@@ -1,10 +1,8 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/intro_screen_preference.dart';
-import 'package:aswar/di/injection.dart';
 import 'package:aswar/gen/assets.gen.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/ui/logo.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_intro_screen/flutter_intro_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -1,6 +1,4 @@
 import 'package:aswar/common_libs.dart';
-import 'package:aswar/di/injection.dart';
-import 'package:aswar/router/guards/guards.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
 import 'package:aswar/src/profile/profile.dart';

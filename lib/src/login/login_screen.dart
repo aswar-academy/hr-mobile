@@ -1,12 +1,11 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/registration.dart';
-import 'package:aswar/di/injection.dart';
 import 'package:aswar/main.dart';
+import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/login/login_filter.dart';
 import 'package:aswar/ui/logo.dart';
 import 'package:aswar/ui/utils.dart';
 import 'package:aswar/ui/validator.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'login_cubit.dart';
@@ -123,29 +122,3 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-class Header extends StatelessWidget {
-  final Widget child;
-  final double minHeight;
-
-  const Header({
-    super.key,
-    this.child = const SizedBox.shrink(),
-    this.minHeight = 300,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(minHeight: minHeight),
-      child: Container(
-        decoration: BoxDecoration(
-          color: $styles.colors.surface,
-          borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(100),
-          ),
-        ),
-        child: child,
-      ),
-    );
-  }
-}
