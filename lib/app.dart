@@ -1,3 +1,4 @@
+import '../src/my_department/my_department.dart';
 import '../src/payroll/payroll.dart';
 import '../src/my_tasks/my_tasks.dart';
 import 'package:aswar/common_libs.dart';
@@ -24,6 +25,7 @@ class _AswarAppState extends State<AswarApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: <BlocProvider>[
+        BlocProvider<MyDepartmentCubit>(create: (_) => getIt<MyDepartmentCubit>()),
         BlocProvider<PayrollCubit>(create: (_) => getIt<PayrollCubit>()),
         BlocProvider<MyTasksCubit>(create: (_) => getIt<MyTasksCubit>()),
         BlocProvider<ProfileCubit>(create: (_) => getIt<ProfileCubit>()),

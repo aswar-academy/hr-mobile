@@ -94,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: $strings.department,
           description: $strings.departmentSubtitle,
           onPressed: () {
-            // context.router.push(DepartmentRoute());
+            context.router.push(const MyDepartmentRoute());
           },
         ),
         NavigationListTile(
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: $strings.payroll,
           description: "time ago package",
           onPressed: () {
-            // context.router.push(PayrollRoute());
+            context.router.push(const PayrollRoute());
           },
         ),
       ],

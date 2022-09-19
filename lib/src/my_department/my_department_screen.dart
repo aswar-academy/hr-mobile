@@ -4,28 +4,28 @@ import 'package:aswar/src/component/header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'payroll_state.dart';
-import 'payroll_cubit.dart';
+import 'my_department_cubit.dart';
+import 'my_department_state.dart';
 
-class PayrollScreen extends StatefulWidget {
-  const PayrollScreen({super.key});
+class MyDepartmentScreen extends StatefulWidget {
+  const MyDepartmentScreen({super.key});
 
   @override
-  State<PayrollScreen> createState() => _PayrollScreenState();
+  State<MyDepartmentScreen> createState() => _MyDepartmentScreenState();
 }
 
-class _PayrollScreenState extends State<PayrollScreen> {
+class _MyDepartmentScreenState extends State<MyDepartmentScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<PayrollCubit>();
+    context.read<MyDepartmentCubit>();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: BlocBuilder<PayrollCubit, PayrollState>(
+      body: BlocBuilder<MyDepartmentCubit, MyDepartmentState>(
         builder: (context, state) {
           return Stack(
             children: [
@@ -53,5 +53,5 @@ class _PayrollScreenState extends State<PayrollScreen> {
     );
   }
 
-  _onAddTaskPressed() {}
+  void _onAddTaskPressed() {}
 }
