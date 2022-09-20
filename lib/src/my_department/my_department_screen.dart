@@ -3,6 +3,7 @@ import 'package:aswar/data.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/profile/profile.dart';
+import 'package:aswar/ui/logo.dart';
 import 'package:aswar/ui/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,6 +70,8 @@ class _MyDepartmentScreenState extends State<MyDepartmentScreen> {
                                     color: Colors.white,
                                   ),
                                 ),
+                                const Gap(12.0),
+                                const AswarLogo(),
                               ],
                             ),
                           ),
