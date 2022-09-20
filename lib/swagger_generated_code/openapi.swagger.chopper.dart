@@ -83,7 +83,7 @@ class _$Openapi extends Openapi {
 
   @override
   Future<Response<PaginatedTask>> _tasksGet(
-      {Object? skip, Object? take, String? cacheControl}) {
+      {num? skip, num? take, String? cacheControl}) {
     final $url = '/tasks';
     final $params = <String, dynamic>{'skip': skip, 'take': take};
     final $headers = {

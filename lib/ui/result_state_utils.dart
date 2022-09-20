@@ -26,3 +26,8 @@ const UiState<dynamic> dynamicDataState =
     UiState.data(data: null, response: dynamicResponse);
 
 const UiState<dynamic> dynamicLoadingState = UiState<dynamic>.loading();
+typedef LoadingState<T> = Loading<T>;
+
+ResultState<T> emitableData<T>(T data) {
+  return ResultState.data(data: data, response: dynamicResponse);
+}

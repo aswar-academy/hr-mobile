@@ -3,8 +3,9 @@ import 'package:aswar/gen/assets.gen.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
-import 'package:aswar/src/home/task_list_tile.dart';
 import 'package:aswar/src/profile/profile.dart';
+import 'package:aswar/src/profile/settings_list_tile.dart';
+import 'package:aswar/ui/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 const double _imageSize = 100.0;
@@ -111,33 +112,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: const EdgeInsets.all(16.0),
                     child: Text("Settings", style: $styles.text.h4),
                   ),
-                  SettingsOption(
-                    title: "اللغة",
-                    description: "العربية",
+                  SettingsListTile(
+                    title: $strings.language,
+                    description: $strings.arabic,
                     icon: Icons.language,
                     iconColor: Colors.purple,
                     onPressed: () {},
                   ),
-                  SettingsOption(
-                    title: "المظهر",
-                    description: "داكن",
-                    icon: Icons.language,
+                  SettingsListTile(
+                    title: $strings.appearance,
+                    description: $strings.dark,
+                    icon: Icons.dark_mode,
                     iconColor: Colors.purple,
-                    onPressed: () {},
+                    onPressed: context.showUnderDevelopment,
                   ),
-                  SettingsOption(
-                    title: "سياسة الخصوصية",
-                    description: "",
-                    icon: Icons.language,
-                    iconColor: Colors.purple,
-                    onPressed: () {},
-                  ),
-                  SettingsOption(
-                    title: "الشروط والاحكام",
-                    description: "",
+                  SettingsListTile(
+                    title: $strings.termAndConditions,
                     icon: Icons.book,
                     iconColor: Colors.purple,
-                    onPressed: () {},
+                    onPressed: context.showUnderDevelopment,
+                  ),
+                  SettingsListTile(
+                    title: $strings.privacyPolicy,
+                    icon: Icons.book,
+                    iconColor: Colors.purple,
+                    onPressed: context.showUnderDevelopment,
                   ),
                   const Spacer(),
                   AppButton(
@@ -158,66 +157,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final read = context.read<ProfileCubit>();
     await read.logout();
     context.router.push(const LoginRoute());
-  }
-}
-
-class SettingsOption extends StatelessWidget {
-  const SettingsOption({
-    Key? key,
-    required this.title,
-    required this.description,
-    required this.iconColor,
-    required this.onPressed,
-    required this.icon,
-  }) : super(key: key);
-
-  final String title;
-  final String description;
-  final MaterialColor iconColor;
-  final IconData icon;
-  final GestureTapCallback? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final border = BorderRadius.circular($styles.corners.md);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Card(
-        elevation: 25,
-        shape: RoundedRectangleBorder(borderRadius: border),
-        child: InkWell(
-          onTap: onPressed,
-          borderRadius: border,
-          focusColor: iconColor.shade100,
-          hoverColor: iconColor.shade100,
-          splashColor: iconColor.shade400,
-          highlightColor: iconColor.shade100,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    BorderedIcon(color: iconColor, icon: icon),
-                    Gap($styles.insets.md),
-                    Text(
-                      title,
-                      style: $styles.text.h5.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                Gap($styles.insets.xxs),
-                Text(description, style: $styles.text.title2),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

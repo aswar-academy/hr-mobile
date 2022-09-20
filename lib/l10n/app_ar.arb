@@ -39,6 +39,14 @@
   "validationUrl": "يجب ان يكون رابط",
   "validationYoutubeUrl": "يجب ان يكون رابط يوتيوب",
   "loginSuccessfully": "تم تسجيل الدخول بنجاح",
-  
-  "adminAccessError": "لا يمكن للمسؤول التسجيل في تطبيق الموبايل"
+  "adminAccessError": "لا يمكن للمسؤول التسجيل في تطبيق الموبايل",
+  "language": "اللغة",
+  "appearance": "المظهر",
+  "privacyPolicy": "سياسة الخصوصية",
+  "termAndConditions": "الشروط والاحكام",
+  "featureUnderDevelopment": "الميزة غير متاحة حاليا تحت التطوير",
+  "light": "مضيء",
+  "dark": "داكن",
+  "arabic": "العربية",
+  "english": "الانكليزية"
 }

@@ -6,6 +6,19 @@ part of 'openapi.models.swagger.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Department _$DepartmentFromJson(Map<String, dynamic> json) => Department(
+      name: json['name'] as String,
+      id: (json['id'] as num).toDouble(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+    );
+
+Map<String, dynamic> _$DepartmentToJson(Department instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'id': instance.id,
+      'createdAt': instance.createdAt.toIso8601String(),
+    };
+
 Attendance _$AttendanceFromJson(Map<String, dynamic> json) => Attendance(
       id: (json['id'] as num).toDouble(),
       createdAt: DateTime.parse(json['createdAt'] as String),
@@ -55,7 +68,10 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) => UserDetail(
       jobTitle: json['jobTitle'] as String,
       salary: (json['salary'] as num?)?.toDouble(),
       departmentId: (json['departmentId'] as num).toDouble(),
-      department: json['department'] as Object,
+      id: (json['id'] as num).toDouble(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      department:
+          Department.fromJson(json['department'] as Map<String, dynamic>),
       attendance: (json['attendance'] as List<dynamic>?)
               ?.map((e) => Attendance.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -64,8 +80,6 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) => UserDetail(
               ?.map((e) => Task.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      id: (json['id'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$UserDetailToJson(UserDetail instance) {
@@ -84,11 +98,11 @@ Map<String, dynamic> _$UserDetailToJson(UserDetail instance) {
   val['jobTitle'] = instance.jobTitle;
   writeNotNull('salary', instance.salary);
   val['departmentId'] = instance.departmentId;
-  val['department'] = instance.department;
-  val['attendance'] = instance.attendance.map((e) => e.toJson()).toList();
-  val['tasks'] = instance.tasks.map((e) => e.toJson()).toList();
   val['id'] = instance.id;
   val['createdAt'] = instance.createdAt.toIso8601String();
+  val['department'] = instance.department.toJson();
+  val['attendance'] = instance.attendance.map((e) => e.toJson()).toList();
+  val['tasks'] = instance.tasks.map((e) => e.toJson()).toList();
   return val;
 }
 
@@ -236,19 +250,6 @@ CreateDepartment _$CreateDepartmentFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CreateDepartmentToJson(CreateDepartment instance) =>
     <String, dynamic>{
       'name': instance.name,
-    };
-
-Department _$DepartmentFromJson(Map<String, dynamic> json) => Department(
-      name: json['name'] as String,
-      id: (json['id'] as num).toDouble(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-    );
-
-Map<String, dynamic> _$DepartmentToJson(Department instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'id': instance.id,
-      'createdAt': instance.createdAt.toIso8601String(),
     };
 
 PaginatedDepartment _$PaginatedDepartmentFromJson(Map<String, dynamic> json) =>

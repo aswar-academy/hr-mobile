@@ -124,7 +124,7 @@ abstract class Openapi extends ChopperService {
   ///@param skip
   ///@param take
   Future<chopper.Response<PaginatedTask>> tasksGet(
-      {Object? skip, Object? take, String? cacheControl}) {
+      {num? skip, num? take, String? cacheControl}) {
     generatedMapping.putIfAbsent(
         PaginatedTask, () => PaginatedTask.fromJsonFactory);
 
@@ -136,8 +136,8 @@ abstract class Openapi extends ChopperService {
   ///@param take
   @Get(path: '/tasks')
   Future<chopper.Response<PaginatedTask>> _tasksGet(
-      {@Query('skip') Object? skip,
-      @Query('take') Object? take,
+      {@Query('skip') num? skip,
+      @Query('take') num? take,
       @Header('Cache-Control') String? cacheControl});
 
   ///

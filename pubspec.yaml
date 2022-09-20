@@ -23,6 +23,8 @@ dependencies:
   flutter_animate: ^1.0.0
   google_fonts: ^3.0.1
 
+
+  logging: ^1.0.2
   extra_alignments: ^1.0.0+1
   flextras: ^0.0.2
   gap: ^2.0.0

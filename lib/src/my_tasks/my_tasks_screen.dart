@@ -1,6 +1,8 @@
+import 'package:aswar/common_libs.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
+import 'package:aswar/src/my_tasks/my_task_list_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,10 +36,28 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
                 right: 0,
                 child: Header(minHeight: 350),
               ),
+              state.maybeWhen(
+                data: (data, response) {
+                  return ListView.builder(
+                    itemCount: data.results.length,
+                    itemBuilder: (context, index) {
+                      final task = data.results[index];
+                      return TaskListTile(
+                        task: task,
+                        onPressed: () {
+                          // TODO(masreplay): change state
+                        },
+                      );
+                    },
+                  );
+                },
+                orElse: SizedBox.new,
+              ),
               Positioned.fill(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    AppBar(title: Text($strings.tasks)),
                     const Spacer(),
                     AppButton(
                       onPressed: _onAddTaskPressed,

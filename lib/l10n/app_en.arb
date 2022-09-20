@@ -53,5 +53,14 @@
   "title": "Title",
   "titleHint": "Title...",
   "description": "Description",
-  "descriptionHint": "Description..."
+  "descriptionHint": "Description...",
+  "language": "Language",
+  "appearance": "Appearance",
+  "privacyPolicy": "privacy-policy",
+  "termAndConditions": "Term And Conditions",
+  "featureUnderDevelopment":"Feature under development",
+  "light": "light",
+  "dark": "dark",
+  "arabic": "arabic",
+  "english": "english"
 }

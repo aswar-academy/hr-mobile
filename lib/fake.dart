@@ -3,7 +3,7 @@ import 'package:aswar/main.dart';
 
 // swagger_package
 // suggestion to use const constructed
-const Login fakeLogin = Login(
+final Login fakeLogin = Login(
   email: "masreplay@gmail.com",
   password: "12345678",
 );

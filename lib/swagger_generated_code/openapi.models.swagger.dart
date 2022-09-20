@@ -8,6 +8,70 @@ import 'openapi.enums.swagger.dart' as enums;
 part 'openapi.models.swagger.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class Department {
+  Department({
+    required this.name,
+    required this.id,
+    required this.createdAt,
+  });
+
+  factory Department.fromJson(Map<String, dynamic> json) =>
+      _$DepartmentFromJson(json);
+
+  @JsonKey(name: 'name', includeIfNull: false)
+  final String name;
+  @JsonKey(name: 'id', includeIfNull: false)
+  final double id;
+  @JsonKey(name: 'createdAt', includeIfNull: false)
+  final DateTime createdAt;
+  static const fromJsonFactory = _$DepartmentFromJson;
+  static const toJsonFactory = _$DepartmentToJson;
+  Map<String, dynamic> toJson() => _$DepartmentToJson(this);
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Department &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)));
+  }
+
+  @override
+  String toString() => jsonEncode(this);
+
+  @override
+  int get hashCode =>
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(createdAt) ^
+      runtimeType.hashCode;
+}
+
+extension $DepartmentExtension on Department {
+  Department copyWith({String? name, double? id, DateTime? createdAt}) {
+    return Department(
+        name: name ?? this.name,
+        id: id ?? this.id,
+        createdAt: createdAt ?? this.createdAt);
+  }
+
+  Department copyWithWrapped(
+      {Wrapped<String>? name,
+      Wrapped<double>? id,
+      Wrapped<DateTime>? createdAt}) {
+    return Department(
+        name: (name != null ? name.value : this.name),
+        id: (id != null ? id.value : this.id),
+        createdAt: (createdAt != null ? createdAt.value : this.createdAt));
+  }
+}
+
+@JsonSerializable(explicitToJson: true)
 class Attendance {
   Attendance({
     required this.id,
@@ -198,11 +262,11 @@ class UserDetail {
     required this.jobTitle,
     this.salary,
     required this.departmentId,
+    required this.id,
+    required this.createdAt,
     required this.department,
     required this.attendance,
     required this.tasks,
-    required this.id,
-    required this.createdAt,
   });
 
   factory UserDetail.fromJson(Map<String, dynamic> json) =>
@@ -225,17 +289,17 @@ class UserDetail {
   final double? salary;
   @JsonKey(name: 'departmentId', includeIfNull: false)
   final double departmentId;
+  @JsonKey(name: 'id', includeIfNull: false)
+  final double id;
+  @JsonKey(name: 'createdAt', includeIfNull: false)
+  final DateTime createdAt;
   @JsonKey(name: 'department', includeIfNull: false)
-  final Object department;
+  final Department department;
   @JsonKey(
       name: 'attendance', includeIfNull: false, defaultValue: <Attendance>[])
   final List<Attendance> attendance;
   @JsonKey(name: 'tasks', includeIfNull: false, defaultValue: <Task>[])
   final List<Task> tasks;
-  @JsonKey(name: 'id', includeIfNull: false)
-  final double id;
-  @JsonKey(name: 'createdAt', includeIfNull: false)
-  final DateTime createdAt;
   static const fromJsonFactory = _$UserDetailFromJson;
   static const toJsonFactory = _$UserDetailToJson;
   Map<String, dynamic> toJson() => _$UserDetailToJson(this);
@@ -258,6 +322,11 @@ class UserDetail {
             (identical(other.departmentId, departmentId) ||
                 const DeepCollectionEquality()
                     .equals(other.departmentId, departmentId)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)) &&
             (identical(other.department, department) ||
                 const DeepCollectionEquality()
                     .equals(other.department, department)) &&
@@ -265,12 +334,7 @@ class UserDetail {
                 const DeepCollectionEquality()
                     .equals(other.attendance, attendance)) &&
             (identical(other.tasks, tasks) ||
-                const DeepCollectionEquality().equals(other.tasks, tasks)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
+                const DeepCollectionEquality().equals(other.tasks, tasks)));
   }
 
   @override
@@ -284,11 +348,11 @@ class UserDetail {
       const DeepCollectionEquality().hash(jobTitle) ^
       const DeepCollectionEquality().hash(salary) ^
       const DeepCollectionEquality().hash(departmentId) ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(createdAt) ^
       const DeepCollectionEquality().hash(department) ^
       const DeepCollectionEquality().hash(attendance) ^
       const DeepCollectionEquality().hash(tasks) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(createdAt) ^
       runtimeType.hashCode;
 }
 
@@ -300,11 +364,11 @@ extension $UserDetailExtension on UserDetail {
       String? jobTitle,
       double? salary,
       double? departmentId,
-      Object? department,
-      List<Attendance>? attendance,
-      List<Task>? tasks,
       double? id,
-      DateTime? createdAt}) {
+      DateTime? createdAt,
+      Department? department,
+      List<Attendance>? attendance,
+      List<Task>? tasks}) {
     return UserDetail(
         email: email ?? this.email,
         name: name ?? this.name,
@@ -312,11 +376,11 @@ extension $UserDetailExtension on UserDetail {
         jobTitle: jobTitle ?? this.jobTitle,
         salary: salary ?? this.salary,
         departmentId: departmentId ?? this.departmentId,
+        id: id ?? this.id,
+        createdAt: createdAt ?? this.createdAt,
         department: department ?? this.department,
         attendance: attendance ?? this.attendance,
-        tasks: tasks ?? this.tasks,
-        id: id ?? this.id,
-        createdAt: createdAt ?? this.createdAt);
+        tasks: tasks ?? this.tasks);
   }
 
   UserDetail copyWithWrapped(
@@ -326,11 +390,11 @@ extension $UserDetailExtension on UserDetail {
       Wrapped<String>? jobTitle,
       Wrapped<double?>? salary,
       Wrapped<double>? departmentId,
-      Wrapped<Object>? department,
-      Wrapped<List<Attendance>>? attendance,
-      Wrapped<List<Task>>? tasks,
       Wrapped<double>? id,
-      Wrapped<DateTime>? createdAt}) {
+      Wrapped<DateTime>? createdAt,
+      Wrapped<Department>? department,
+      Wrapped<List<Attendance>>? attendance,
+      Wrapped<List<Task>>? tasks}) {
     return UserDetail(
         email: (email != null ? email.value : this.email),
         name: (name != null ? name.value : this.name),
@@ -339,17 +403,17 @@ extension $UserDetailExtension on UserDetail {
         salary: (salary != null ? salary.value : this.salary),
         departmentId:
             (departmentId != null ? departmentId.value : this.departmentId),
+        id: (id != null ? id.value : this.id),
+        createdAt: (createdAt != null ? createdAt.value : this.createdAt),
         department: (department != null ? department.value : this.department),
         attendance: (attendance != null ? attendance.value : this.attendance),
-        tasks: (tasks != null ? tasks.value : this.tasks),
-        id: (id != null ? id.value : this.id),
-        createdAt: (createdAt != null ? createdAt.value : this.createdAt));
+        tasks: (tasks != null ? tasks.value : this.tasks));
   }
 }
 
 @JsonSerializable(explicitToJson: true)
 class Login {
-  const Login({
+  Login({
     required this.email,
     required this.password,
   });
@@ -913,70 +977,6 @@ extension $CreateDepartmentExtension on CreateDepartment {
 
   CreateDepartment copyWithWrapped({Wrapped<String>? name}) {
     return CreateDepartment(name: (name != null ? name.value : this.name));
-  }
-}
-
-@JsonSerializable(explicitToJson: true)
-class Department {
-  Department({
-    required this.name,
-    required this.id,
-    required this.createdAt,
-  });
-
-  factory Department.fromJson(Map<String, dynamic> json) =>
-      _$DepartmentFromJson(json);
-
-  @JsonKey(name: 'name', includeIfNull: false)
-  final String name;
-  @JsonKey(name: 'id', includeIfNull: false)
-  final double id;
-  @JsonKey(name: 'createdAt', includeIfNull: false)
-  final DateTime createdAt;
-  static const fromJsonFactory = _$DepartmentFromJson;
-  static const toJsonFactory = _$DepartmentToJson;
-  Map<String, dynamic> toJson() => _$DepartmentToJson(this);
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is Department &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.createdAt, createdAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdAt, createdAt)));
-  }
-
-  @override
-  String toString() => jsonEncode(this);
-
-  @override
-  int get hashCode =>
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(createdAt) ^
-      runtimeType.hashCode;
-}
-
-extension $DepartmentExtension on Department {
-  Department copyWith({String? name, double? id, DateTime? createdAt}) {
-    return Department(
-        name: name ?? this.name,
-        id: id ?? this.id,
-        createdAt: createdAt ?? this.createdAt);
-  }
-
-  Department copyWithWrapped(
-      {Wrapped<String>? name,
-      Wrapped<double>? id,
-      Wrapped<DateTime>? createdAt}) {
-    return Department(
-        name: (name != null ? name.value : this.name),
-        id: (id != null ? id.value : this.id),
-        createdAt: (createdAt != null ? createdAt.value : this.createdAt));
   }
 }
 

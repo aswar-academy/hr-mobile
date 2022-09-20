@@ -3,6 +3,8 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member
 // ignore_for_file: invalid_use_of_protected_member
 
+import 'dart:async';
+
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/ui/result_state_utils.dart';
 import 'package:chopper/chopper.dart';
@@ -31,8 +33,8 @@ typedef FutureResponse<T> = Future<Response<T>>;
 typedef StateChanged<T> = void Function(T value);
 
 extension FutureCallCubit<T> on Cubit<T> {
-  getDynamicState(
-    Future<void> Function() call,
+  getFutureAsState(
+    FutureOr<void> Function() call,
     void Function(ResultState<dynamic> value) onStateChanged,
   ) async {
     onStateChanged(dynamicLoadingState);
@@ -40,6 +42,18 @@ extension FutureCallCubit<T> on Cubit<T> {
     onStateChanged(dynamicDataState);
   }
 }
+
+abstract class MultipleState {
+  const MultipleState();
+
+  List<ResultState<dynamic>> get states;
+
+  bool get isAllLoading {
+    if (states.isEmpty) throw UnsupportedError("add all state to the list");
+    return states.any((element) => element.isLoading);
+  }
+}
+
 
 // extension MultiCubitApiHandler<DataType, MultiState> on Cubit<MultiState> {
 //   Future<void> emitCall(
@@ -49,8 +63,6 @@ extension FutureCallCubit<T> on Cubit<T> {
 //     await errorHandler.stream(apiCall.transform).listen(onData).asFuture();
 //   }
 // }
-
-
 
 
 // ## Dart Suggestion
