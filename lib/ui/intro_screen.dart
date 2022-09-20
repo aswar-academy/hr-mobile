@@ -1,8 +1,8 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/intro_screen_preference.dart';
 import 'package:aswar/gen/assets.gen.dart';
-import 'package:aswar/main.dart';
 import 'package:aswar/ui/logo.dart';
+
 import 'package:flutter_intro_screen/flutter_intro_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,15 +22,15 @@ class _IntroScreenState extends State<IntroScreen> {
     fontSize: 18,
   );
 
-  static List<IntroPageData> pageData = [
+  late final List<IntroPageData> pageData = [
     IntroPageData(
       title: Text(
-        $strings.intro1,
+        context.localizations.intro1,
         style: titleStyle,
         textAlign: TextAlign.center,
       ),
       description: Text(
-        $strings.introDescription1,
+        context.localizations.introDescription1,
         style: descriptionStyle,
         textAlign: TextAlign.center,
       ),
@@ -38,12 +38,12 @@ class _IntroScreenState extends State<IntroScreen> {
     ),
     IntroPageData(
       title: Text(
-        $strings.intro2,
+        context.localizations.intro2,
         style: titleStyle,
         textAlign: TextAlign.center,
       ),
       description: Text(
-        $strings.introDescription2,
+        context.localizations.introDescription2,
         style: descriptionStyle,
         textAlign: TextAlign.center,
       ),
@@ -51,12 +51,12 @@ class _IntroScreenState extends State<IntroScreen> {
     ),
     IntroPageData(
       title: Text(
-        $strings.intro3,
+        context.localizations.intro3,
         style: titleStyle,
         textAlign: TextAlign.center,
       ),
       description: Text(
-        $strings.introDescription3,
+        context.localizations.introDescription3,
         style: descriptionStyle,
         textAlign: TextAlign.center,
       ),
@@ -74,7 +74,7 @@ class _IntroScreenState extends State<IntroScreen> {
           button: $styles.colors.accent,
         ),
         centerWidget: Text(
-          $strings.swap,
+          context.localizations.swap,
           style: GoogleFonts.raleway(
             fontSize: 14,
           ),

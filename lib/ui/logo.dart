@@ -1,5 +1,4 @@
 import 'package:aswar/common_libs.dart';
-import 'package:aswar/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AswarLogo extends StatelessWidget {
@@ -25,7 +24,7 @@ class AswarLogo extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: $strings.appName[0],
+                text: context.localizations.appName[0],
                 style: firstColorStyle ??
                     GoogleFonts.raleway(
                       fontSize: 40,
@@ -34,7 +33,7 @@ class AswarLogo extends StatelessWidget {
                     ),
               ),
               TextSpan(
-                text: $strings.appName.substring(1),
+                text: context.localizations.appName.substring(1),
                 style: textStyle,
               ),
             ],

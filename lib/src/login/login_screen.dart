@@ -1,7 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/registration.dart';
 import 'package:aswar/fake.dart';
-import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/login/login_filter.dart';
@@ -55,8 +54,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 validator: Validator.of(context).email().build(),
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
-                  hintText: $strings.emailHintText,
-                  label: Text($strings.email),
+                  hintText: context.localizations.emailHintText,
+                  label: Text(context.localizations.email),
                 ),
               ),
             ),
@@ -69,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: _isObscure,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
-                  label: Text($strings.password),
+                  label: Text(context.localizations.password),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _isObscure
@@ -89,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
             BlocBuilder<LoginCubit, LoginState>(
               builder: (_, state) => AppButton(
                 onPressed: _onLoginPressed,
-                title: $strings.login,
+                title: context.localizations.login,
                 isLoading: state.isLoading,
               ),
             )
@@ -114,13 +113,13 @@ class _LoginScreenState extends State<LoginScreen> {
         await preference.setData(registration);
 
         // ignore: use_build_context_synchronously
-        context.showSnackBar($strings.loginSuccessfully);
+        context.showSnackBar(context.localizations.loginSuccessfully);
 
         context.router.replace(const HomeRoute());
       },
       error: (exception) {
         exception.equalDo(adminRoleNotAllowed, ifEqual: (error) {
-          context.showSnackBar($strings.adminAccessError);
+          context.showSnackBar(context.localizations.adminAccessError);
         });
       },
     );

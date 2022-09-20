@@ -17,3 +17,4 @@ export 'package:gap/gap.dart';
 export 'package:aswar/router/router.dart';
 export 'package:auto_route/auto_route.dart';
 export 'package:aswar/di/injection.dart';
+export 'package:aswar/ui/strings.dart';

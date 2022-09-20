@@ -1,6 +1,6 @@
-import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
+import 'package:aswar/ui/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,7 +41,7 @@ class _MyDepartmentScreenState extends State<MyDepartmentScreen> {
                     const Spacer(),
                     AppButton(
                       onPressed: _onAddTaskPressed,
-                      title: $strings.addNewTask,
+                      title: context.localizations.addNewTask,
                     ),
                   ],
                 ),

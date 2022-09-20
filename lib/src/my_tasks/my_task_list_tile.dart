@@ -1,5 +1,4 @@
 import 'package:aswar/common_libs.dart';
-import 'package:aswar/main.dart';
 import 'package:intl/intl.dart';
 
 class TaskListTile extends StatelessWidget {
@@ -47,7 +46,7 @@ class TaskListTile extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all($styles.insets.xxs),
                     child: Text(
-                      task.state.local,
+                      task.state.local(context.localizations),
                       style: $styles.text.title1.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -89,11 +88,12 @@ extension on TaskState {
     return data[this]!;
   }
 
-  String get local {
+// replace [context] with localization
+  String local(AppLocalizations localizations) {
     final data = {
-      TaskState.doing: $strings.doingTask,
-      TaskState.todo: $strings.todoTask,
-      TaskState.done: $strings.doneTask,
+      TaskState.doing: localizations.doingTask,
+      TaskState.todo: localizations.todoTask,
+      TaskState.done: localizations.doneTask,
     };
     return data[this]!;
   }

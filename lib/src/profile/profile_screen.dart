@@ -1,10 +1,10 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/gen/assets.gen.dart';
+import 'package:aswar/language.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/profile/profile.dart';
 import 'package:aswar/src/profile/settings_list_tile.dart';
-import 'package:aswar/ui/strings.dart';
 import 'package:aswar/ui/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -121,7 +121,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     description: context.localizations.arabic,
                     icon: Icons.language,
                     iconColor: Colors.purple,
-                    onPressed: context.showUnderDevelopment,
+                    onPressed: () {
+                      context.read<LanguageCubit>().changeLanguage();
+                    },
                   ),
                   SettingsListTile(
                     title: context.localizations.appearance,

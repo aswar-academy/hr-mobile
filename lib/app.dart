@@ -1,6 +1,5 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/language.dart';
-import 'package:aswar/main.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
 import 'package:aswar/src/profile/profile.dart';
@@ -37,6 +36,7 @@ class _AswarAppState extends State<AswarApp> {
         BlocProvider<ProfileCubit>(create: (_) => getIt<ProfileCubit>()),
         BlocProvider<LoginCubit>(create: (_) => getIt<LoginCubit>()),
         BlocProvider<HomeCubit>(create: (_) => getIt<HomeCubit>()),
+        BlocProvider<LanguageCubit>(create: (_) => getIt<LanguageCubit>()),
       ],
       child: BlocBuilder<LanguageCubit, Locale>(
         builder: (context, state) {
@@ -46,10 +46,7 @@ class _AswarAppState extends State<AswarApp> {
             routerDelegate: _appRouter.delegate(),
             routeInformationProvider: _appRouter.routeInfoProvider(),
             routeInformationParser: _appRouter.defaultRouteParser(),
-            locale: () {
-              final language = $language.getData();
-              return language == null ? null : Locale(language);
-            }(),
+            locale: state,
             theme: ThemeData(
               fontFamily: $styles.text.body.fontFamily,
               appBarTheme: AppBarTheme(

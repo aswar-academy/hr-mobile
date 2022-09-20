@@ -46,7 +46,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             child: Header(
               minHeight: _appBarHeight,
               child: AppBar(
-                title: Text($strings.addNewTask),
+                title: Text(context.localizations.addNewTask),
               ),
             ),
           ),
@@ -62,8 +62,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     validator: Validator.of(context).maxLength(100).build(),
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
-                      hintText: $strings.titleHint,
-                      label: Text($strings.title),
+                      hintText: context.localizations.titleHint,
+                      label: Text(context.localizations.title),
                     ),
                   ),
                 ),
@@ -76,8 +76,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                     maxLines: null,
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(),
-                      hintText: $strings.descriptionHint,
-                      label: Text($strings.description),
+                      hintText: context.localizations.descriptionHint,
+                      label: Text(context.localizations.description),
                     ),
                   ),
                 ),
@@ -88,7 +88,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   builder: (context, state) {
                     return AppButton(
                       onPressed: _onAddTaskPressed,
-                      title: $strings.addNewTask,
+                      title: context.localizations.addNewTask,
                       isLoading: state.isLoading,
                     );
                   },
@@ -130,19 +130,19 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 //       children: [
 //         TaskStateRadio(
 //           state: TaskState.todo,
-//           title: $strings.todoTask,
+//           title: context.localizations.todoTask,
 //           color: Colors.red,
 //           onPressed: onValueChanged,
 //         ),
 //         TaskStateRadio(
 //           state: TaskState.doing,
-//           title: $strings.doingTask,
+//           title: context.localizations.doingTask,
 //           color: Colors.yellow,
 //           onPressed: onValueChanged,
 //         ),
 //         TaskStateRadio(
 //           state: TaskState.done,
-//           title: $strings.doneTask,
+//           title: context.localizations.doneTask,
 //           color: Colors.green,
 //           onPressed: onValueChanged,
 //         ),

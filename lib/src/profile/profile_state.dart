@@ -9,13 +9,14 @@ typedef UserState = ResultState<UserDetail>;
 
 typedef LogoutState = ResultState<dynamic>;
 
+// error with copy with package generation if i use typedef
 @CopyWith()
 class ProfileState extends MultipleState {
-  final UserState user;
+  final ResultState<UserDetail> user;
   final LogoutState logout;
 
   const ProfileState({
-    this.user = const UserState.idle(),
+    this.user = const ResultState<UserDetail>.idle(),
     this.logout = const LogoutState.idle(),
   });
 

@@ -1,11 +1,11 @@
-import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
+import 'package:aswar/ui/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'payroll_state.dart';
 import 'payroll_cubit.dart';
+import 'payroll_state.dart';
 
 class PayrollScreen extends StatefulWidget {
   const PayrollScreen({super.key});
@@ -41,7 +41,7 @@ class _PayrollScreenState extends State<PayrollScreen> {
                     const Spacer(),
                     AppButton(
                       onPressed: _onAddTaskPressed,
-                      title: $strings.addNewTask,
+                      title: context.localizations.addNewTask,
                     ),
                   ],
                 ),

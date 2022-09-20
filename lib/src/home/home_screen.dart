@@ -1,8 +1,8 @@
 import 'package:aswar/common_libs.dart';
-import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/home/task_list_tile.dart';
+import 'package:aswar/ui/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Spacer(),
                     AppButton(
                       onPressed: _onAddTaskPressed,
-                      title: $strings.addNewTask,
+                      title: context.localizations.addNewTask,
                     ),
                   ],
                 ),
@@ -73,8 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
         NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.teal,
-          title: $strings.profile,
-          description: $strings.profileSubtitle,
+          title: context.localizations.profile,
+          description: context.localizations.profileSubtitle,
           onPressed: () {
             context.router.push(const ProfileRoute());
           },
@@ -82,8 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
         NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.purple,
-          title: $strings.tasks,
-          description: $strings.tasksSubtitle(1),
+          title: context.localizations.tasks,
+          description: context.localizations.tasksSubtitle(1),
           onPressed: () {
             context.router.push(const MyTasksRoute());
           },
@@ -91,8 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
         NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.blue,
-          title: $strings.department,
-          description: $strings.departmentSubtitle,
+          title: context.localizations.department,
+          description: context.localizations.departmentSubtitle,
           onPressed: () {
             context.router.push(const MyDepartmentRoute());
           },
@@ -100,11 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
         NavigationListTile(
           icon: Icons.person_rounded,
           iconColor: Colors.amber,
-          title: $strings.payroll,
-          description: "time ago package",
-          onPressed: () {
-            context.router.push(const PayrollRoute());
-          },
+          title: context.localizations.payroll,
+          description: "",
+          onPressed: context.showUnderDevelopment,
         ),
       ],
     );
@@ -124,17 +122,23 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              $strings.greeting(homeData.user.name),
-              style: $styles.text.h3.copyWith(
-                color: Colors.white,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: $styles.insets.xs),
+              child: Text(
+                context.localizations.greeting(homeData.user.name),
+                style: $styles.text.h3.copyWith(
+                  color: Colors.white,
+                ),
               ),
             ),
             Gap($styles.insets.xs),
-            Text(
-              homeData.user.jobTitle,
-              style: $styles.text.title1.copyWith(
-                color: $styles.colors.accent,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: $styles.insets.xs),
+              child: Text(
+                homeData.user.jobTitle,
+                style: $styles.text.title1.copyWith(
+                  color: $styles.colors.accent,
+                ),
               ),
             ),
             Gap($styles.insets.sm),
@@ -142,17 +146,17 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 TaskState(
                   count: homeData.tasksCount.todo,
-                  title: $strings.todoTask,
+                  title: context.localizations.todoTask,
                 ),
                 divider,
                 TaskState(
                   count: homeData.tasksCount.doing,
-                  title: $strings.doingTask,
+                  title: context.localizations.doingTask,
                 ),
                 divider,
                 TaskState(
                   count: homeData.tasksCount.done,
-                  title: $strings.doneTask,
+                  title: context.localizations.doneTask,
                 ),
               ],
             ),

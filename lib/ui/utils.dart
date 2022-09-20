@@ -1,6 +1,5 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data.dart';
-import 'package:aswar/main.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -21,7 +20,8 @@ extension ScaffoldMessengerExtension on BuildContext {
                 launchUrlString(githubRepository);
               },
             ),
-            Text($strings.featureUnderDevelopment),
+            // error getter not showing auto complete in extension function
+            Text(localizations.featureUnderDevelopment),
           ],
         ),
       ),

@@ -1,5 +1,4 @@
 import 'package:aswar/common_libs.dart';
-import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/my_tasks/my_task_list_tile.dart';
@@ -41,7 +40,7 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     AppBar(
-                      title: Text($strings.tasks),
+                      title: Text(context.localizations.tasks),
                     ),
                     Expanded(
                       child: state.maybeWhen(
@@ -51,7 +50,7 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
                     ),
                     AppButton(
                       onPressed: _onAddTaskPressed,
-                      title: $strings.addNewTask,
+                      title: context.localizations.addNewTask,
                     ),
                   ],
                 ),
@@ -69,6 +68,7 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: data.results.length,
+      physics: const BouncingScrollPhysics(),
       itemBuilder: (context, index) {
         final task = data.results[index];
 
