@@ -31,7 +31,7 @@ class AuthInterceptor extends RequestInterceptor {
     if (token != null) headers.addAll({"Authorization": "Bearer $token"});
 
     request.headers.addAll(headers);
-    print(request.url);
+
     return request;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:aswar/router/router.dart';
+import 'package:aswar/src/add_task/add_task.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_screen.dart';
 import 'package:aswar/src/my_department/my_department_screen.dart';
@@ -10,6 +11,10 @@ import 'package:aswar/ui/intro_screen.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Screen,Route',
   routes: <AutoRoute>[
+    AutoRoute(
+      page: AddTaskScreen,
+      path: "add_task",
+    ),
     AutoRoute(
       page: MyDepartmentScreen,
       path: "my_department",

@@ -43,9 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     state.maybeWhen(
                       data: _buildHeaderContent,
-                      orElse: SizedBox.new,
+                      orElse: Spacer.new,
                     ),
-                    _buildNavigation(),
+                    _buildNavigation().animate().fadeIn(),
                     const Spacer(),
                     AppButton(
                       onPressed: _onAddTaskPressed,
@@ -159,10 +159,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
+    ).animate().fadeIn();
   }
 
-  void _onAddTaskPressed() {}
+  void _onAddTaskPressed() {
+    context.router.push(const AddTaskRoute());
+  }
 }
 
 class TaskState extends StatelessWidget {

@@ -49,5 +49,9 @@
     }
   },
   "loginSuccessfully": "Login successfully",
-  "adminAccessError": "Admin can't access the mobile app"
+  "adminAccessError": "Admin can't access the mobile app",
+  "title": "Title",
+  "titleHint": "Title...",
+  "description": "Description",
+  "descriptionHint": "Description..."
 }

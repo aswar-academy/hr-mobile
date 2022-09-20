@@ -29,5 +29,5 @@ vars:
   add_route:
     type: boolean
     description: add to app_router
-    default: false
+    default: true
     prompt: add to auto_route routes

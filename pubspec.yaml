@@ -11,35 +11,49 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  #localizations
   flutter_localizations:
     sdk: flutter
-  auto_route: ^5.0.1
-  chopper: ^4.0.1
+  intl: ^0.17.0
+
+  
   cupertino_icons: ^1.0.2
+  
+  flutter_animate: ^1.0.0
+  google_fonts: ^3.0.1
+
+  extra_alignments: ^1.0.0+1
+  flextras: ^0.0.2
+  gap: ^2.0.0
+
+  # client and error handling
+  chopper: ^4.0.1
   error_handler: # ^1.0.5
     path: ../perfect_error_handler
     # git: https://github.com/masreplay/perfect_error_handler.git
 
-  extra_alignments: ^1.0.0+1
-  flextras: ^0.0.2
-  flutter_animate: ^1.0.0
-  flutter_intro_screen: ^0.0.4
-  flutter_svg: ^1.1.5
-  gap: ^2.0.0
-  json_annotation: ^4.4.0
-  provider: ^6.0.3
-  smooth_page_indicator: ^1.0.0+2
-  google_fonts: ^3.0.1
-  injectable: ^1.5.3
-  get_it: ^7.2.0
-  intl: ^0.17.0
+  # error handler
+  auto_route: ^5.0.1
 
+  # class and json serialization
+  copy_with_extension: ^4.0.3
+  json_annotation: ^4.4.0
+
+  # state management
+  provider: ^6.0.3
+  injectable: ^1.5.3
+  flutter_bloc: ^8.0.1
+  get_it: ^7.2.0
+
+  # app shape
+  flutter_intro_screen: ^0.0.4
   flutter_launcher_icons: ^0.10.0
   flutter_native_splash: ^2.2.9
+
+  # local storage
   shared_preferences: ^2.0.15
 
-  flutter_bloc: ^8.0.1
-  copy_with_extension: ^4.0.3
   device_preview: ^1.1.0
 
 dev_dependencies:

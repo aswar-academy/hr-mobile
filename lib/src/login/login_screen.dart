@@ -1,5 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/registration.dart';
+import 'package:aswar/fake.dart';
 import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
@@ -7,6 +8,7 @@ import 'package:aswar/src/login/login_filter.dart';
 import 'package:aswar/ui/logo.dart';
 import 'package:aswar/ui/utils.dart';
 import 'package:aswar/ui/validator.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'login_cubit.dart';
@@ -20,10 +22,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _emailController = TextEditingController(text: "masreplay@gmail.com");
-  final _passwordController = TextEditingController(text: "12345678");
+  final _emailController = TextEditingController(
+    text: kDebugMode ? fakeLogin.email : "",
+  );
+  final _passwordController = TextEditingController(
+    text: kDebugMode ? fakeLogin.password : "",
+  );
 
   final _formKey = GlobalKey();
+
+  bool _isObscure = true;
 
   @override
   void initState() {
@@ -58,10 +66,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _passwordController,
                 validator:
                     Validator.of(context).minLength(8).maxLength(16).build(),
-                obscureText: true,
+                obscureText: _isObscure,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
                   label: Text($strings.password),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isObscure
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isObscure = !_isObscure;
+                      });
+                    },
+                  ),
                 ),
               ),
             ),
@@ -93,6 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
         final preference = getIt.get<RegistrationPreference>();
         await preference.setData(registration);
 
+        // ignore: use_build_context_synchronously
         context.showSnackBar($strings.loginSuccessfully);
 
         context.router.replace(const HomeRoute());

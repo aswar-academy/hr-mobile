@@ -349,7 +349,7 @@ extension $UserDetailExtension on UserDetail {
 
 @JsonSerializable(explicitToJson: true)
 class Login {
-  Login({
+  const Login({
     required this.email,
     required this.password,
   });

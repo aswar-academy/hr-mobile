@@ -1,0 +1,9 @@
+{
+  "cubitStateHandler": {
+    "scope": "md",
+    "prefix": "package",
+    "body": [
+      "($1)[https://pub.dev/packages/$1]"
+    ]
+  }
+}

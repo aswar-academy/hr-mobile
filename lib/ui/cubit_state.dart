@@ -13,7 +13,7 @@ extension CubitApiHandler<DataType> on StateCubit<DataType> {
     FutureResponse<DataType> apiCall, [
     StateChanged<UiState<DataType>>? onData,
   ]) async {
-    await errorHandler
+    await const ErrorHandler(logger: stateLogger)
         .stream(apiCall.transform)
         .listen(onData ?? emit)
         .asFuture();
@@ -29,7 +29,6 @@ typedef FutureChopperResponse<T> = Future<ChopperHttpResponse<T>>;
 typedef FutureResponse<T> = Future<Response<T>>;
 
 typedef StateChanged<T> = void Function(T value);
-
 
 extension FutureCallCubit<T> on Cubit<T> {
   getDynamicState(

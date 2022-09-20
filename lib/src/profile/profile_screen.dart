@@ -45,9 +45,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   AppBar(
-                    backgroundColor: Colors.transparent,
-                    elevation: 0,
-                    centerTitle: true,
                     title: Text(
                       $strings.profile,
                       style: $styles.text.h5.copyWith(),
@@ -160,7 +157,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _onLogoutPressed() async {
     final read = context.read<ProfileCubit>();
     await read.logout();
-    // context.router.push(const LoginRoute());
+    context.router.push(const LoginRoute());
   }
 }
 
