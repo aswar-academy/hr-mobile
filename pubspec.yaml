@@ -51,7 +51,9 @@ dependencies:
   # app shape
   flutter_intro_screen: ^0.0.4
   flutter_launcher_icons: ^0.10.0
+  font_awesome_flutter: ^10.2.1
   flutter_native_splash: ^2.2.9
+  url_launcher: ^6.1.5
 
   # local storage
   shared_preferences: ^2.0.15

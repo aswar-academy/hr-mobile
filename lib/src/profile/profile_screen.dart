@@ -1,10 +1,10 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/gen/assets.gen.dart';
-import 'package:aswar/main.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/profile/profile.dart';
 import 'package:aswar/src/profile/settings_list_tile.dart';
+import 'package:aswar/ui/strings.dart';
 import 'package:aswar/ui/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   AppBar(
                     title: Text(
-                      $strings.profile,
+                      context.localizations.profile,
                       style: $styles.text.h5.copyWith(),
                     ),
                   ),
@@ -82,8 +82,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                     ),
                                   ],
-                                ),
-                                orElse: SizedBox.shrink,
+                                ).animate().scale(),
+                                orElse: SizedBox.new,
                               ),
                             ),
                           ),
@@ -108,32 +108,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ],
                   ),
+                  const Spacer(),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text("Settings", style: $styles.text.h4),
+                    child: Text(
+                      context.localizations.settings,
+                      style: $styles.text.h4,
+                    ),
                   ),
                   SettingsListTile(
-                    title: $strings.language,
-                    description: $strings.arabic,
+                    title: context.localizations.language,
+                    description: context.localizations.arabic,
                     icon: Icons.language,
                     iconColor: Colors.purple,
-                    onPressed: () {},
+                    onPressed: context.showUnderDevelopment,
                   ),
                   SettingsListTile(
-                    title: $strings.appearance,
-                    description: $strings.dark,
+                    title: context.localizations.appearance,
+                    description: context.localizations.dark,
                     icon: Icons.dark_mode,
                     iconColor: Colors.purple,
                     onPressed: context.showUnderDevelopment,
                   ),
                   SettingsListTile(
-                    title: $strings.termAndConditions,
+                    title: context.localizations.termAndConditions,
                     icon: Icons.book,
                     iconColor: Colors.purple,
                     onPressed: context.showUnderDevelopment,
                   ),
                   SettingsListTile(
-                    title: $strings.privacyPolicy,
+                    title: context.localizations.privacyPolicy,
                     icon: Icons.book,
                     iconColor: Colors.purple,
                     onPressed: context.showUnderDevelopment,
@@ -141,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const Spacer(),
                   AppButton(
                     onPressed: _onLogoutPressed,
-                    title: $strings.logout,
+                    title: context.localizations.logout,
                     isLoading: state.logout.isLoading,
                   ),
                 ],

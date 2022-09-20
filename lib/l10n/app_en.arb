@@ -62,5 +62,6 @@
   "light": "light",
   "dark": "dark",
   "arabic": "arabic",
-  "english": "english"
+  "english": "english",
+  "settings":"Settings"
 }

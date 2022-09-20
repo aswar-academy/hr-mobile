@@ -1,4 +1,6 @@
 import 'package:aswar/common_libs.dart';
+import 'package:aswar/language.dart';
+import 'package:aswar/main.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
 import 'package:aswar/src/profile/profile.dart';
@@ -36,34 +38,42 @@ class _AswarAppState extends State<AswarApp> {
         BlocProvider<LoginCubit>(create: (_) => getIt<LoginCubit>()),
         BlocProvider<HomeCubit>(create: (_) => getIt<HomeCubit>()),
       ],
-      child: MaterialApp.router(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        routerDelegate: _appRouter.delegate(),
-        routeInformationProvider: _appRouter.routeInfoProvider(),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        theme: ThemeData(
-          fontFamily: $styles.text.body.fontFamily,
-          appBarTheme: AppBarTheme(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            centerTitle: true,
-            titleTextStyle: $styles.text.h5.copyWith(),
-          ),
-          textButtonTheme: TextButtonThemeData(
-            style: TextButton.styleFrom(
-              textStyle: $styles.text.button.copyWith(color: Colors.black),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0),
+      child: BlocBuilder<LanguageCubit, Locale>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            routerDelegate: _appRouter.delegate(),
+            routeInformationProvider: _appRouter.routeInfoProvider(),
+            routeInformationParser: _appRouter.defaultRouteParser(),
+            locale: () {
+              final language = $language.getData();
+              return language == null ? null : Locale(language);
+            }(),
+            theme: ThemeData(
+              fontFamily: $styles.text.body.fontFamily,
+              appBarTheme: AppBarTheme(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                centerTitle: true,
+                titleTextStyle: $styles.text.h5.copyWith(),
               ),
-              surfaceTintColor: Colors.black,
-              backgroundColor: $styles.colors.accent,
-              padding: EdgeInsets.all($styles.insets.md),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  textStyle: $styles.text.button.copyWith(color: Colors.black),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  surfaceTintColor: Colors.black,
+                  backgroundColor: $styles.colors.accent,
+                  padding: EdgeInsets.all($styles.insets.md),
+                ),
+              ),
             ),
-          ),
-        ),
-        supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+          );
+        },
       ),
     );
   }

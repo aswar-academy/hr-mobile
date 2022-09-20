@@ -11,18 +11,19 @@ import 'package:shared_preferences/shared_preferences.dart' as _i11;
 
 import '../common_libs.dart' as _i8;
 import '../data/local/intro_screen_preference.dart' as _i12;
-import '../data/local/registration.dart' as _i13;
+import '../data/local/language.dart' as _i13;
+import '../data/local/registration.dart' as _i14;
 import '../src/add_task/add_task_cubit.dart' as _i3;
-import '../src/home/home_cubit.dart' as _i14;
+import '../src/home/home_cubit.dart' as _i15;
 import '../src/login/login_cubit.dart' as _i5;
 import '../src/my_department/my_department_cubit.dart' as _i6;
 import '../src/my_tasks/my_tasks_cubit.dart' as _i7;
 import '../src/payroll/payroll_cubit.dart' as _i9;
 import '../src/profile/profile_cubit.dart' as _i10;
 import '../ui/strings.dart' as _i4;
-import 'modules/client_module.dart' as _i15;
+import 'modules/client_module.dart' as _i16;
 import 'modules/local_module.dart'
-    as _i16; // ignore_for_file: unnecessary_lambdas
+    as _i17; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -44,13 +45,15 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       preResolve: true);
   gh.lazySingleton<_i12.IntroScreenPreference>(
       () => _i12.IntroScreenPreference(get<_i11.SharedPreferences>()));
-  gh.singleton<_i13.RegistrationPreference>(
-      _i13.RegistrationPreference(get<_i11.SharedPreferences>()));
-  gh.factory<_i14.HomeCubit>(
-      () => _i14.HomeCubit(get<_i13.RegistrationPreference>()));
+  gh.singleton<_i13.LanguagePreference>(
+      _i13.LanguagePreference(get<_i11.SharedPreferences>()));
+  gh.singleton<_i14.RegistrationPreference>(
+      _i14.RegistrationPreference(get<_i11.SharedPreferences>()));
+  gh.factory<_i15.HomeCubit>(
+      () => _i15.HomeCubit(get<_i14.RegistrationPreference>()));
   return get;
 }
 
-class _$ClientModule extends _i15.ClientModule {}
+class _$ClientModule extends _i16.ClientModule {}
 
-class _$LocalModule extends _i16.LocalModule {}
+class _$LocalModule extends _i17.LocalModule {}

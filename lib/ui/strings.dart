@@ -1,9 +1,12 @@
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:aswar/common_libs.dart';
 import 'package:injectable/injectable.dart';
 import 'package:intl/intl_standalone.dart';
+
+extension AppLocalizationsExtension on BuildContext {
+  AppLocalizations get localizations => AppLocalizations.of(this);
+}
 
 @singleton
 class LocaleLogic {
@@ -15,11 +18,8 @@ class LocaleLogic {
   Future<void> load() async {
     final localeCode = await findSystemLocale();
     Locale locale = Locale(localeCode.split('_')[0]);
-    if (kDebugMode) {
-      // Uncomment for testing in chinese
-      // locale = Locale('zh');
-    }
-    if (AppLocalizations.supportedLocales.contains(locale) == false) {
+
+    if (!AppLocalizations.delegate.isSupported(locale)) {
       locale = const Locale('en');
     }
     _strings = await AppLocalizations.delegate.load(locale);
