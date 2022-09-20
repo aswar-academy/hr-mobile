@@ -1,8 +1,12 @@
+import 'package:aswar/common_libs.dart';
+import 'package:aswar/data.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
+import 'package:aswar/src/profile/profile.dart';
 import 'package:aswar/ui/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'my_department_cubit.dart';
 import 'my_department_state.dart';
@@ -25,7 +29,7 @@ class _MyDepartmentScreenState extends State<MyDepartmentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: BlocBuilder<MyDepartmentCubit, MyDepartmentState>(
+      body: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
           return Stack(
             children: [
@@ -38,10 +42,44 @@ class _MyDepartmentScreenState extends State<MyDepartmentScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    state.user.maybeWhen(
+                      data: (user, response) {
+                        return SafeArea(
+                          child: Padding(
+                            padding: EdgeInsets.all($styles.insets.md),
+                            child: Column(
+                              children: [
+                                Text(
+                                  user.email,
+                                  style: $styles.text.h4.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const Gap(12.0),
+                                Text(
+                                  user.department.name,
+                                  style: $styles.text.h4.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                const Gap(12.0),
+                                Text(
+                                  user.jobTitle,
+                                  style: $styles.text.h4.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      orElse: SizedBox.new,
+                    ),
                     const Spacer(),
                     AppButton(
                       onPressed: _onAddTaskPressed,
-                      title: context.localizations.addNewTask,
+                      title: "Github",
                     ),
                   ],
                 ),
@@ -53,5 +91,7 @@ class _MyDepartmentScreenState extends State<MyDepartmentScreen> {
     );
   }
 
-  void _onAddTaskPressed() {}
+  void _onAddTaskPressed() {
+    launchUrlString(githubRepository);
+  }
 }

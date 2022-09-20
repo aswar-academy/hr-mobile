@@ -63,7 +63,9 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
     );
   }
 
-  void _onAddTaskPressed() {}
+  void _onAddTaskPressed() {
+    context.router.push(const AddTaskRoute());
+  }
 
   Widget _buildData(PaginatedTask data, _) {
     return ListView.builder(

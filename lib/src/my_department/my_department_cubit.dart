@@ -5,11 +5,5 @@ import 'my_department_state.dart';
 
 @injectable
 class MyDepartmentCubit extends Cubit<MyDepartmentState> {
-  
-
-  MyDepartmentCubit(
-    ): super(const MyDepartmentState.idle());
-
-
-  
+  MyDepartmentCubit() : super(const MyDepartmentState.idle());
 }

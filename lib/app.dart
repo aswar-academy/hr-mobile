@@ -3,6 +3,7 @@ import 'package:aswar/language.dart';
 import 'package:aswar/src/home/home.dart';
 import 'package:aswar/src/login/login_cubit.dart';
 import 'package:aswar/src/profile/profile.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../src/add_task/add_task.dart';
@@ -43,6 +44,7 @@ class _AswarAppState extends State<AswarApp> {
           return MaterialApp.router(
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
+            builder: DevicePreview.appBuilder,
             routerDelegate: _appRouter.delegate(),
             routeInformationProvider: _appRouter.routeInfoProvider(),
             routeInformationParser: _appRouter.defaultRouteParser(),

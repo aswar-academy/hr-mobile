@@ -45,7 +45,7 @@ class NavigationListTile extends StatelessWidget {
                 ),
               ),
               Gap($styles.insets.xxs),
-              Text(description, style: $styles.text.title2),
+              Expanded(child: Text(description, style: $styles.text.title2)),
             ],
           ),
         ),

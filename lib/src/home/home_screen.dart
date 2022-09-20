@@ -3,6 +3,7 @@ import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/home/task_list_tile.dart';
 import 'package:aswar/src/home/user_detail_extension.dart';
+import 'package:aswar/ui/logo.dart';
 import 'package:aswar/ui/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
+        builder: (context, HomeState state) {
           return Stack(
             children: [
               const Positioned(
@@ -46,8 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       data: _buildHeaderContent,
                       orElse: Spacer.new,
                     ),
-                    _buildNavigation().animate().fadeIn(),
-                    const Spacer(),
+                    Expanded(child: _buildNavigation(state).animate().fadeIn()),
                     AppButton(
                       onPressed: _onAddTaskPressed,
                       title: context.localizations.addNewTask,
@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildNavigation() {
+  Widget _buildNavigation(HomeState state) {
     return GridView.count(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -123,24 +123,37 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: $styles.insets.xs),
-              child: Text(
-                context.localizations.greeting(homeData.user.name),
-                style: $styles.text.h3.copyWith(
-                  color: Colors.white,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: $styles.insets.xs),
+                      child: Text(
+                        context.localizations.greeting(homeData.user.name),
+                        style: $styles.text.h3.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Gap($styles.insets.xs),
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: $styles.insets.xs),
+                      child: Text(
+                        homeData.user.jobTitle,
+                        style: $styles.text.title1.copyWith(
+                          color: $styles.colors.accent,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-            Gap($styles.insets.xs),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: $styles.insets.xs),
-              child: Text(
-                homeData.user.jobTitle,
-                style: $styles.text.title1.copyWith(
-                  color: $styles.colors.accent,
-                ),
-              ),
+                const AswarLogo(),
+              ],
             ),
             Gap($styles.insets.sm),
             Row(
