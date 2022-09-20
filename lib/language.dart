@@ -10,9 +10,9 @@ class LanguageCubit extends Cubit<Locale> {
   LanguageCubit() : super(Locale($language.getData() ?? "en"));
 
   Future<void> changeLanguage() async {
-    final newValue = state.countryCode == "ar" ? "ar" : "ar";
-    print(newValue);
-    await $language.setData(newValue);
+    final newValue = state.countryCode == "ar" ? "en" : "ar";
+
+    // $language.setData(newValue);
     emit(Locale(newValue));
   }
 }

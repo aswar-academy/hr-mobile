@@ -45,6 +45,7 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
                     Expanded(
                       child: state.maybeWhen(
                         data: _buildData,
+                        loading: LoadingWidget.new,
                         orElse: SizedBox.new,
                       ),
                     ),
@@ -77,6 +78,19 @@ class _MyTasksScreenState extends State<MyTasksScreen> {
           onPressed: context.showUnderDevelopment,
         );
       },
+    );
+  }
+}
+
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: CircularProgressIndicator(
+        color: $styles.colors.surface,
+      ),
     );
   }
 }

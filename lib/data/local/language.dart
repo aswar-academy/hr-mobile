@@ -5,5 +5,5 @@ import 'package:injectable/injectable.dart';
 @Singleton()
 class LanguagePreference extends StringPreference {
   const LanguagePreference(super.sharedPreference)
-      : super(key: Preferences.registration);
+      : super(key: Preferences.language);
 }

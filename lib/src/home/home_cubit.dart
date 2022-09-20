@@ -1,5 +1,6 @@
 import 'package:aswar/common_libs.dart';
 import 'package:aswar/data/local/registration.dart';
+import 'package:aswar/src/home/user_detail_extension.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,7 +20,7 @@ class HomeCubit extends Cubit<HomeState> {
 Stream<HomeState> getHome(UserDetail user) async* {
   final homeData = HomeData(
     user: user,
-    tasksCount: const TasksCount(doing: 1, todo: 2, done: 2),
+    tasksCount: user.tasksCount,
     lastAttendance: Attendance(
       id: 1,
       createdAt: DateTime.now(),

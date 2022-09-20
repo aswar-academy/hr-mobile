@@ -3,6 +3,7 @@ import 'package:aswar/gen/assets.gen.dart';
 import 'package:aswar/language.dart';
 import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
+import 'package:aswar/src/my_tasks/my_tasks_screen.dart';
 import 'package:aswar/src/profile/profile.dart';
 import 'package:aswar/src/profile/settings_list_tile.dart';
 import 'package:aswar/ui/utils.dart';
@@ -83,6 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                   ],
                                 ).animate().scale(),
+                                loading: LoadingWidget.new,
                                 orElse: SizedBox.new,
                               ),
                             ),
