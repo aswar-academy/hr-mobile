@@ -2,14 +2,14 @@ import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
 
 extension UserDetailExtension on UserDetail {
   TasksCount get tasksCount {
-    int _getCount(TaskState state) {
+    int getCount(TaskState state) {
       return tasks.where((element) => element.state == TaskState.doing).length;
     }
 
     return TasksCount(
-      doing: _getCount(TaskState.doing),
-      done: _getCount(TaskState.done),
-      todo: _getCount(TaskState.todo),
+      doing: getCount(TaskState.doing),
+      done: getCount(TaskState.done),
+      todo: getCount(TaskState.todo),
     );
   }
 }

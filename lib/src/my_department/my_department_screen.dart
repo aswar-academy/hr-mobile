@@ -4,13 +4,10 @@ import 'package:aswar/src/component/app_button.dart';
 import 'package:aswar/src/component/header.dart';
 import 'package:aswar/src/profile/profile.dart';
 import 'package:aswar/ui/logo.dart';
-import 'package:aswar/ui/strings.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'my_department_cubit.dart';
-import 'my_department_state.dart';
 
 class MyDepartmentScreen extends StatefulWidget {
   const MyDepartmentScreen({super.key});
