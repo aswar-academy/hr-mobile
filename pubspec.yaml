@@ -31,9 +31,10 @@ dependencies:
 
   # client and error handling
   chopper: ^4.0.1
-  error_handler: # ^1.0.5
-    path: ../perfect_error_handler
-    # git: https://github.com/masreplay/perfect_error_handler.git
+  error_handler: ^1.1.0
+
+  bloc_error_handler:
+    git: https://github.com/masreplay/bloc_error_handler.git
 
   # error handler
   auto_route: ^5.0.1

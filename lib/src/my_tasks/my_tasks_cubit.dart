@@ -1,5 +1,5 @@
 import 'package:aswar/main.dart';
-import 'package:aswar/ui/cubit_state.dart';
+import 'package:bloc_error_handler/bloc_error_handler.dart';
 import 'package:injectable/injectable.dart';
 
 import 'my_tasks_state.dart';

@@ -33,8 +33,8 @@ mason make feature
 
 ## uses
 - state management [bloc](https://pub.dev/packages/bloc)
-- animation [flutter_animate](https://pub.dev/packages/flutter_animate)
 - http error handling use [error_handler](https://pub.dev/packages/error_handler)
+- animation [flutter_animate](https://pub.dev/packages/flutter_animate)
 - json serialization [json_serializable](https://pub.dev/packages/json_serializable)
 - localization [flutter_localizations](https://pub.dev/packages/flutter_localizations)
 - routing [auto_route](https://pub.dev/packages/auto_route)

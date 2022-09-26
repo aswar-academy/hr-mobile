@@ -1,5 +1,5 @@
 import 'package:aswar/swagger_generated_code/openapi.swagger.dart';
-import 'package:aswar/ui/cubit_state.dart';
+import 'package:bloc_error_handler/bloc_error_handler.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:error_handler/error_handler.dart';
 
