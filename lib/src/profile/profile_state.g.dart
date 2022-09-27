@@ -9,7 +9,7 @@ part of 'profile_state.dart';
 abstract class _$ProfileStateCWProxy {
   ProfileState logout(ResultState<dynamic> logout);
 
-  ProfileState user(ResultState<UserDetail> user);
+  ProfileState user(ResultState<dynamic> user);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `ProfileState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -19,7 +19,7 @@ abstract class _$ProfileStateCWProxy {
   /// ````
   ProfileState call({
     ResultState<dynamic>? logout,
-    ResultState<UserDetail>? user,
+    ResultState<dynamic>? user,
   });
 }
 
@@ -33,7 +33,7 @@ class _$ProfileStateCWProxyImpl implements _$ProfileStateCWProxy {
   ProfileState logout(ResultState<dynamic> logout) => this(logout: logout);
 
   @override
-  ProfileState user(ResultState<UserDetail> user) => this(user: user);
+  ProfileState user(ResultState<dynamic> user) => this(user: user);
 
   @override
 
@@ -55,7 +55,7 @@ class _$ProfileStateCWProxyImpl implements _$ProfileStateCWProxy {
       user: user == const $CopyWithPlaceholder() || user == null
           ? _value.user
           // ignore: cast_nullable_to_non_nullable
-          : user as ResultState<UserDetail>,
+          : user as ResultState<dynamic>,
     );
   }
 }
